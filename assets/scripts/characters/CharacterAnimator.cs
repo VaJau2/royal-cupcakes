@@ -31,9 +31,9 @@ public partial class CharacterAnimator : AnimationPlayer
 	{
 		if (character.Velocity.Length() > MinAnimSpeed)
 		{
-			return character.isRunning ? Animation.run : Animation.walk;
+			return character.IsRunning ? Animation.run : Animation.walk;
 		}
 
-		return character.isSitting ? Animation.sit : Animation.idle;
+		return character.IsSitting ? Animation.sit : Animation.idle;
 	}
 }

@@ -34,21 +34,21 @@ public partial class InputController : Node3D
 
     private void UpdateRunning()
     {
-        if (player.type != Character.CharacterType.Thief) return;
-        player.isRunning = Input.IsActionPressed("ui_run");
+        if (player.Type != Character.CharacterType.Thief) return;
+        player.IsRunning = Input.IsActionPressed("ui_run");
     }
 
     private void UpdateSitting()
     {
         if (direction.Length() > 0)
         {
-            player.isSitting = false;
+            player.IsSitting = false;
             return;
         }
 
         if (Input.IsActionJustPressed("ui_sit"))
         {
-            player.isSitting = !player.isSitting;
+            player.IsSitting = !player.IsSitting;
         }
     }
 }

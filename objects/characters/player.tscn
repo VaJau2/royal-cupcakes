@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/InputController.cs" id="2_xqhpj"]
 
 [node name="player" instance=ExtResource("1_pkmxe")]
+collision_mask = 4
 
 [node name="inputController" type="Node3D" parent="." index="3"]
 script = ExtResource("2_xqhpj")

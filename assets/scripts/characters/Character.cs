@@ -7,41 +7,47 @@ namespace RoyalCupcakes.Characters;
  */
 public partial class Character : CharacterBody3D
 {
-	[Export] private float walkSpeed = 2.5f;
-	[Export] private float runSpeed = 5.0f;
-	[Export] private float acceleration = 0.2f;
-
-	private Sprite3D sprite;
-
+	[Export] public string SpriteCode { get; set; }
+	public bool IsRunning { get; set; }
+	public bool IsSitting { get; set; }
+	
 	public enum CharacterType
 	{
 		None,
 		Guard,
 		Thief
 	}
+	
+	public CharacterType Type { get; private set; }
+	
+	private const float walkSpeed = 2f;
+	private const float runSpeed = 4f;
+	private const float acceleration = 0.2f;
 
-	public readonly CharacterType type;
-
-	public bool isRunning;
-	public bool isSitting;
+	private SpriteLoader spriteLoader;
 
 	public void UpdateMoveDirection(Vector3 direction)
 	{
-		var velocity = Velocity;
-		var speed = isRunning ? runSpeed : walkSpeed;
-		velocity.X = Mathf.MoveToward(Velocity.X, direction.X * speed, acceleration);
-		velocity.Z = Mathf.MoveToward(Velocity.Z, direction.Z * speed, acceleration);
-		Velocity = velocity;
+		var speed = IsRunning ? runSpeed : walkSpeed;
+		direction.Y = 0;
+		Velocity = Velocity.MoveToward(direction * speed, acceleration);
 
 		if (direction.X != 0)
 		{
-			sprite.FlipH = direction.X < 0;
+			spriteLoader.FlipH = direction.X < 0;
 		}
+	}
+
+	public void LoadSpriteByCode(string code)
+	{
+		SpriteCode = code;
+		spriteLoader.Load();
 	}
 
 	public override void _Ready()
 	{
-		sprite = GetNode<Sprite3D>("sprite");
+		spriteLoader = GetNode<SpriteLoader>("sprite");
+		spriteLoader.Load();
 	}
 
 	public override void _PhysicsProcess(double delta)
