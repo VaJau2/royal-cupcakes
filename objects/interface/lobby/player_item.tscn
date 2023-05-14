@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj7j05f66dnlf"]
+
+[ext_resource type="Script" path="res://assets/scripts/interface/LobbyPlayerItem.cs" id="1_jqpn0"]
+[ext_resource type="Texture2D" uid="uid://dbhaugkhbfaxb" path="res://assets/sprites/interface/no_icon.png" id="2_cigy8"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtl5t"]
+properties/0/path = NodePath(".:PlayerReady")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:Team")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath(".:PlayerName")
+properties/2/spawn = true
+properties/2/sync = true
+
+[node name="playerItem" type="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchor_right = 0.333
+anchor_bottom = 0.074
+offset_right = 0.384003
+offset_bottom = -7.952
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jqpn0")
+
+[node name="up" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 4.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="playerName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_right = 0.833
+anchor_bottom = 1.167
+offset_left = -0.127998
+offset_right = 0.127991
+offset_bottom = 0.32
+vertical_alignment = 1
+
+[node name="teamIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.146
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -0.064003
+offset_bottom = -2.0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="readyIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.854
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0639954
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -4.0
+texture = ExtResource("2_cigy8")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.5
+replication_config = SubResource("SceneReplicationConfig_dtl5t")
+
+[connection signal="synchronized" from="MultiplayerSynchronizer" to="." method="OnSynchronize"]

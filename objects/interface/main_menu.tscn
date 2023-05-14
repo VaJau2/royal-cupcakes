@@ -1,0 +1,305 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4akjw4v2r6n8"]
+
+[ext_resource type="Script" path="res://assets/scripts/interface/MainMenu.cs" id="1_np8xv"]
+[ext_resource type="Script" path="res://assets/scripts/interface/PlayerNameInput.cs" id="2_t6jxh"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectionModal.cs" id="3_lt8ja"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectingModal.cs" id="4_dacjo"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/ErrorModal.cs" id="5_m36hi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0p75t"]
+font_size = 25
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_np8xv")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Header" type="Label" parent="Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -110.0
+offset_right = 94.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#GAME#"
+label_settings = SubResource("LabelSettings_0p75t")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -34.0
+offset_right = 91.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#START#"
+
+[node name="Exit" type="Button" parent="Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 16.0
+offset_right = 91.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#EXIT#"
+
+[node name="Language" type="Button" parent="Back"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
+offset_top = 32.0
+offset_right = -63.0
+offset_bottom = 63.0
+grow_horizontal = 0
+text = "#LANG#"
+
+[node name="Name" type="LineEdit" parent="Back"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 96.0
+offset_right = -64.0
+offset_bottom = 127.0
+grow_horizontal = 0
+text = "Player"
+alignment = 1
+script = ExtResource("2_t6jxh")
+
+[node name="Label" type="Label" parent="Back/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_right = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#NAME#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="connection" type="Window" parent="." node_paths=PackedStringArray("connectingModal", "errorModal")]
+initial_position = 2
+title = "#CONNECTION#"
+size = Vector2i(400, 250)
+visible = false
+unresizable = true
+script = ExtResource("3_lt8ja")
+connectingModal = NodePath("../connecting")
+errorModal = NodePath("../error")
+
+[node name="type" type="Button" parent="connection"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "#CLIENT#"
+
+[node name="ip" type="LineEdit" parent="connection"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -45.0
+offset_right = 116.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "localhost"
+alignment = 1
+
+[node name="Label" type="Label" parent="connection/ip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_right = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#IP#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="port" type="LineEdit" parent="connection"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = 5.0
+offset_right = 116.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "8080"
+alignment = 1
+max_length = 4
+
+[node name="Label" type="Label" parent="connection/port"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_right = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#PORT#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cancel" type="Button" parent="connection"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -50.0
+offset_right = -20.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CANCEL#"
+
+[node name="connect" type="Button" parent="connection"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.5
+offset_top = -50.0
+offset_right = 122.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CONNECT#"
+
+[node name="connecting" type="Window" parent="."]
+initial_position = 2
+title = "#CONNECTION#"
+size = Vector2i(400, 250)
+visible = false
+unresizable = true
+script = ExtResource("4_dacjo")
+
+[node name="Label" type="Label" parent="connecting"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -35.0
+offset_right = 63.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#CONNECTING#"
+
+[node name="cancel" type="Button" parent="connecting"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CANCEL#"
+
+[node name="error" type="Window" parent="."]
+initial_position = 2
+title = "#CONNECTION#"
+size = Vector2i(400, 250)
+visible = false
+unresizable = true
+script = ExtResource("5_m36hi")
+
+[node name="Label" type="Label" parent="error"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -35.0
+offset_right = 93.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#CONNECTION_ERROR#"
+
+[node name="ok" type="Button" parent="error"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#DAMN#"
+
+[connection signal="pressed" from="Back/Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Back/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="Back/Language" to="." method="OnLangChangePressed"]
+[connection signal="text_changed" from="Back/Name" to="Back/Name" method="OnNameChanged"]
+[connection signal="close_requested" from="connection" to="connection" method="CloseConnectionModal"]
+[connection signal="pressed" from="connection/type" to="connection" method="OnConnectionTypePressed"]
+[connection signal="pressed" from="connection/cancel" to="connection" method="CloseConnectionModal"]
+[connection signal="pressed" from="connection/connect" to="connection" method="OnConnectPressed"]
+[connection signal="close_requested" from="connecting" to="connecting" method="OnCancelConnecting"]
+[connection signal="pressed" from="connecting/cancel" to="connecting" method="OnCancelConnecting"]
+[connection signal="close_requested" from="error" to="error" method="Cancel"]
+[connection signal="pressed" from="error/ok" to="error" method="Cancel"]

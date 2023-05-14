@@ -1,5 +1,7 @@
 using Godot;
 
+namespace RoyalCupcakes.Props;
+
 /**
  * Определяет радиус, в котором могут тусоваться неписи вокруг точки
  */

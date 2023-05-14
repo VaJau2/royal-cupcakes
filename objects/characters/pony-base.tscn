@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://uatvobu666cs"]
+[gd_scene load_steps=13 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
-[ext_resource type="Texture2D" uid="uid://ck56ldwpkprhh" path="res://assets/sprites/base.png" id="1_hsv0u"]
+[ext_resource type="Texture2D" uid="uid://ck56ldwpkprhh" path="res://assets/sprites/skins/base.png" id="2_o545j"]
 [ext_resource type="Script" path="res://assets/scripts/characters/CharacterAnimator.cs" id="3_irr3e"]
 [ext_resource type="Script" path="res://assets/scripts/characters/SpriteLoader.cs" id="3_yr4m1"]
 
@@ -118,15 +118,13 @@ _data = {
 
 [node name="pony" type="CharacterBody3D"]
 script = ExtResource("1_7hsws")
-walkSpeed = 2.0
-runSpeed = 4.0
 
 [node name="sprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286654, 0)
 shaded = true
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_hsv0u")
+texture = ExtResource("2_o545j")
 hframes = 8
 vframes = 7
 script = ExtResource("3_yr4m1")

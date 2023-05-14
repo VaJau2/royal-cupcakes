@@ -1,0 +1,24 @@
+keys,en,ru
+#GAME#,Royal Cupcakes,Royal Cupcakes
+#START#,Start,Начать
+#EXIT#,Exit,Выход
+#CONNECTION#,Connection,Подключение
+#CONNECT#,Connect,Подключиться
+#CONNECTING#,Connecting...,Подключаемся...
+#CONNECTION_ERROR#,Connection error,Ошибка подключения
+#DAMN#,Damn it,Ну блин
+#CANCEL#,Cancel,Отмена
+#HOST#,Host,Хост
+#CLIENT#,Client,Клиент
+#IP#,IP Address,IP Адрес
+#PORT#,Port,Порт
+#LANG#,En,Ru
+#NAME#,Name,Имя
+#PLAYERS#,Players,Игроки
+#BACK#,Back,Назад
+#CHANGE_TEAM#,Change team,Сменить команду
+#READY#,Ready,Готов
+#NOT_READY#,Not ready,Не готов
+#NOT_ENOUGH_PLAYERS#,Not enough players (must be at least 1 in each team),Недостаточно игроков (должно быть как минимум 1 в каждой команде)
+#NOT_EVERYONE_READY#,All players must be ready to start game,Все игроки должны быть готовы для начала игры
+#STARTING#,Starting...,Начинаем...

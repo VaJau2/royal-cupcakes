@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Godot;
 using Godot.Collections;
+using RoyalCupcakes.Props;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Characters;

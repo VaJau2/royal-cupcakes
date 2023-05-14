@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcisvibfapwfw"]
+
+[ext_resource type="Script" path="res://assets/scripts/interface/LobbyMenu.cs" id="1_p87cv"]
+[ext_resource type="PackedScene" uid="uid://cj7j05f66dnlf" path="res://objects/interface/lobby/player_item.tscn" id="2_f5d43"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_atqo7"]
+font_size = 20
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p87cv")
+playerItemPrefab = ExtResource("2_f5d43")
+
+[node name="back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="backButton" type="Button" parent="back"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 95.0
+text = "#BACK#"
+
+[node name="header" type="Label" parent="back"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_top = 50.0
+offset_right = 54.5
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "#PLAYERS#"
+label_settings = SubResource("LabelSettings_atqo7")
+
+[node name="players" type="VBoxContainer" parent="back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -196.0
+offset_right = 128.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ready" type="Button" parent="back"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -104.0
+offset_right = -296.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#READY#"
+
+[node name="changeTeam" type="Button" parent="back"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -168.0
+offset_right = -296.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CHANGE_TEAM#"
+
+[node name="message" type="Label" parent="back"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -44.0
+offset_right = -8.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "#NOT_ENOUGH_PLAYERS#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="back"]
+_spawnable_scenes = PackedStringArray("res://objects/interface/lobby/player_item.tscn")
+spawn_path = NodePath("../players")
+
+[connection signal="pressed" from="back/backButton" to="." method="OnBackPressed"]
+[connection signal="pressed" from="back/ready" to="." method="OnReadyPressed"]
+[connection signal="pressed" from="back/changeTeam" to="." method="OnChangeTeamPressed"]

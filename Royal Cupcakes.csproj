@@ -4,4 +4,10 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>RoyalCupcakes</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="assets\lang\text.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\scripts\interface\modals" />
+  </ItemGroup>
 </Project>
