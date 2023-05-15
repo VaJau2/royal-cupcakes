@@ -8,17 +8,10 @@ namespace RoyalCupcakes.Characters;
 public partial class Character : CharacterBody3D
 {
 	[Export] public string SpriteCode { get; set; }
-	public bool IsRunning { get; set; }
-	public bool IsSitting { get; set; }
+	[Export] public bool IsRunning { get; set; }
+	[Export] public bool IsSitting { get; set; }
 	
-	public enum CharacterType
-	{
-		None,
-		Guard,
-		Thief
-	}
-	
-	public CharacterType Type { get; private set; }
+	public Team Team { get; set; }
 	
 	private const float walkSpeed = 2f;
 	private const float runSpeed = 4f;
@@ -28,6 +21,8 @@ public partial class Character : CharacterBody3D
 
 	public void UpdateMoveDirection(Vector3 direction)
 	{
+		if (!IsMultiplayerAuthority()) return;
+		
 		var speed = IsRunning ? runSpeed : walkSpeed;
 		direction.Y = 0;
 		Velocity = Velocity.MoveToward(direction * speed, acceleration);
@@ -38,23 +33,43 @@ public partial class Character : CharacterBody3D
 		}
 	}
 
-	public void LoadSpriteByCode(string code)
+	public override void _EnterTree()
 	{
-		SpriteCode = code;
-		spriteLoader.Load();
+		var id = Name.ToString().Split('_')[1];
+		SetMultiplayerAuthority(int.Parse(id));
 	}
 
 	public override void _Ready()
 	{
 		spriteLoader = GetNode<SpriteLoader>("sprite");
-		spriteLoader.Load();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (!IsMultiplayerAuthority()) return;
+		
 		if (Velocity.Length() > 0)
 		{
 			MoveAndSlide();
 		}
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void LoadTeam(int newTeam)
+	{
+		Team = (Team)newTeam;
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void LoadSprite(string newCode)
+	{
+		SpriteCode = newCode;
+		spriteLoader.Load();
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SetGlobalPos(Vector3 newPos)
+	{
+		GlobalPosition = newPos;
 	}
 }

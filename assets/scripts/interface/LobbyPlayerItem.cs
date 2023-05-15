@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using RoyalCupcakes.System;
 
@@ -6,17 +7,17 @@ namespace RoyalCupcakes.Interface;
 public partial class LobbyPlayerItem : Control
 {
 	[Export] public bool PlayerReady { get; set; }
-	[Export] public Team Team { get; set; }
+	[Export] public Team Team { get; set; } = Team.Thief;
 	[Export] public string PlayerName { get; set; }
 
 	private LobbyMenu lobbyMenu;
 	
 	private Label playerNameLabel;
 	private TextureRect teamIcon;
-	private Texture2D[] teamTextures = new Texture2D[2];
-
 	private TextureRect readyIcon;
-	private Texture2D[] readyTextures = new Texture2D[2];
+	
+	private readonly Dictionary<Team, Texture2D> teamTextures = new();
+	private readonly Dictionary<bool, Texture2D> readyTextures = new();
 
 	public override void _EnterTree()
 	{
@@ -32,11 +33,11 @@ public partial class LobbyPlayerItem : Control
 		readyIcon = GetNode<TextureRect>("readyIcon");
 
 		var path = "res://assets/sprites/interface/";
-		teamTextures[0] = GD.Load<Texture2D>(path + "cake_icon.png");
-		teamTextures[1] = GD.Load<Texture2D>(path + "shield_icon.png");
+		teamTextures[Team.Thief] = GD.Load<Texture2D>(path + "cake_icon.png");
+		teamTextures[Team.Guard] = GD.Load<Texture2D>(path + "shield_icon.png");
 
-		readyTextures[0] = GD.Load<Texture2D>(path + "no_icon.png");
-		readyTextures[1] = GD.Load<Texture2D>(path + "yes_icon.png");
+		readyTextures[false] = GD.Load<Texture2D>(path + "no_icon.png");
+		readyTextures[true] = GD.Load<Texture2D>(path + "yes_icon.png");
 
 		CallDeferred(nameof(SyncPlayerName));
 	}
@@ -66,12 +67,8 @@ public partial class LobbyPlayerItem : Control
 	public void OnSynchronize()
 	{
 		playerNameLabel.Text = PlayerName;
-		
-		var textureId = PlayerReady ? 1 : 0;
-		readyIcon.Texture = readyTextures[textureId];
-		
-		teamIcon.Texture = teamTextures[(int)Team];
-
+		readyIcon.Texture = readyTextures[PlayerReady];
+		teamIcon.Texture = teamTextures[Team];
 		lobbyMenu.CheckStartGame();
 	}
 }

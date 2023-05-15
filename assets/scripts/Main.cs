@@ -9,8 +9,10 @@ using RoyalCupcakes.System;
 public partial class Main : Node
 {
 	public ENetMultiplayerPeer peer = new();
+	public Team PlayerTeam { get; set; } = Team.Thief;
 
-	private CanvasLayer menuParent; 
+	private CanvasLayer menuParent;
+	private Node levelParent;
 	
 	private Control currentMenu;
 	private Node3D currentScene;
@@ -63,6 +65,8 @@ public partial class Main : Node
 
 	public void ChangeScene(string scene)
 	{
+		if (!Multiplayer.IsServer()) return;
+		
 		if (currentScene != null)
 		{
 			currentScene.QueueFree();
@@ -73,13 +77,21 @@ public partial class Main : Node
 		
 		var scenePrefab = GD.Load<PackedScene>($"res://scenes/{scene}.tscn");
 		var newScene = scenePrefab.Instantiate<Node3D>();
-		AddChild(newScene);
+		levelParent.AddChild(newScene);
 		currentScene = newScene;
 	}
 
 	public override void _Ready()
 	{
 		menuParent = GetNode<CanvasLayer>("UI");
+		levelParent = GetNode<Node>("Level");
 		currentMenu = menuParent.GetNode<Control>("MainMenu");
 	}
+}
+
+public enum Team
+{
+	Npc,
+	Thief,
+	Guard,
 }

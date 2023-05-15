@@ -4,7 +4,7 @@ using Godot.Collections;
 using RoyalCupcakes.Props;
 using RoyalCupcakes.Utils;
 
-namespace RoyalCupcakes.Characters;
+namespace RoyalCupcakes.Characters.Spawners;
 
 /**
  * Спавнит неписей в рандомных точках и дает им путь из этих точек
@@ -13,7 +13,9 @@ namespace RoyalCupcakes.Characters;
 public partial class NpcSpawner : Node3D
 {
     private const int MinPointsCount = 3;
+    private static int npcCount;
 
+    [Export] private Node3D npcParent;
     [Export] private PackedScene npcPrefab;
     [Export] private int count;
     [Export] private Array<string> spriteCodes;
@@ -22,8 +24,16 @@ public partial class NpcSpawner : Node3D
 
     private readonly Randomizer rand = new();
 
+    public override void _EnterTree()
+    {
+        if (!Multiplayer.IsServer()) return;
+        SetMultiplayerAuthority(Multiplayer.GetUniqueId());
+    }
+
     public override void _Ready()
     {
+        if (!IsMultiplayerAuthority()) return;
+        
         foreach (var node in GetChildren())
         {
             points.Add(node as RandomPoint);
@@ -39,20 +49,30 @@ public partial class NpcSpawner : Node3D
 
     private void SpawnNpc()
     {
-        points.Shuffle();
-
         var npc = npcPrefab.Instantiate<NPC>();
-        npc.SpriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
-        
+        npc.Name += $"{++npcCount}_{Multiplayer.GetUniqueId()}";
+
         var pointsCount = rand.GetInt(MinPointsCount, points.Count);
         for (var i = 0; i < pointsCount; i++)
         {
             npc.AppendToPath(points[i]);
         }
 
-        AddChild(npc);
+        npcParent.AddChild(npc);
+        
+        CallDeferred(nameof(LoadNpcAsyncData), npc);
+    }
 
+    private async void LoadNpcAsyncData(Node npc)
+    {
+        await ToSignal(GetTree(), "physics_frame");
+        
+        points.Shuffle();
         var spawnPoint = points[0];
-        npc.GlobalPosition = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
+        var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
+        var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
+        
+        npc.Rpc(nameof(Character.LoadSprite), spriteCode);
+        npc.Rpc(nameof(Character.SetGlobalPos), newPos);
     }
 }

@@ -32,6 +32,12 @@ public partial class NPC : Character
     {
         base._Ready();
 
+        if (!IsMultiplayerAuthority())
+        {
+            SetProcess(false);
+            return;
+        }
+
         if (pointsPath.Count > 0)
         {
             ArrayUtils.LoadPath(pointsPath, this, out points);
@@ -39,6 +45,7 @@ public partial class NPC : Character
         
         points.Shuffle();
 
+        Team = Team.Npc;
         agent = GetNode<NavigationAgent3D>("agent");
         CallDeferred(nameof(ActorSetup));
     }

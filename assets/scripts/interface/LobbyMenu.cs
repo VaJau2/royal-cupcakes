@@ -70,7 +70,8 @@ public partial class LobbyMenu : Control
 	private void OnChangeTeamPressed()
 	{
 		var playerItem = GetPlayerItem(Multiplayer.GetUniqueId());
-		playerItem.Team =  playerItem.Team == Team.Guard ? Team.Thief : Team.Guard;
+		main.PlayerTeam = main.PlayerTeam == Team.Guard ? Team.Thief : Team.Guard;
+		playerItem.Team = main.PlayerTeam;
 		playerItem.OnSynchronize();
 	}
 
@@ -131,10 +132,4 @@ public partial class LobbyMenu : Control
 		main.ChangeMenu("pause_menu");
 		main.ChangeScene("game");
 	}
-}
-
-public enum Team
-{
-	Thief,
-	Guard,
 }

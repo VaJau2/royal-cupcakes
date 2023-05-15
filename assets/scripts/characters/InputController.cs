@@ -13,6 +13,15 @@ public partial class InputController : Node3D
     public override void _Ready()
     {
         player = GetParent<Character>();
+
+        if (!player.IsMultiplayerAuthority())
+        {
+            SetProcess(false);
+            return;
+        }
+        
+        var camera = GetNode<Camera3D>("../camera");
+        camera.Current = true;
     }
     
     public override void _Process(double delta)
@@ -34,7 +43,7 @@ public partial class InputController : Node3D
 
     private void UpdateRunning()
     {
-        if (player.Type != Character.CharacterType.Thief) return;
+        if (player.Team != Team.Thief) return;
         player.IsRunning = Input.IsActionPressed("ui_run");
     }
 

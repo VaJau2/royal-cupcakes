@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqbwr418wgrb2"]
+[gd_scene load_steps=14 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
 [ext_resource type="Texture2D" uid="uid://ck56ldwpkprhh" path="res://assets/sprites/skins/base.png" id="2_o545j"]
@@ -116,6 +116,23 @@ _data = {
 "walk": SubResource("Animation_vlx0t")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_n2ejg"]
+properties/0/path = NodePath(".:IsRunning")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:IsSitting")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("sprite:flip_h")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath("anim:current_animation")
+properties/4/spawn = true
+properties/4/sync = true
+
 [node name="pony" type="CharacterBody3D"]
 script = ExtResource("1_7hsws")
 
@@ -138,3 +155,6 @@ libraries = {
 "": SubResource("AnimationLibrary_vkgsj")
 }
 script = ExtResource("3_irr3e")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_n2ejg")
