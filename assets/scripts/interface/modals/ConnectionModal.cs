@@ -52,18 +52,22 @@ public partial class ConnectionModal : Window
 	private void OnConnectPressed()
 	{
 		CloseConnectionModal();
+		connectingModal.PopupCentered();
 		
 		var settings = Settings.Instance;
 		settings.Host = !string.IsNullOrEmpty(ip.Text) ? ip.Text : DefaultHost;
 		settings.Port = !string.IsNullOrEmpty(port.Text) ? int.Parse(port.Text) : DefaultPort;
 
-		if (main.Connect(settings, isHost))
-		{
-			main.ChangeMenu("lobby");
-		}
-		else
-		{
-			errorModal.PopupCentered();
-		}
+		main.Connect(settings, isHost,
+			() =>
+			{
+				connectingModal.Hide();
+				main.ChangeMenu("lobby");
+			},
+			() =>
+			{
+				errorModal.PopupCentered();
+			}
+		);
 	}
 }

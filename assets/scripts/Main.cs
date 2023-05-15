@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using RoyalCupcakes.Interface;
 using RoyalCupcakes.System;
@@ -17,6 +18,9 @@ public partial class Main : Node
 	private Control currentMenu;
 	private Node3D currentScene;
 
+	private Action connectedCallback;
+	private Action failedCallback;
+
 	public override void _Notification(int what)
 	{
 		if (what == NotificationWMCloseRequest)
@@ -25,25 +29,33 @@ public partial class Main : Node
 		}
 	}
 
-	public bool Connect(Settings settings, bool isHost)
+	public void Connect(Settings settings, bool isHost, Action connected, Action failed)
 	{
+		connectedCallback = connected;
+		failedCallback = failed;
+
+		Multiplayer.ConnectedToServer += connectedCallback;
+		Multiplayer.ConnectionFailed += failedCallback;
+		
 		if (isHost)
 		{
 			peer.CreateServer(settings.Port);
+			Multiplayer.MultiplayerPeer = peer;
+			connected();
 		}
 		else
 		{
 			peer.CreateClient(settings.Host, settings.Port);
+			Multiplayer.MultiplayerPeer = peer;
 		}
-
-		Multiplayer.MultiplayerPeer = peer;
-		return peer.GetConnectionStatus() != MultiplayerPeer.ConnectionStatus.Disconnected;
 	}
 
 	public void Disconnect()
 	{
 		peer.Close();
 		Multiplayer.MultiplayerPeer = null;
+		Multiplayer.ConnectedToServer -= connectedCallback;
+		Multiplayer.ConnectionFailed -= failedCallback;
 	}
 
 	public void ChangeMenu(string menuPath, bool isError = false)
