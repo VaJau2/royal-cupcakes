@@ -18,9 +18,6 @@ public partial class Main : Node
 	private Control currentMenu;
 	private Node3D currentScene;
 
-	private Action connectedCallback;
-	private Action failedCallback;
-
 	public override void _Notification(int what)
 	{
 		if (what == NotificationWMCloseRequest)
@@ -29,14 +26,8 @@ public partial class Main : Node
 		}
 	}
 
-	public void Connect(Settings settings, bool isHost, Action connected, Action failed)
+	public void Connect(Settings settings, bool isHost, Action connected)
 	{
-		connectedCallback = connected;
-		failedCallback = failed;
-
-		Multiplayer.ConnectedToServer += connectedCallback;
-		Multiplayer.ConnectionFailed += failedCallback;
-		
 		if (isHost)
 		{
 			peer.CreateServer(settings.Port);
@@ -45,6 +36,7 @@ public partial class Main : Node
 		}
 		else
 		{
+			Multiplayer.ConnectedToServer += connected;
 			peer.CreateClient(settings.Host, settings.Port);
 			Multiplayer.MultiplayerPeer = peer;
 		}
@@ -54,8 +46,6 @@ public partial class Main : Node
 	{
 		peer.Close();
 		Multiplayer.MultiplayerPeer = null;
-		Multiplayer.ConnectedToServer -= connectedCallback;
-		Multiplayer.ConnectionFailed -= failedCallback;
 	}
 
 	public void ChangeMenu(string menuPath, bool isError = false)
@@ -98,6 +88,15 @@ public partial class Main : Node
 		menuParent = GetNode<CanvasLayer>("UI");
 		levelParent = GetNode<Node>("Level");
 		currentMenu = menuParent.GetNode<Control>("MainMenu");
+
+		void FailFunc()
+		{
+			ChangeScene(null);
+			ChangeMenu("main_menu", true);
+		}
+
+		Multiplayer.ServerDisconnected += FailFunc;
+		Multiplayer.ConnectionFailed += FailFunc;
 	}
 }
 

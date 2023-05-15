@@ -63,10 +63,6 @@ public partial class ConnectionModal : Window
 			{
 				connectingModal.Hide();
 				main.ChangeMenu("lobby");
-			},
-			() =>
-			{
-				errorModal.PopupCentered();
 			}
 		);
 	}
