@@ -22,3 +22,6 @@ keys,en,ru
 #NOT_ENOUGH_PLAYERS#,Not enough players (must be at least 1 in each team),Недостаточно игроков (должно быть как минимум 1 в каждой команде)
 #NOT_EVERYONE_READY#,All players must be ready to start game,Все игроки должны быть готовы для начала игры
 #STARTING#,Starting...,Начинаем...
+#CONTINUE#,Continue,Продолжить
+#DISCONNECT#,Disconnect,Отключиться
+#LOG_DISCONNECTED#,Player {name} disconnected,Игрок {name} отключился

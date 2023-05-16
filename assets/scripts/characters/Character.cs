@@ -21,7 +21,7 @@ public partial class Character : CharacterBody3D
 
 	public void UpdateMoveDirection(Vector3 direction)
 	{
-		if (!IsMultiplayerAuthority()) return;
+		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
 		
 		var speed = IsRunning ? runSpeed : walkSpeed;
 		direction.Y = 0;
@@ -46,7 +46,7 @@ public partial class Character : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!IsMultiplayerAuthority()) return;
+		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
 		
 		if (Velocity.Length() > 0)
 		{

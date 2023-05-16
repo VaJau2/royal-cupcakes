@@ -6,11 +6,11 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_rmdct")
 
-[node name="Level" type="Node" parent="."]
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="UI" instance=ExtResource("1_h4mab")]
+
+[node name="Level" type="Node" parent="."]
 
 [node name="levelSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/game.tscn")

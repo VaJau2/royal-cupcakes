@@ -98,3 +98,7 @@ locale/translations=PackedStringArray("res://assets/lang/text.en.translation", "
 3d_physics/layer_1="character"
 3d_physics/layer_2="lasso"
 3d_physics/layer_3="props"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

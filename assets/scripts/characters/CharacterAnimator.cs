@@ -23,7 +23,7 @@ public partial class CharacterAnimator : AnimationPlayer
 	
 	public override void _Process(double delta)
 	{
-		if (!character.IsMultiplayerAuthority()) return;
+		if (!Multiplayer.HasMultiplayerPeer() || !character.IsMultiplayerAuthority()) return;
 		var currentAnim = GetCurrentAnimation();
 		CurrentAnimation = currentAnim.ToString();
 	}

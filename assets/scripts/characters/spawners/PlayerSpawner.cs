@@ -11,7 +11,7 @@ namespace RoyalCupcakes.Characters.Spawners;
  */
 public partial class PlayerSpawner : Node3D
 {
-	[Export] private Node3D playersParent;
+	[Export] private PlayersManager playersParent;
 	[Export] private Team playerTypeFilter;
 	[Export] private PackedScene playerPrefab;
 	[Export] private Array<string> spriteCodes;
@@ -47,6 +47,7 @@ public partial class PlayerSpawner : Node3D
 		player.Name += $"_{playerId}";
 
 		playersParent.AddChild(player);
+		playersParent.SetPlayerCharacter(playerId, player);
 
 		CallDeferred(nameof(LoadPlayerAsyncData), player, (int)playerTeam);
 	}

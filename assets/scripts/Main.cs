@@ -67,7 +67,7 @@ public partial class Main : Node
 
 	public void ChangeScene(string scene)
 	{
-		if (!Multiplayer.IsServer()) return;
+		if (Multiplayer.HasMultiplayerPeer() && !Multiplayer.IsServer()) return;
 		
 		if (currentScene != null)
 		{
@@ -91,6 +91,7 @@ public partial class Main : Node
 
 		void FailFunc()
 		{
+			Multiplayer.MultiplayerPeer = null;
 			ChangeScene(null);
 			ChangeMenu("main_menu", true);
 		}

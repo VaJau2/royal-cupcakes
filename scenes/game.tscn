@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=17 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
+[ext_resource type="Script" path="res://assets/scripts/characters/PlayersManager.cs" id="1_y7rk8"]
 [ext_resource type="PackedScene" uid="uid://bjqal8lmw22dr" path="res://objects/characters/npc.tscn" id="2_ch63m"]
 [ext_resource type="Script" path="res://assets/scripts/props/RandomPoint.cs" id="3_1osu1"]
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
@@ -91,6 +92,7 @@ mesh = SubResource("BoxMesh_2bv6b")
 shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="characters" type="Node3D" parent="."]
+script = ExtResource("1_y7rk8")
 
 [node name="charactersSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://objects/characters/player.tscn", "res://objects/characters/npc.tscn")
