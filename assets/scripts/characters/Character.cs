@@ -10,6 +10,7 @@ public partial class Character : CharacterBody3D
 	[Export] public string SpriteCode { get; set; }
 	[Export] public bool IsRunning { get; set; }
 	[Export] public bool IsSitting { get; set; }
+	[Export] public bool IsTied { get; set; }
 	
 	public Team Team { get; set; }
 	
@@ -22,7 +23,8 @@ public partial class Character : CharacterBody3D
 	public void UpdateMoveDirection(Vector3 direction)
 	{
 		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
-		
+		if (IsTied) return;
+
 		var speed = IsRunning ? runSpeed : walkSpeed;
 		direction.Y = 0;
 		Velocity = Velocity.MoveToward(direction * speed, acceleration);
@@ -47,11 +49,14 @@ public partial class Character : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
+		if (!(Velocity.Length() > 0)) return;
 		
-		if (Velocity.Length() > 0)
+		if (IsTied)
 		{
-			MoveAndSlide();
+			Velocity = Velocity.MoveToward(Vector3.Zero, 0.05f);
 		}
+			
+		MoveAndSlide();
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

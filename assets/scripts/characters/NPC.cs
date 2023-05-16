@@ -79,6 +79,7 @@ public partial class NPC : Character
 
     public override void _Process(double _delta)
     {
+        if (IsTied) return;
         if (agent.IsNavigationFinished()) return;
         var direction = (agent.GetNextPathPosition() - GlobalPosition).Normalized();
         UpdateMoveDirection(direction);

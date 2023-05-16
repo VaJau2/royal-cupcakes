@@ -5,6 +5,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rmdct")
+debugHost = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 

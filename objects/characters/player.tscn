@@ -6,6 +6,9 @@
 [node name="player" instance=ExtResource("1_pkmxe")]
 collision_mask = 4
 
+[node name="sprite" parent="." index="0"]
+render_priority = 1
+
 [node name="inputController" type="Node3D" parent="." index="3"]
 script = ExtResource("2_xqhpj")
 

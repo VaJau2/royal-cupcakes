@@ -30,6 +30,8 @@ public partial class CharacterAnimator : AnimationPlayer
 
 	private Animation GetCurrentAnimation()
 	{
+		if (character.IsTied) return Animation.tied;
+		
 		if (character.Velocity.Length() > MinAnimSpeed)
 		{
 			return character.IsRunning ? Animation.run : Animation.walk;

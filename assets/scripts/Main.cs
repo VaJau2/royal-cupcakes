@@ -17,6 +17,8 @@ public partial class Main : Node
 	
 	private Control currentMenu;
 	private Node3D currentScene;
+	
+	[Export] private bool debugHost;
 
 	public override void _Notification(int what)
 	{
@@ -98,6 +100,15 @@ public partial class Main : Node
 
 		Multiplayer.ServerDisconnected += FailFunc;
 		Multiplayer.ConnectionFailed += FailFunc;
+
+		if (debugHost)
+		{
+			Connect(Settings.Instance, true, () =>
+			{
+				ChangeMenu("pause_menu");
+				ChangeScene("game");
+			});
+		}
 	}
 }
 
