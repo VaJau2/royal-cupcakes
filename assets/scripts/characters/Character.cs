@@ -11,6 +11,8 @@ public partial class Character : CharacterBody3D
 	[Export] public bool IsRunning { get; set; }
 	[Export] public bool IsSitting { get; set; }
 	[Export] public bool IsTied { get; private set; }
+
+	[Export] private PackedScene changeEffectPrefab;
 	
 	public Team Team { get; set; }
 	public int PlayerId { get; set; }
@@ -70,10 +72,16 @@ public partial class Character : CharacterBody3D
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void LoadSprite(string newCode)
+	public void LoadSprite(string newCode, bool changeEffect)
 	{
 		SpriteCode = newCode;
 		spriteLoader.Load();
+
+		if (!changeEffect) return;
+		
+		var effect = changeEffectPrefab.Instantiate<Node3D>();
+		GetParent().AddChild(effect);
+		effect.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, GlobalPosition.Z + 0.02f);
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

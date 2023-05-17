@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqbwr418wgrb2"]
+[gd_scene load_steps=18 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
+[ext_resource type="PackedScene" uid="uid://cv24wwftkv36n" path="res://objects/change-effect.tscn" id="2_mtyjj"]
 [ext_resource type="Texture2D" uid="uid://ck56ldwpkprhh" path="res://assets/sprites/skins/base.png" id="2_o545j"]
 [ext_resource type="Script" path="res://assets/scripts/characters/CharacterAnimator.cs" id="3_irr3e"]
 [ext_resource type="Script" path="res://assets/scripts/characters/SpriteLoader.cs" id="3_yr4m1"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/lasso/LassoHandler.cs" id="5_4051e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
-size = Vector3(0.24547, 0.207889, 0.116409)
+size = Vector3(0.24547, 0.375969, 0.116409)
 
 [sub_resource type="Animation" id="Animation_bv2jf"]
 length = 0.001
@@ -212,6 +213,7 @@ properties/4/sync = true
 
 [node name="pony" type="CharacterBody3D"]
 script = ExtResource("1_7hsws")
+changeEffectPrefab = ExtResource("2_mtyjj")
 
 [node name="sprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286654, 0)
@@ -237,7 +239,7 @@ render_priority = 1
 texture = ExtResource("4_nt8to")
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00869766, 0.199196, 0)
 shape = SubResource("BoxShape3D_4pnlb")
 
 [node name="anim" type="AnimationPlayer" parent="."]

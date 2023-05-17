@@ -72,7 +72,7 @@ public partial class NpcSpawner : Node3D
         var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
         var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
         
-        npc.Rpc(nameof(Character.LoadSprite), spriteCode);
+        npc.Rpc(nameof(Character.LoadSprite), spriteCode, false);
         npc.Rpc(nameof(Character.SetGlobalPos), newPos);
     }
 }

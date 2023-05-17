@@ -1,4 +1,5 @@
 using Godot;
+using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Characters.Player;
 
@@ -7,6 +8,8 @@ namespace RoyalCupcakes.Characters.Player;
  */
 public partial class InputController : Node
 {
+    private const float MinChangeSpriteDistance = 1f;
+    
     private Character player;
     private Vector3 direction;
 
@@ -29,6 +32,7 @@ public partial class InputController : Node
         UpdateMoving();
         UpdateRunning();
         UpdateSitting();
+        UpdateThiefControls();
     }
 
     private void UpdateMoving()
@@ -59,5 +63,19 @@ public partial class InputController : Node
         {
             player.IsSitting = !player.IsSitting;
         }
+    }
+
+    private void UpdateThiefControls()
+    {
+        if (player.Team != Team.Thief) return;
+        if (!Input.IsActionJustPressed("ui_click")) return;
+        
+        var clickedObject = Cursor.GetClickedObject(player);
+        if (clickedObject is not Character character) return;
+        if (character == player) return;
+        if (player.SpriteCode == character.SpriteCode) return;
+        if (player.GlobalPosition.DistanceTo(character.GlobalPosition) > MinChangeSpriteDistance) return;
+
+        player.Rpc(nameof(Character.LoadSprite), character.SpriteCode, true);
     }
 }

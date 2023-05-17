@@ -68,7 +68,7 @@ public partial class PlayerSpawner : Node3D
 		var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
 		
 		player.Rpc(nameof(Character.LoadTeam), playerTeam);
-		player.Rpc(nameof(Character.LoadSprite), spriteCode);
+		player.Rpc(nameof(Character.LoadSprite), spriteCode, false);
 		player.Rpc(nameof(Character.SetGlobalPos), newPos);
 	}
 }

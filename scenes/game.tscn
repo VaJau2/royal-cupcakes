@@ -17,8 +17,8 @@ agent_max_climb = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7py6j"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gl400"]
-size = Vector3(12.6237, 0.0213381, 9.11574)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbr5s"]
+size = Vector3(12.6488, 0.054202, 9.144)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ujl3"]
 
@@ -50,16 +50,16 @@ font_size = 18
 [node name="props" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_12a3e")
 
-[node name="Plane" type="StaticBody3D" parent="props"]
+[node name="plane" type="StaticBody3D" parent="props"]
 collision_layer = 4
 
-[node name="mesh" type="MeshInstance3D" parent="props/Plane"]
+[node name="mesh" type="MeshInstance3D" parent="props/plane"]
 transform = Transform3D(6.32507, 0, 0, 0, 1, 0, 0, 0, 4.5464, 0, 0, 0)
 mesh = SubResource("PlaneMesh_7py6j")
 
-[node name="shape" type="CollisionShape3D" parent="props/Plane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00711274, 0)
-shape = SubResource("BoxShape3D_gl400")
+[node name="shape" type="CollisionShape3D" parent="props/plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0344923, 0)
+shape = SubResource("BoxShape3D_jbr5s")
 
 [node name="Wall" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00381, 0.495025, -0.324025)
