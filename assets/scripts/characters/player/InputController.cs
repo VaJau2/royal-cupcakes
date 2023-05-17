@@ -1,14 +1,16 @@
 using Godot;
+using RoyalCupcakes.Props;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Characters.Player;
 
 /**
  * Класс контроллера висит на игроке и отвечает за управление им
+ * управление лассо выделено в отдельный хендлер
  */
 public partial class InputController : Node
 {
-    private const float MinChangeSpriteDistance = 1f;
+    private const float MinInteractDistance = 0.8f;
     
     private Character player;
     private Vector3 direction;
@@ -71,11 +73,24 @@ public partial class InputController : Node
         if (!Input.IsActionJustPressed("ui_click")) return;
         
         var clickedObject = Cursor.GetClickedObject(player);
+        CheckClickToCharacter(clickedObject);
+        CheckClickToCake(clickedObject);
+    }
+
+    private void CheckClickToCharacter(Node clickedObject)
+    {
         if (clickedObject is not Character character) return;
         if (character == player) return;
         if (player.SpriteCode == character.SpriteCode) return;
-        if (player.GlobalPosition.DistanceTo(character.GlobalPosition) > MinChangeSpriteDistance) return;
+        if (player.GlobalPosition.DistanceTo(character.GlobalPosition) > MinInteractDistance) return;
 
         player.Rpc(nameof(Character.LoadSprite), character.SpriteCode, true);
+    }
+
+    private void CheckClickToCake(Node clickedObject)
+    {
+        if (clickedObject is not Cake cake) return;
+        if (player.GlobalPosition.DistanceTo(cake.GlobalPosition) > MinInteractDistance) return;
+        cake.Rpc(nameof(Cake.Pick));
     }
 }

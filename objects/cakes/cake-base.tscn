@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2msk5wry5y26"]
+
+[ext_resource type="Script" path="res://assets/scripts/props/Cake.cs" id="1_cjmip"]
+
+[node name="cake" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_cjmip")
+
+[node name="shape" type="CollisionShape3D" parent="."]
