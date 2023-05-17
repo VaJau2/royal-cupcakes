@@ -22,6 +22,7 @@ public partial class ConnectionModal : Window
 	private LineEdit port;
 
 	private bool isHost;
+	private bool isConnected;
 
 	public override void _Ready()
 	{
@@ -58,6 +59,12 @@ public partial class ConnectionModal : Window
 		settings.Host = !string.IsNullOrEmpty(ip.Text) ? ip.Text : DefaultHost;
 		settings.Port = !string.IsNullOrEmpty(port.Text) ? int.Parse(port.Text) : DefaultPort;
 
+		if (isConnected)
+		{
+			main.Connect(settings, isHost);
+			return;
+		}
+
 		main.Connect(settings, isHost,
 			() =>
 			{
@@ -65,5 +72,7 @@ public partial class ConnectionModal : Window
 				main.ChangeMenu("lobby");
 			}
 		);
+		
+		isConnected = true;
 	}
 }

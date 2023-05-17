@@ -1,18 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=18 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/characters/PlayersManager.cs" id="1_y7rk8"]
 [ext_resource type="PackedScene" uid="uid://bjqal8lmw22dr" path="res://objects/characters/npc.tscn" id="2_ch63m"]
 [ext_resource type="Script" path="res://assets/scripts/props/RandomPoint.cs" id="3_1osu1"]
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
-[ext_resource type="PackedScene" uid="uid://10apxtjoyl6m" path="res://objects/characters/player.tscn" id="5_fh4su"]
+[ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_12a3e"]
-vertices = PackedVector3Array(-0.62507, 0.179401, 0.8536, -0.92507, 0.179401, 0.2536, -1.22507, 0.179401, 0.2536, -1.22507, 0.179401, 1.7536, 1.17493, 0.179401, 0.8536, 1.17493, 0.179401, -0.0464001, 0.57493, 0.179401, -0.0464001, 0.27493, 0.179401, 0.8536, 2.07493, 0.179401, 4.1536, 2.07493, 0.179401, 1.1536, -1.22507, 0.179401, 1.7536, -2.42507, 0.179401, 2.0536, -6.02507, 0.179401, 4.1536, -2.72507, 0.179401, -0.9464, -2.12507, 0.179401, -1.2464, -2.12507, 0.179401, -4.2464, -6.02507, 0.179401, -4.2464, 0.27493, 0.179401, 0.8536, -0.62507, 0.179401, 0.8536, -1.22507, 0.179401, 1.7536, 2.07493, 0.179401, 1.1536, 1.17493, 0.179401, 0.8536, 0.27493, 0.179401, 0.8536, -1.22507, 0.179401, 1.7536, -2.72507, 0.179401, -0.9464, -6.02507, 0.179401, -4.2464, -6.02507, 0.179401, 4.1536, -2.42507, 0.179401, 2.0536, -1.22507, 0.179401, 0.2536, -0.92507, 0.179401, 0.2536, -0.62507, 0.179401, -0.6464, -1.22507, 0.179401, -0.9464, -2.12507, 0.179401, -4.2464, -2.12507, 0.179401, -1.2464, 1.17493, 0.179401, -1.8464, 2.37493, 0.179401, -2.1464, 5.97493, 0.179401, -4.2464, 0.27493, 0.179401, -0.6464, 0.57493, 0.179401, -0.0464001, 1.17493, 0.179401, -0.0464001, 1.17493, 0.179401, -1.8464, 2.67493, 0.179401, 0.8536, 2.07493, 0.179401, 1.1536, 2.07493, 0.179401, 4.1536, 5.97493, 0.179401, 4.1536, -1.22507, 0.179401, -0.9464, -0.62507, 0.179401, -0.6464, 0.27493, 0.179401, -0.6464, -2.12507, 0.179401, -1.2464, -1.22507, 0.179401, -0.9464, 0.27493, 0.179401, -0.6464, 1.17493, 0.179401, -1.8464, 2.67493, 0.179401, 0.8536, 5.97493, 0.179401, 4.1536, 5.97493, 0.179401, -4.2464, 2.37493, 0.179401, -2.1464)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 8), PackedInt32Array(11, 8, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(19, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 32), PackedInt32Array(35, 32, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(47, 46, 45), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 51), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53)]
-cell_size = 0.3
+vertices = PackedVector3Array(-1.12507, 0.179401, 0.0535998, -0.72507, 0.179401, 0.0535998, -0.52507, 0.179401, -0.7464, -1.32507, 0.179401, -1.3464, -2.52507, 0.179401, -1.3464, -1.32507, 0.179401, -1.3464, 1.27493, 0.179401, -2.3464, 0.47493, 0.179401, -0.7464, 0.67493, 0.179401, 0.0535998, 1.07493, 0.179401, 0.0535998, 1.27493, 0.179401, -2.3464, 1.27493, 0.179401, -2.3464, 2.87493, 0.179401, -2.1464, 5.87493, 0.179401, -4.1464, -1.32507, 0.179401, -1.3464, -0.52507, 0.179401, -0.7464, 0.47493, 0.179401, -0.7464, 1.27493, 0.179401, -2.3464, -5.92507, 0.179401, -4.1464, -5.92507, 0.179401, -0.9464, -2.52507, 0.179401, -1.3464, 1.27493, 0.179401, -2.3464, 5.87493, 0.179401, -4.1464, -5.92507, 0.179401, -0.9464, -2.72507, 0.179401, -0.9464, -2.52507, 0.179401, -1.3464, 2.87493, 0.179401, -2.1464, 2.87493, 0.179401, -0.1464, 5.87493, 0.179401, 0.0535998, 5.87493, 0.179401, -4.1464, -1.92507, 0.179401, 4.0536, -1.92507, 0.179401, 2.0536, -2.72507, 0.179401, 1.8536, -5.92507, 0.179401, 4.0536, -2.72507, 0.179401, 1.8536, -2.72507, 0.179401, -0.9464, -5.92507, 0.179401, -0.9464, -5.92507, 0.179401, 4.0536, 1.07493, 0.179401, 0.0535998, 0.67493, 0.179401, 0.0535998, 0.47493, 0.179401, 0.8536, 1.27493, 0.179401, 1.2536, 5.87493, 0.179401, 0.0535998, 2.87493, 0.179401, -0.1464, 2.67493, 0.179401, 1.2536, 5.87493, 0.179401, 4.0536, -0.52507, 0.179401, 0.8536, -0.72507, 0.179401, 0.0535998, -1.12507, 0.179401, 0.0535998, -1.12507, 0.179401, 1.8536, 2.67493, 0.179401, 1.2536, 1.27493, 0.179401, 1.2536, -1.12507, 0.179401, 1.8536, -1.92507, 0.179401, 4.0536, 5.87493, 0.179401, 4.0536, 1.27493, 0.179401, 1.2536, 0.47493, 0.179401, 0.8536, -0.52507, 0.179401, 0.8536, -1.12507, 0.179401, 1.8536, -1.12507, 0.179401, 1.8536, -1.92507, 0.179401, 2.0536, -1.92507, 0.179401, 4.0536)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 22), PackedInt32Array(23, 25, 24), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(61, 60, 59)]
+cell_size = 0.2
 cell_height = 0.1
-agent_radius = 0.3
+agent_radius = 0.4
 agent_max_climb = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7py6j"]
@@ -42,6 +42,9 @@ sky = SubResource("Sky_ry8j7")
 ambient_light_source = 3
 ambient_light_color = Color(0.32549, 0.345098, 0.372549, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_p3vrk"]
+font_size = 18
+
 [node name="Scene" type="Node3D"]
 
 [node name="props" type="NavigationRegion3D" parent="."]
@@ -59,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00711274, 0)
 shape = SubResource("BoxShape3D_gl400")
 
 [node name="Wall" type="StaticBody3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00381, 0.495025, -0.536902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00381, 0.495025, -0.324025)
 collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall"]
@@ -81,7 +84,7 @@ mesh = SubResource("BoxMesh_5ujl3")
 shape = SubResource("BoxShape3D_ov206")
 
 [node name="box" type="StaticBody3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0750965, 0.229401, 0.0322416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031177, 0.229401, 0.0295777)
 collision_layer = 4
 
 [node name="mesh" type="MeshInstance3D" parent="props/box"]
@@ -112,11 +115,11 @@ script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
 [node name="2" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.493236, 0, 1.6158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747001, 0, 2.08369)
 script = ExtResource("3_1osu1")
 
 [node name="3" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19278, 0, -2.4299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63653, 0, -2.6298)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
@@ -125,18 +128,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04628, 0, -2.74488)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
-[node name="5" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.641231, 0, 1.46428)
-script = ExtResource("3_1osu1")
-RandomRadius = 0.5
-
 [node name="6" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300345, 0, -1.51358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319979, 0, -2.82013)
 script = ExtResource("3_1osu1")
 RandomRadius = 0.5
 
 [node name="7" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90105, 0, 2.81562)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93845, 4.76837e-07, 2.83076)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
@@ -179,12 +177,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5486, 0, 1.812)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
-[node name="lassoParent" type="Node3D" parent="."]
-
-[node name="lassoSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://objects/items/Lasso.tscn")
-spawn_path = NodePath("../lassoParent")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.829788, -0.412792, -0.375572, 0.0101, -0.683972, 0.729439, -0.557987, 0.601487, 0.571721, 0, 0, 0)
 shadow_enabled = true
@@ -194,3 +186,17 @@ directional_shadow_split_1 = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_82egu")
+
+[node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="mainLabel" type="Label" parent="canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_right = 185.0
+offset_bottom = 52.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_p3vrk")
+horizontal_alignment = 1
+vertical_alignment = 1

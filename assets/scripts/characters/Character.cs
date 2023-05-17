@@ -10,15 +10,19 @@ public partial class Character : CharacterBody3D
 	[Export] public string SpriteCode { get; set; }
 	[Export] public bool IsRunning { get; set; }
 	[Export] public bool IsSitting { get; set; }
-	[Export] public bool IsTied { get; set; }
+	[Export] public bool IsTied { get; private set; }
 	
 	public Team Team { get; set; }
+	public int PlayerId { get; set; }
 	
 	private const float walkSpeed = 2f;
 	private const float runSpeed = 4f;
 	private const float acceleration = 0.2f;
 
 	private SpriteLoader spriteLoader;
+	
+	[Signal]
+	public delegate void TiedEventHandler();
 
 	public void UpdateMoveDirection(Vector3 direction)
 	{
@@ -37,8 +41,8 @@ public partial class Character : CharacterBody3D
 
 	public override void _EnterTree()
 	{
-		var id = Name.ToString().Split('_')[1];
-		SetMultiplayerAuthority(int.Parse(id));
+		PlayerId = int.Parse(Name.ToString().Split('_')[1]);
+		SetMultiplayerAuthority(PlayerId);
 	}
 
 	public override void _Ready()
@@ -76,5 +80,16 @@ public partial class Character : CharacterBody3D
 	public void SetGlobalPos(Vector3 newPos)
 	{
 		GlobalPosition = newPos;
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SetIsTied(bool newTied)
+	{
+		IsTied = newTied;
+		
+		if (IsMultiplayerAuthority() && newTied)
+		{
+			EmitSignal(SignalName.Tied);
+		}
 	}
 }

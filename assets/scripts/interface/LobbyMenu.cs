@@ -13,7 +13,7 @@ public partial class LobbyMenu : Control
 	private const string NotEnoughPlayers = "#NOT_ENOUGH_PLAYERS#";
 	private const string NotEveryoneReady = "#NOT_EVERYONE_READY#";
 	private const string Starting = "#STARTING#";
-	private const double StartingTimer = 2.0;
+	private const double StartingTimer = 1.0;
 	
 	private Main main;
 

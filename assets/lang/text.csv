@@ -25,3 +25,4 @@ keys,en,ru
 #CONTINUE#,Continue,Продолжить
 #DISCONNECT#,Disconnect,Отключиться
 #LOG_DISCONNECTED#,Player {name} disconnected,Игрок {name} отключился
+#YOU_ARE_CAPTURED#,You are captured!,Вас поймали!

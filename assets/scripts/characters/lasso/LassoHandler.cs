@@ -19,12 +19,17 @@ public partial class LassoHandler : Node3D
 	public Vector3 LassoPosition => mySprite.GlobalPosition;
 	public Character PlayerOwner { get; private set; }
 
-	public override void _Ready()
+	public override void _EnterTree()
 	{
 		PlayerOwner = GetParent<Character>();
+		SetMultiplayerAuthority(PlayerOwner.PlayerId);
+	}
+
+	public override void _Ready()
+	{
 		bodySprite = GetNode<Sprite3D>("../sprite");
 		mySprite = GetNode<Sprite3D>("sprite");
-		lassoParent = GetNode<Node3D>("/root/Main/Level/Scene/lassoParent");
+		lassoParent = PlayerOwner.GetParent<Node3D>();
 		
 		CallDeferred(nameof(LoadPlayerTeam));
 	}
@@ -38,10 +43,14 @@ public partial class LassoHandler : Node3D
 	public override void _Process(double delta)
 	{
 		if (!Visible) return;
+		if (PlayerOwner.IsTied) return;
 		UpdateFlip();
 
+		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
+		
 		if (!Input.IsActionJustPressed("ui_click")) return;
-		SpawnLasso();
+		var target = Cursor.GetCursorWorldPosition(this);
+		Rpc(nameof(SpawnLasso), target);
 	}
 
 	private void UpdateFlip()
@@ -52,12 +61,13 @@ public partial class LassoHandler : Node3D
 		Scale = new Vector3(isFlip ? -1 : 1, Scale.Y, Scale.Z);
 	}
 
-	private void SpawnLasso()
+	[Rpc(CallLocal = true)]
+	private void SpawnLasso(Vector3 target)
 	{
-		var target = Cursor.GetCursorWorldPosition(this);
 		if (target == Vector3.Zero) return;
 		
 		var lasso = lassoPrefab.Instantiate<Lasso>();
+		lasso.Name = "lasso_" + PlayerOwner.PlayerId;
 		lasso.LassoHandler = this;
 		lassoParent.AddChild(lasso);
 		lasso.GlobalPosition = LassoPosition;

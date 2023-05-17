@@ -28,19 +28,31 @@ public partial class Main : Node
 		}
 	}
 
-	public void Connect(Settings settings, bool isHost, Action connected)
+	public void Connect(Settings settings, bool isHost)
 	{
 		if (isHost)
 		{
 			peer.CreateServer(settings.Port);
 			Multiplayer.MultiplayerPeer = peer;
+		}
+		else
+		{
+			peer.CreateClient(settings.Host, settings.Port);
+			Multiplayer.MultiplayerPeer = peer;
+		}
+	}
+
+	public void Connect(Settings settings, bool isHost, Action connected)
+	{
+		Connect(settings, isHost);
+		
+		if (isHost)
+		{
 			connected();
 		}
 		else
 		{
 			Multiplayer.ConnectedToServer += connected;
-			peer.CreateClient(settings.Host, settings.Port);
-			Multiplayer.MultiplayerPeer = peer;
 		}
 	}
 

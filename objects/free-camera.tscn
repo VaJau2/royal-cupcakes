@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://djlddh6w7xsw0"]
+
+[ext_resource type="Script" path="res://assets/scripts/characters/player/FreeCamera.cs" id="1_4lf3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxwny"]
+size = Vector3(0.14081, 0.137884, 0.155366)
+
+[node name="FreeCamera" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4lf3o")
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0.9, 1.4)
+
+[node name="shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.883874, 1.37483)
+shape = SubResource("BoxShape3D_lxwny")

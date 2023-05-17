@@ -1,11 +1,11 @@
 using Godot;
 
-namespace RoyalCupcakes.Characters;
+namespace RoyalCupcakes.Characters.Player;
 
 /**
  * Класс контроллера висит на игроке и отвечает за управление им
  */
-public partial class InputController : Node3D
+public partial class InputController : Node
 {
     private Character player;
     private Vector3 direction;
@@ -37,7 +37,7 @@ public partial class InputController : Node3D
             "ui_left", "ui_right",
             "ui_up", "ui_down"
         );
-        direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+        direction = (player.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
         player.UpdateMoveDirection(direction);
     }
 
