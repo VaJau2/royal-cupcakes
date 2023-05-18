@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=22 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
+[ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
 [ext_resource type="PackedScene" uid="uid://i4ln01gqm288" path="res://objects/cakes/cake2.tscn" id="1_hplti"]
 [ext_resource type="Script" path="res://assets/scripts/characters/PlayersManager.cs" id="1_y7rk8"]
 [ext_resource type="PackedScene" uid="uid://bjqal8lmw22dr" path="res://objects/characters/npc.tscn" id="2_ch63m"]
 [ext_resource type="Script" path="res://assets/scripts/props/RandomPoint.cs" id="3_1osu1"]
+[ext_resource type="PackedScene" uid="uid://bwwmm6k1brufq" path="res://objects/cakes/cake.tscn" id="3_k5apu"]
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
 [ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 [ext_resource type="Script" path="res://assets/scripts/interface/MainLabel.cs" id="8_78s07"]
@@ -96,9 +98,6 @@ mesh = SubResource("BoxMesh_2bv6b")
 [node name="shape" type="CollisionShape3D" parent="props/box"]
 shape = SubResource("BoxShape3D_fwhrj")
 
-[node name="cake" parent="props/box" instance=ExtResource("1_hplti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0714628, 0.248261, 0)
-
 [node name="characters" type="Node3D" parent="."]
 script = ExtResource("1_y7rk8")
 
@@ -112,7 +111,6 @@ npcParent = NodePath("../characters")
 npcPrefab = ExtResource("2_ch63m")
 count = 7
 spriteCodes = Array[String](["pony1", "pony2", "pony3", "pony4", "pony5", "pony42", "strikely", "wonderbolt1", "chief1"])
-metadata/_edit_lock_ = true
 
 [node name="1" type="Node3D" parent="npcSpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17903, 0, 2.37824)
@@ -181,6 +179,18 @@ RandomRadius = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5486, 0, 1.812)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
+
+[node name="cakesSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://objects/cakes/cake.tscn", "res://objects/cakes/cake2.tscn")
+spawn_path = NodePath("../cakes")
+
+[node name="cakes" type="Node3D" parent="."]
+
+[node name="cakeSpawner" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031177, 0.485895, 0.0295777)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("..")
+cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.829788, -0.412792, -0.375572, 0.0101, -0.683972, 0.729439, -0.557987, 0.601487, 0.571721, 0, 0, 0)

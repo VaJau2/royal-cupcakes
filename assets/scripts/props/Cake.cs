@@ -13,4 +13,10 @@ public partial class Cake : StaticBody3D
 		MainLabel.Instance.ShowTempText("#CAKE_STOLEN#", TextTimer);
 		QueueFree();
 	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SetGlobalPos(Vector3 newPos)
+	{
+		GlobalPosition = newPos;
+	}
 }
