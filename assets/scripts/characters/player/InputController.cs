@@ -70,6 +70,7 @@ public partial class InputController : Node
     private void UpdateThiefControls()
     {
         if (player.Team != Team.Thief) return;
+        if (player.IsTied) return;
         if (!Input.IsActionJustPressed("ui_click")) return;
         
         var clickedObject = Cursor.GetClickedObject(player);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=26 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
 [ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 [ext_resource type="Script" path="res://assets/scripts/interface/MainLabel.cs" id="8_78s07"]
+[ext_resource type="PackedScene" uid="uid://rb2xepjwidpg" path="res://objects/cakes/cake3.tscn" id="10_i6lur"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_12a3e"]
-vertices = PackedVector3Array(-1.12507, 0.179401, 0.0535998, -0.72507, 0.179401, 0.0535998, -0.52507, 0.179401, -0.7464, -1.32507, 0.179401, -1.3464, -2.52507, 0.179401, -1.3464, -1.32507, 0.179401, -1.3464, 1.27493, 0.179401, -2.3464, 0.47493, 0.179401, -0.7464, 0.67493, 0.179401, 0.0535998, 1.07493, 0.179401, 0.0535998, 1.27493, 0.179401, -2.3464, 1.27493, 0.179401, -2.3464, 2.87493, 0.179401, -2.1464, 5.87493, 0.179401, -4.1464, -1.32507, 0.179401, -1.3464, -0.52507, 0.179401, -0.7464, 0.47493, 0.179401, -0.7464, 1.27493, 0.179401, -2.3464, -5.92507, 0.179401, -4.1464, -5.92507, 0.179401, -0.9464, -2.52507, 0.179401, -1.3464, 1.27493, 0.179401, -2.3464, 5.87493, 0.179401, -4.1464, -5.92507, 0.179401, -0.9464, -2.72507, 0.179401, -0.9464, -2.52507, 0.179401, -1.3464, 2.87493, 0.179401, -2.1464, 2.87493, 0.179401, -0.1464, 5.87493, 0.179401, 0.0535998, 5.87493, 0.179401, -4.1464, -1.92507, 0.179401, 4.0536, -1.92507, 0.179401, 2.0536, -2.72507, 0.179401, 1.8536, -5.92507, 0.179401, 4.0536, -2.72507, 0.179401, 1.8536, -2.72507, 0.179401, -0.9464, -5.92507, 0.179401, -0.9464, -5.92507, 0.179401, 4.0536, 1.07493, 0.179401, 0.0535998, 0.67493, 0.179401, 0.0535998, 0.47493, 0.179401, 0.8536, 1.27493, 0.179401, 1.2536, 5.87493, 0.179401, 0.0535998, 2.87493, 0.179401, -0.1464, 2.67493, 0.179401, 1.2536, 5.87493, 0.179401, 4.0536, -0.52507, 0.179401, 0.8536, -0.72507, 0.179401, 0.0535998, -1.12507, 0.179401, 0.0535998, -1.12507, 0.179401, 1.8536, 2.67493, 0.179401, 1.2536, 1.27493, 0.179401, 1.2536, -1.12507, 0.179401, 1.8536, -1.92507, 0.179401, 4.0536, 5.87493, 0.179401, 4.0536, 1.27493, 0.179401, 1.2536, 0.47493, 0.179401, 0.8536, -0.52507, 0.179401, 0.8536, -1.12507, 0.179401, 1.8536, -1.12507, 0.179401, 1.8536, -1.92507, 0.179401, 2.0536, -1.92507, 0.179401, 4.0536)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 22), PackedInt32Array(23, 25, 24), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(61, 60, 59)]
+vertices = PackedVector3Array(-10.2171, 0.171035, 0.18602, -10.2171, 0.171035, -1.41398, -11.0171, 0.171035, -1.61398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -2.81398, -12.6171, 0.171035, -4.81398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -1.61398, -11.0171, 0.171035, -2.81398, -9.41708, 0.171035, -2.81398, -9.21708, 0.171035, -4.81398, -12.6171, 0.171035, -4.81398, -7.81708, 0.171035, 0.18602, -7.61708, 0.171035, 0.58602, -6.01708, 0.171035, 0.38602, -9.41708, 0.171035, -1.61398, -10.2171, 0.171035, -1.41398, -10.2171, 0.171035, 0.18602, -7.81708, 0.171035, 0.18602, -9.21708, 0.171035, -4.81398, -9.41708, 0.171035, -2.81398, -9.41708, 0.171035, -1.61398, -7.81708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -6.21708, 0.171035, -4.81398, 2.18292, 0.171035, -3.01398, 2.38292, 0.171035, -2.21398, 3.38292, 0.171035, -2.21398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -2.21398, -3.01708, 0.171035, -2.21398, -2.81708, 0.171035, -3.01398, -4.61708, 0.171035, -4.81398, 0.982916, 0.171035, -3.01398, 2.18292, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, -2.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.61708, 0.171035, -2.21398, 0.782916, 0.171035, -2.21398, 0.982916, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, 0.982916, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, 7.58292, 0.171035, 0.18602, 8.58292, 0.171035, 0.18602, 8.58292, 0.171035, -1.41398, 7.78292, 0.171035, -1.61398, 4.98292, 0.171035, 0.18602, 4.58292, 0.171035, 0.38602, 7.38292, 0.171035, 0.78602, 7.78292, 0.171035, -2.81398, 8.58292, 0.171035, -3.01398, 8.58292, 0.171035, -4.81398, 4.98292, 0.171035, -4.81398, 7.38292, 0.171035, 0.78602, 7.58292, 0.171035, 0.18602, 7.78292, 0.171035, -1.61398, 7.78292, 0.171035, -2.81398, 4.98292, 0.171035, -4.81398, 4.98292, 0.171035, 0.18602, 9.18292, 0.171035, -1.61398, 8.58292, 0.171035, -1.41398, 8.58292, 0.171035, 0.18602, 12.3829, 0.171035, 0.18602, 8.58292, 0.171035, -4.81398, 8.58292, 0.171035, -3.01398, 9.18292, 0.171035, -2.81398, 12.3829, 0.171035, -4.81398, 9.18292, 0.171035, -2.81398, 9.18292, 0.171035, -1.61398, 12.3829, 0.171035, 0.18602, 12.3829, 0.171035, -4.81398, 3.38292, 0.171035, -2.21398, 2.38292, 0.171035, -2.21398, 2.18292, 0.171035, -1.41398, 3.38292, 0.171035, 0.18602, -2.81708, 0.171035, -1.41398, -3.01708, 0.171035, -2.21398, -4.61708, 0.171035, -2.21398, -4.61708, 0.171035, 0.18602, 3.78292, 0.171035, 5.18602, 3.78292, 0.171035, 0.38602, 3.38292, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.61708, 0.171035, 0.58602, -7.81708, 0.171035, 1.78602, 3.38292, 0.171035, 0.18602, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.41708, 0.171035, 5.18602, 3.78292, 0.171035, 5.18602, 0.982916, 0.171035, -1.41398, 0.782916, 0.171035, -2.21398, -1.61708, 0.171035, -2.21398, -1.81708, 0.171035, -1.41398, -7.81708, 0.171035, 1.78602, -12.6171, 0.171035, 1.78602, -12.6171, 0.171035, 5.18602, -4.41708, 0.171035, 5.18602, 3.38292, 0.171035, 0.18602, 2.18292, 0.171035, -1.41398, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -2.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.61708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.81708, 0.171035, 1.78602, -4.41708, 0.171035, 5.18602, 7.58292, 0.171035, 1.78602, 7.38292, 0.171035, 0.78602, 4.58292, 0.171035, 0.38602, 3.78292, 0.171035, 0.38602, 3.78292, 0.171035, 5.18602, 12.3829, 0.171035, 5.18602, 12.3829, 0.171035, 1.78602, 7.58292, 0.171035, 1.78602, 3.78292, 0.171035, 5.18602)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 14, 13), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 24), PackedInt32Array(21, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(33, 35, 34), PackedInt32Array(36, 38, 37), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 47), PackedInt32Array(53, 52, 51), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 61), PackedInt32Array(61, 58, 63), PackedInt32Array(61, 63, 62), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83), PackedInt32Array(84, 86, 85), PackedInt32Array(87, 89, 88), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 94), PackedInt32Array(94, 90, 95), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 99), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(106, 105, 104), PackedInt32Array(109, 108, 107), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(117, 114, 118), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122)]
 cell_size = 0.2
 cell_height = 0.1
 agent_radius = 0.4
@@ -22,17 +23,26 @@ agent_max_climb = 0.1
 [sub_resource type="PlaneMesh" id="PlaneMesh_7py6j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbr5s"]
-size = Vector3(12.6488, 0.054202, 9.144)
+size = Vector3(27.0045, 0.054202, 11.3345)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ujl3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ov206"]
-size = Vector3(0.669475, 1, 2.47127)
+size = Vector3(0.669475, 1, 11.4507)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kd28v"]
+size = Vector3(0.669475, 1, 5.06052)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_adki4"]
+size = Vector3(0.669475, 1, 27.2586)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2bv6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwhrj"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijvqy"]
+size = Vector3(27.3166, 1.80173, 0.428781)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wuu61"]
 
@@ -58,7 +68,7 @@ navigation_mesh = SubResource("NavigationMesh_12a3e")
 collision_layer = 4
 
 [node name="mesh" type="MeshInstance3D" parent="props/plane"]
-transform = Transform3D(6.32507, 0, 0, 0, 1, 0, 0, 0, 4.5464, 0, 0, 0)
+transform = Transform3D(13.4842, 0, 0, 0, 1, 0, 0, 0, 5.66172, 0, 0, 0)
 mesh = SubResource("PlaneMesh_7py6j")
 
 [node name="shape" type="CollisionShape3D" parent="props/plane"]
@@ -66,29 +76,84 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0344923, 0)
 shape = SubResource("BoxShape3D_jbr5s")
 
 [node name="Wall" type="StaticBody3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00381, 0.495025, -0.324025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.145, 0.495025, -0.166953)
 collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall"]
-transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 2.47108, 0, 0, 0)
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 11.5619, 0, 0, 0)
 mesh = SubResource("BoxMesh_5ujl3")
 
 [node name="shape" type="CollisionShape3D" parent="props/Wall"]
 shape = SubResource("BoxShape3D_ov206")
 
 [node name="Wall2" type="StaticBody3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9595, 0.495025, 0.328166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4856, 0.495025, -0.166953)
 collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall2"]
-transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 2.47108, 0, 0, 0)
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 11.5619, 0, 0, 0)
 mesh = SubResource("BoxMesh_5ujl3")
 
 [node name="shape" type="CollisionShape3D" parent="props/Wall2"]
 shape = SubResource("BoxShape3D_ov206")
 
+[node name="Wall3" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47802, 0.495025, -2.66397)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall3"]
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
+mesh = SubResource("BoxMesh_5ujl3")
+
+[node name="shape" type="CollisionShape3D" parent="props/Wall3"]
+shape = SubResource("BoxShape3D_kd28v")
+
+[node name="Wall4" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17159, 0.495025, -2.66397)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall4"]
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
+mesh = SubResource("BoxMesh_5ujl3")
+
+[node name="shape" type="CollisionShape3D" parent="props/Wall4"]
+shape = SubResource("BoxShape3D_kd28v")
+
+[node name="Wall5" type="StaticBody3D" parent="props"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.3529, 0.495025, 1.01281)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall5"]
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
+mesh = SubResource("BoxMesh_5ujl3")
+
+[node name="shape" type="CollisionShape3D" parent="props/Wall5"]
+shape = SubResource("BoxShape3D_kd28v")
+
+[node name="Wall6" type="StaticBody3D" parent="props"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.6443, 0.495025, 1.01281)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall6"]
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
+mesh = SubResource("BoxMesh_5ujl3")
+
+[node name="shape" type="CollisionShape3D" parent="props/Wall6"]
+shape = SubResource("BoxShape3D_kd28v")
+
+[node name="Wall7" type="StaticBody3D" parent="props"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.117801, 0.495025, -5.68246)
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall7"]
+transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 26.354, 0, 0, 0)
+mesh = SubResource("BoxMesh_5ujl3")
+
+[node name="shape" type="CollisionShape3D" parent="props/Wall7"]
+shape = SubResource("BoxShape3D_adki4")
+
 [node name="box" type="StaticBody3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031177, 0.229401, 0.0295777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55992, 0.0210347, -2.19396)
 collision_layer = 4
 
 [node name="mesh" type="MeshInstance3D" parent="props/box"]
@@ -97,6 +162,46 @@ mesh = SubResource("BoxMesh_2bv6b")
 
 [node name="shape" type="CollisionShape3D" parent="props/box"]
 shape = SubResource("BoxShape3D_fwhrj")
+
+[node name="box2" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27504, 0.0210347, -2.19396)
+collision_layer = 4
+
+[node name="mesh" type="MeshInstance3D" parent="props/box2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2bv6b")
+
+[node name="shape" type="CollisionShape3D" parent="props/box2"]
+shape = SubResource("BoxShape3D_fwhrj")
+
+[node name="box3" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2401, 0.0210347, -2.19396)
+collision_layer = 4
+
+[node name="mesh" type="MeshInstance3D" parent="props/box3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2bv6b")
+
+[node name="shape" type="CollisionShape3D" parent="props/box3"]
+shape = SubResource("BoxShape3D_fwhrj")
+
+[node name="box4" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4942, 0.0210347, -2.19396)
+collision_layer = 4
+
+[node name="mesh" type="MeshInstance3D" parent="props/box4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2bv6b")
+
+[node name="shape" type="CollisionShape3D" parent="props/box4"]
+shape = SubResource("BoxShape3D_fwhrj")
+
+[node name="invisibleWall" type="StaticBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7258)
+
+[node name="shape" type="CollisionShape3D" parent="props/invisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.193072, 0)
+shape = SubResource("BoxShape3D_ijvqy")
 
 [node name="characters" type="Node3D" parent="."]
 script = ExtResource("1_y7rk8")
@@ -109,35 +214,52 @@ spawn_path = NodePath("../characters")
 script = ExtResource("1_5n4gl")
 npcParent = NodePath("../characters")
 npcPrefab = ExtResource("2_ch63m")
-count = 7
+count = 9
 spriteCodes = Array[String](["pony1", "pony2", "pony3", "pony4", "pony5", "pony42", "strikely", "wonderbolt1", "chief1"])
 
 [node name="1" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17903, 0, 2.37824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30541, 0, 2.7155)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
 [node name="2" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747001, 0, 2.08369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0468, 0, 2.32511)
 script = ExtResource("3_1osu1")
 
 [node name="3" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63653, 0, -2.6298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471275, 0, -2.45407)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
 [node name="4" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04628, 0, -2.74488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16322, 0, -2.57254)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
 [node name="6" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319979, 0, -2.82013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53572, 0, -2.18467)
 script = ExtResource("3_1osu1")
 RandomRadius = 0.5
 
 [node name="7" type="Node3D" parent="npcSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93845, 4.76837e-07, 2.83076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4832, 4.76837e-07, 3.24324)
+script = ExtResource("3_1osu1")
+RandomRadius = 2.0
+
+[node name="8" type="Node3D" parent="npcSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0411, 4.76837e-07, -2.41053)
+script = ExtResource("3_1osu1")
+
+[node name="9" type="Node3D" parent="npcSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79299, 4.76837e-07, -1.54244)
+script = ExtResource("3_1osu1")
+
+[node name="10" type="Node3D" parent="npcSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8251, 4.76837e-07, -1.99743)
+script = ExtResource("3_1osu1")
+
+[node name="11" type="Node3D" parent="npcSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1245, 4.76837e-07, 3.51358)
 script = ExtResource("3_1osu1")
 RandomRadius = 2.0
 
@@ -149,17 +271,17 @@ playerPrefab = ExtResource("5_fh4su")
 spriteCodes = Array[String](["pony1", "pony2", "pony3", "pony4", "pony5", "pony42", "strikely", "wonderbolt1"])
 
 [node name="1" type="Node3D" parent="playerThiefSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12987, 0, -3.18642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438216, 0, -3.59253)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
 [node name="2" type="Node3D" parent="playerThiefSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46863, 0, -0.646357)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15411, 0, -2.55856)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
 [node name="3" type="Node3D" parent="playerThiefSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15361, 0, 2.62433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50603, 0, 2.86973)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
@@ -171,26 +293,44 @@ playerPrefab = ExtResource("5_fh4su")
 spriteCodes = Array[String](["guard1", "guard2", "guard3"])
 
 [node name="1" type="Node3D" parent="playerGuardSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02239, 0, -1.98983)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74247, 0, 3.96497)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
 [node name="2" type="Node3D" parent="playerGuardSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5486, 0, 1.812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3317, 0, 3.51269)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
 [node name="cakesSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://objects/cakes/cake.tscn", "res://objects/cakes/cake2.tscn")
+_spawnable_scenes = PackedStringArray("res://objects/cakes/cake.tscn", "res://objects/cakes/cake2.tscn", "res://objects/cakes/cake3.tscn")
 spawn_path = NodePath("../cakes")
 
 [node name="cakes" type="Node3D" parent="."]
 
 [node name="cakeSpawner" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031177, 0.485895, 0.0295777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2432, 0.270132, -2.18028)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("..")
-cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti")])
+cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+
+[node name="cakeSpawner2" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28567, 0.270132, -2.18028)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("..")
+cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+
+[node name="cakeSpawner3" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57279, 0.270132, -2.18028)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("..")
+cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+
+[node name="cakeSpawner4" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50537, 0.270132, -2.18028)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("..")
+cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.829788, -0.412792, -0.375572, 0.0101, -0.683972, 0.729439, -0.557987, 0.601487, 0.571721, 0, 0, 0)

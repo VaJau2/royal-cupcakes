@@ -33,7 +33,7 @@ public partial class CakeSpawner : Node3D
 	
 	private async void LoadCakeAsyncData(Node cake)
 	{
-		cakesParent.AddChild(cake);
+		cakesParent.AddChild(cake, true);
 		await ToSignal(GetTree(), "physics_frame");
 		cake.Rpc(nameof(Cake.SetGlobalPos), GlobalPosition);
 	}
