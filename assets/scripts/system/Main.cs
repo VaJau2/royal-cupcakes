@@ -1,7 +1,8 @@
 using System;
 using Godot;
 using RoyalCupcakes.Interface;
-using RoyalCupcakes.System;
+
+namespace RoyalCupcakes.System;
 
 /**
  * Класс, лежащий в корневом узле
@@ -11,6 +12,7 @@ public partial class Main : Node
 {
 	public ENetMultiplayerPeer peer = new();
 	public Team PlayerTeam { get; set; } = Team.Thief;
+	public Team WinnersTeam { get; set; }
 
 	private CanvasLayer menuParent;
 	private Node levelParent;

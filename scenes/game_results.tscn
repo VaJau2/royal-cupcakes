@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbn2361mqmrkk"]
+
+[ext_resource type="Script" path="res://assets/scripts/interface/GameResults.cs" id="1_gas30"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dw1vl"]
+font_size = 20
+
+[node name="GameResults" type="Node3D"]
+script = ExtResource("1_gas30")
+
+[node name="back" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -16.0
+offset_right = 123.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "#GAME_BROKEN#"
+label_settings = SubResource("LabelSettings_dw1vl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="continueLabel" type="Label" parent="back"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -60.0
+offset_right = 94.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#SPACE_TO_CONTINUE#"

@@ -1,5 +1,6 @@
 using Godot;
 using RoyalCupcakes.Interface;
+using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Characters.Player;
 
@@ -38,6 +39,7 @@ public partial class LosingHandler : Node
 			scene.AddChild(freeCamera);
 			freeCamera.SetPosition(player.GlobalPosition, playerOldCamera.Position);
 			freeCamera.MakeCurrent();
+			GameManager.Instance.RpcId(0, nameof(GameManager.RequestRemoveThief));
 		};
 	}
 }

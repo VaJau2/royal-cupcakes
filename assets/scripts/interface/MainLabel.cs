@@ -8,6 +8,7 @@ public partial class MainLabel : Label
 	private double tempTimer;
 	
 	public static MainLabel Instance { get; private set; }
+	public bool isCountingTimer => tempTimer > 0;
 
 	public void ShowText(string text)
 	{
@@ -29,6 +30,12 @@ public partial class MainLabel : Label
 		SetProcess(true);
 	}
 
+	private void StopTimer()
+	{
+		tempTimer = 0;
+		SetProcess(false);
+	}
+
 	public override void _Ready()
 	{
 		Instance = this;
@@ -40,11 +47,14 @@ public partial class MainLabel : Label
 		if (tempTimer > 0)
 		{
 			tempTimer -= delta;
+			return;
 		}
-		else
+
+		if (!isShowingText)
 		{
 			HideText();
-			SetProcess(false);
 		}
+		
+		StopTimer();
 	}
 }

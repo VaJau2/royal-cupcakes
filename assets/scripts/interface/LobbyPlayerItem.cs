@@ -7,10 +7,11 @@ namespace RoyalCupcakes.Interface;
 public partial class LobbyPlayerItem : Control
 {
 	[Export] public bool PlayerReady { get; set; }
-	[Export] public Team Team { get; set; } = Team.Thief;
+	[Export] public Team Team { get; set; }
 	[Export] public string PlayerName { get; set; }
 
 	private LobbyMenu lobbyMenu;
+	private Main main;
 	
 	private Label playerNameLabel;
 	private TextureRect teamIcon;
@@ -26,6 +27,7 @@ public partial class LobbyPlayerItem : Control
 
 	public override void _Ready()
 	{
+		main = GetNode<Main>("/root/Main");
 		lobbyMenu = GetNode<LobbyMenu>("../../../");
 		
 		playerNameLabel = GetNode<Label>("playerName");
@@ -39,36 +41,28 @@ public partial class LobbyPlayerItem : Control
 		readyTextures[false] = GD.Load<Texture2D>(path + "no_icon.png");
 		readyTextures[true] = GD.Load<Texture2D>(path + "yes_icon.png");
 
-		CallDeferred(nameof(SyncPlayerName));
+		CallDeferred(nameof(SyncPlayerData));
 	}
 
-	public void SyncPlayerName()
+	public void SyncPlayerData()
 	{
-		if (IsMultiplayerAuthority())
-		{
-			SetPlayerName();
-			OnSynchronize();
-		}
-		else
-		{
-			RpcId(int.Parse(Name), nameof(SetPlayerName));
-		}
-	}
-
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void SetPlayerName()
-	{
-		if (IsMultiplayerAuthority())
-		{
-			PlayerName = Settings.Instance.PlayerName;
-		}
+		if (!IsMultiplayerAuthority()) return;
+		PlayerName = Settings.Instance.PlayerName;
+		Team = main.PlayerTeam;
+		
+		OnSynchronize();
 	}
 
 	public void OnSynchronize()
 	{
 		playerNameLabel.Text = PlayerName;
 		readyIcon.Texture = readyTextures[PlayerReady];
-		teamIcon.Texture = teamTextures[Team];
+
+		if (teamTextures.ContainsKey(Team))
+		{
+			teamIcon.Texture = teamTextures[Team];
+		}		
+		
 		lobbyMenu.CheckStartGame();
 	}
 }

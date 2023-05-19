@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://owsnywmdnxma"
-path="res://.godot/imported/Choco Cake_Donut.png-e8649b3f52ff56cd27ae1147771d8445.ctex"
+uid="uid://cmwesqd78hbhj"
+path="res://.godot/imported/Eclair_Eclair Albedo.png-0e9d064e915ef945d728be4146386d0d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,8 +11,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/cakes/Choco Cake_Donut.png"
-dest_files=["res://.godot/imported/Choco Cake_Donut.png-e8649b3f52ff56cd27ae1147771d8445.ctex"]
+source_file="res://assets/models/cakes/Eclair_Eclair Albedo.png"
+dest_files=["res://.godot/imported/Eclair_Eclair Albedo.png-0e9d064e915ef945d728be4146386d0d.ctex"]
 
 [params]
 

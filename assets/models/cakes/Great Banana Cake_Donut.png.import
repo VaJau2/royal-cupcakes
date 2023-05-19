@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://owsnywmdnxma"
-path="res://.godot/imported/Choco Cake_Donut.png-e8649b3f52ff56cd27ae1147771d8445.ctex"
+uid="uid://dd03e337uyrxd"
+path="res://.godot/imported/Great Banana Cake_Donut.png-32e46c33db1e79c5b89bee2e5756a306.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,8 +11,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/cakes/Choco Cake_Donut.png"
-dest_files=["res://.godot/imported/Choco Cake_Donut.png-e8649b3f52ff56cd27ae1147771d8445.ctex"]
+source_file="res://assets/models/cakes/Great Banana Cake_Donut.png"
+dest_files=["res://.godot/imported/Great Banana Cake_Donut.png-32e46c33db1e79c5b89bee2e5756a306.ctex"]
 
 [params]
 

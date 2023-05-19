@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Props;
@@ -29,6 +30,8 @@ public partial class CakeSpawner : Node3D
 		var prefab = cakePrefabs[cakeI];
 		var cake = prefab.Instantiate();
 		CallDeferred(nameof(LoadCakeAsyncData), cake);
+
+		GameManager.Instance.CakesLeft++;
 	}
 	
 	private async void LoadCakeAsyncData(Node cake)

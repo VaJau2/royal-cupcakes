@@ -52,7 +52,7 @@ public partial class PlayersManager : Node3D
 	{
 		var id = Multiplayer.GetUniqueId();
 		var name = Settings.Instance.PlayerName;
-		RpcId(0, nameof(SetPlayerName), id, name);
+		Rpc(nameof(SetPlayerName), id, name);
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
@@ -63,7 +63,7 @@ public partial class PlayersManager : Node3D
 		playersData[id] = playerData;
 	}
 
-	private PlayerData GetPLayerData(int id)
+	public PlayerData GetPLayerData(int id)
 	{
 		return playersData.ContainsKey(id) ? playersData[id] : new PlayerData();
 	}

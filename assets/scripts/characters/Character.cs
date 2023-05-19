@@ -1,4 +1,5 @@
 using Godot;
+using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Characters;
 
@@ -16,6 +17,7 @@ public partial class Character : CharacterBody3D
 	
 	public Team Team { get; set; }
 	public int PlayerId { get; set; }
+	public PlayersManager Manager => GetParent<PlayersManager>();
 	
 	private const float walkSpeed = 2f;
 	private const float runSpeed = 4f;

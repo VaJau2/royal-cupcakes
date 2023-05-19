@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://df160e1lf6ej0"
-path="res://.godot/imported/Cupcake.glb-e18ec7373a9efec7aa4fd64e7de3644f.scn"
+uid="uid://d1v16s0lilqvi"
+path="res://.godot/imported/Eclair.glb-28fa9bc89c069ffe7c39207804ed8065.scn"
 
 [deps]
 
-source_file="res://assets/models/cakes/Cupcake.glb"
-dest_files=["res://.godot/imported/Cupcake.glb-e18ec7373a9efec7aa4fd64e7de3644f.scn"]
+source_file="res://assets/models/cakes/Eclair.glb"
+dest_files=["res://.godot/imported/Eclair.glb-28fa9bc89c069ffe7c39207804ed8065.scn"]
 
 [params]
 

@@ -1,4 +1,5 @@
 using Godot;
+using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface;
 
@@ -36,6 +37,7 @@ public partial class LobbyMenu : Control
 		if (Multiplayer.IsServer())
 		{
 			AddPlayer(Multiplayer.GetUniqueId());
+			AddAlreadyConnectedPlayers();
 			Multiplayer.PeerConnected += AddPlayer;
 			Multiplayer.PeerDisconnected += RemovePlayer;
 		}
@@ -48,6 +50,14 @@ public partial class LobbyMenu : Control
 		}
 	}
 
+	private void AddAlreadyConnectedPlayers()
+	{
+		foreach (var playerId in Multiplayer.GetPeers())
+		{
+			AddPlayer(playerId);
+		}
+	}
+
 	private void AddPlayer(long playerId)
 	{
 		var playerItem = playerItemPrefab.Instantiate<LobbyPlayerItem>();
@@ -57,6 +67,7 @@ public partial class LobbyMenu : Control
 
 	private void RemovePlayer(long playerId)
 	{
+		if (!Multiplayer.IsServer()) return;
 		var playerItem = GetPlayerItem((int)playerId);
 		playerItem.QueueFree();
 	}

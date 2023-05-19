@@ -1,6 +1,8 @@
 using Godot;
 using Godot.Collections;
+using RoyalCupcakes.Characters.Lasso;
 using RoyalCupcakes.Props;
+using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Characters.Spawners;
@@ -43,13 +45,26 @@ public partial class PlayerSpawner : Node3D
 	
 	private void SpawnPlayer(int playerId, Team playerTeam)
 	{
+		CountPlayerTeam(playerTeam);
+		
 		var player = playerPrefab.Instantiate<Character>();
 		player.Name += $"_{playerId}";
 
 		playersParent.AddChild(player);
-		playersParent.SetPlayerCharacter(playerId, player);
-
 		CallDeferred(nameof(LoadPlayerAsyncData), player, (int)playerTeam);
+	}
+
+	private void CountPlayerTeam(Team playerTeam)
+	{
+		switch (playerTeam)
+		{
+			case Team.Guard:
+				GameManager.Instance.GuardsLeft++;
+				break;
+			case Team.Thief:
+				GameManager.Instance.ThievesLeft++;
+				break;
+		}
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
@@ -70,5 +85,12 @@ public partial class PlayerSpawner : Node3D
 		player.Rpc(nameof(Character.LoadTeam), playerTeam);
 		player.Rpc(nameof(Character.LoadSprite), spriteCode, false);
 		player.Rpc(nameof(Character.SetGlobalPos), newPos);
+		
+		if ((Team)playerTeam == Team.Guard)
+		{
+			var lassoHandler = player.GetNode<LassoHandler>("lasso");
+			var npcCount = Settings.Instance.CaughtNpcCount;
+			lassoHandler.Rpc(nameof(LassoHandler.SetCaughtNpcLeft), npcCount);
+		}
 	}
 }

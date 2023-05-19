@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://tpj5dxorus5c"]
+
+[ext_resource type="PackedScene" uid="uid://c2msk5wry5y26" path="res://objects/cakes/cake-base.tscn" id="1_egerh"]
+[ext_resource type="PackedScene" uid="uid://df160e1lf6ej0" path="res://assets/models/cakes/Cupcake.glb" id="2_oypjj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2y50o"]
+size = Vector3(0.415383, 0.135142, 0.388355)
+
+[node name="cupcake" instance=ExtResource("1_egerh")]
+CakeCode = "#NAME_CUPCAKE#"
+
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128028, 0.0611694, 0)
+shape = SubResource("BoxShape3D_2y50o")
+
+[node name="Cupcake" parent="." index="1" instance=ExtResource("2_oypjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110958, 0, -0.0725497)
+
+[node name="Cupcake2" parent="." index="2" instance=ExtResource("2_oypjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0241833, 0, -0.140832)
+
+[node name="Cupcake3" parent="." index="3" instance=ExtResource("2_oypjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213382, 0, 0.00142261)
+
+[node name="Cupcake4" parent="." index="4" instance=ExtResource("2_oypjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169283, 0, -0.00426764)
+
+[node name="Cupcake5" parent="." index="5" instance=ExtResource("2_oypjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018493, 0, 0.133719)

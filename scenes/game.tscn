@@ -1,16 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=28 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
-[ext_resource type="PackedScene" uid="uid://i4ln01gqm288" path="res://objects/cakes/cake2.tscn" id="1_hplti"]
+[ext_resource type="PackedScene" uid="uid://bobqqfq4xbhur" path="res://objects/cakes/cake2.tscn" id="1_hplti"]
+[ext_resource type="Script" path="res://assets/scripts/system/GameManager.cs" id="1_qcmkw"]
 [ext_resource type="Script" path="res://assets/scripts/characters/PlayersManager.cs" id="1_y7rk8"]
 [ext_resource type="PackedScene" uid="uid://bjqal8lmw22dr" path="res://objects/characters/npc.tscn" id="2_ch63m"]
 [ext_resource type="Script" path="res://assets/scripts/props/RandomPoint.cs" id="3_1osu1"]
-[ext_resource type="PackedScene" uid="uid://bwwmm6k1brufq" path="res://objects/cakes/cake.tscn" id="3_k5apu"]
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
 [ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 [ext_resource type="Script" path="res://assets/scripts/interface/MainLabel.cs" id="8_78s07"]
-[ext_resource type="PackedScene" uid="uid://rb2xepjwidpg" path="res://objects/cakes/cake3.tscn" id="10_i6lur"]
+[ext_resource type="PackedScene" uid="uid://b4lp0fbcxq5un" path="res://objects/cakes/banana-cake.tscn" id="9_12ld3"]
+[ext_resource type="PackedScene" uid="uid://tpj5dxorus5c" path="res://objects/cakes/cupcake.tscn" id="11_6s81k"]
+[ext_resource type="PackedScene" uid="uid://blqcoxavquxbd" path="res://objects/cakes/eclair.tscn" id="12_wouxq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_12a3e"]
 vertices = PackedVector3Array(-10.2171, 0.171035, 0.18602, -10.2171, 0.171035, -1.41398, -11.0171, 0.171035, -1.61398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -2.81398, -12.6171, 0.171035, -4.81398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -1.61398, -11.0171, 0.171035, -2.81398, -9.41708, 0.171035, -2.81398, -9.21708, 0.171035, -4.81398, -12.6171, 0.171035, -4.81398, -7.81708, 0.171035, 0.18602, -7.61708, 0.171035, 0.58602, -6.01708, 0.171035, 0.38602, -9.41708, 0.171035, -1.61398, -10.2171, 0.171035, -1.41398, -10.2171, 0.171035, 0.18602, -7.81708, 0.171035, 0.18602, -9.21708, 0.171035, -4.81398, -9.41708, 0.171035, -2.81398, -9.41708, 0.171035, -1.61398, -7.81708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -6.21708, 0.171035, -4.81398, 2.18292, 0.171035, -3.01398, 2.38292, 0.171035, -2.21398, 3.38292, 0.171035, -2.21398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -2.21398, -3.01708, 0.171035, -2.21398, -2.81708, 0.171035, -3.01398, -4.61708, 0.171035, -4.81398, 0.982916, 0.171035, -3.01398, 2.18292, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, -2.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.61708, 0.171035, -2.21398, 0.782916, 0.171035, -2.21398, 0.982916, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, 0.982916, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, 7.58292, 0.171035, 0.18602, 8.58292, 0.171035, 0.18602, 8.58292, 0.171035, -1.41398, 7.78292, 0.171035, -1.61398, 4.98292, 0.171035, 0.18602, 4.58292, 0.171035, 0.38602, 7.38292, 0.171035, 0.78602, 7.78292, 0.171035, -2.81398, 8.58292, 0.171035, -3.01398, 8.58292, 0.171035, -4.81398, 4.98292, 0.171035, -4.81398, 7.38292, 0.171035, 0.78602, 7.58292, 0.171035, 0.18602, 7.78292, 0.171035, -1.61398, 7.78292, 0.171035, -2.81398, 4.98292, 0.171035, -4.81398, 4.98292, 0.171035, 0.18602, 9.18292, 0.171035, -1.61398, 8.58292, 0.171035, -1.41398, 8.58292, 0.171035, 0.18602, 12.3829, 0.171035, 0.18602, 8.58292, 0.171035, -4.81398, 8.58292, 0.171035, -3.01398, 9.18292, 0.171035, -2.81398, 12.3829, 0.171035, -4.81398, 9.18292, 0.171035, -2.81398, 9.18292, 0.171035, -1.61398, 12.3829, 0.171035, 0.18602, 12.3829, 0.171035, -4.81398, 3.38292, 0.171035, -2.21398, 2.38292, 0.171035, -2.21398, 2.18292, 0.171035, -1.41398, 3.38292, 0.171035, 0.18602, -2.81708, 0.171035, -1.41398, -3.01708, 0.171035, -2.21398, -4.61708, 0.171035, -2.21398, -4.61708, 0.171035, 0.18602, 3.78292, 0.171035, 5.18602, 3.78292, 0.171035, 0.38602, 3.38292, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.61708, 0.171035, 0.58602, -7.81708, 0.171035, 1.78602, 3.38292, 0.171035, 0.18602, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.41708, 0.171035, 5.18602, 3.78292, 0.171035, 5.18602, 0.982916, 0.171035, -1.41398, 0.782916, 0.171035, -2.21398, -1.61708, 0.171035, -2.21398, -1.81708, 0.171035, -1.41398, -7.81708, 0.171035, 1.78602, -12.6171, 0.171035, 1.78602, -12.6171, 0.171035, 5.18602, -4.41708, 0.171035, 5.18602, 3.38292, 0.171035, 0.18602, 2.18292, 0.171035, -1.41398, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -2.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.61708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.81708, 0.171035, 1.78602, -4.41708, 0.171035, 5.18602, 7.58292, 0.171035, 1.78602, 7.38292, 0.171035, 0.78602, 4.58292, 0.171035, 0.38602, 3.78292, 0.171035, 0.38602, 3.78292, 0.171035, 5.18602, 12.3829, 0.171035, 5.18602, 12.3829, 0.171035, 1.78602, 7.58292, 0.171035, 1.78602, 3.78292, 0.171035, 5.18602)
@@ -60,6 +62,9 @@ ambient_light_color = Color(0.32549, 0.345098, 0.372549, 1)
 font_size = 18
 
 [node name="Scene" type="Node3D"]
+
+[node name="gameManager" type="Node3D" parent="."]
+script = ExtResource("1_qcmkw")
 
 [node name="props" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_12a3e")
@@ -198,6 +203,8 @@ shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="invisibleWall" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7258)
+collision_layer = 0
+input_ray_pickable = false
 
 [node name="shape" type="CollisionShape3D" parent="props/invisibleWall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.193072, 0)
@@ -303,34 +310,34 @@ script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
 [node name="cakesSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://objects/cakes/cake.tscn", "res://objects/cakes/cake2.tscn", "res://objects/cakes/cake3.tscn")
+_spawnable_scenes = PackedStringArray("res://objects/cakes/banana-cake.tscn", "res://objects/cakes/cake2.tscn", "res://objects/cakes/choco-cake.tscn", "res://objects/cakes/cupcake.tscn", "res://objects/cakes/eclair.tscn")
 spawn_path = NodePath("../cakes")
 
 [node name="cakes" type="Node3D" parent="."]
 
 [node name="cakeSpawner" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2432, 0.270132, -2.18028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2669, 0.270132, -2.19978)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("..")
-cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+cakePrefabs = Array[PackedScene]([ExtResource("9_12ld3"), ExtResource("1_hplti")])
 
 [node name="cakeSpawner2" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28567, 0.270132, -2.18028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5564, 0.270132, -2.18613)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("..")
-cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+cakePrefabs = Array[PackedScene]([ExtResource("9_12ld3"), ExtResource("1_hplti")])
 
 [node name="cakeSpawner3" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57279, 0.270132, -2.18028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.48867, 0.270132, -2.19791)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("..")
-cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
 
 [node name="cakeSpawner4" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50537, 0.270132, -2.18028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2638, 0.270132, -2.20387)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("..")
-cakePrefabs = Array[PackedScene]([ExtResource("3_k5apu"), ExtResource("1_hplti"), ExtResource("10_i6lur")])
+cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.829788, -0.412792, -0.375572, 0.0101, -0.683972, 0.729439, -0.557987, 0.601487, 0.571721, 0, 0, 0)

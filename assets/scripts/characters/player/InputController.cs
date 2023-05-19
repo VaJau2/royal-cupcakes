@@ -1,5 +1,6 @@
 using Godot;
 using RoyalCupcakes.Props;
+using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Characters.Player;
@@ -18,6 +19,7 @@ public partial class InputController : Node
     public override void _Ready()
     {
         player = GetParent<Character>();
+        player.Manager.SetPlayerCharacter(player.PlayerId, player);
 
         if (!player.IsMultiplayerAuthority())
         {

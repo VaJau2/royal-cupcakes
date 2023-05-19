@@ -97,7 +97,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.5
+replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_dtl5t")
 
 [connection signal="synchronized" from="MultiplayerSynchronizer" to="." method="OnSynchronize"]

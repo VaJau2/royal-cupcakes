@@ -41,6 +41,24 @@ public class Settings
         set => config.SetValue(dir, "port", value);
     }
     
+    public double MainTimer
+    {
+        get => (double)config.GetValue(dir, "main_timer", 60f);
+        set => config.SetValue(dir, "main_timer", value);
+    }
+
+    public double AppendMainTimer
+    {
+        get => (double)config.GetValue(dir, "append_main_timer", 30f);
+        set => config.SetValue(dir, "append_main_timer", value);
+    }
+
+    public int CaughtNpcCount
+    {
+        get => (int)config.GetValue(dir, "caught_npc_count", 3);
+        set => config.SetValue(dir, "caught_npc_count", value);
+    }
+    
     private static Settings instance;
     
     private Settings()

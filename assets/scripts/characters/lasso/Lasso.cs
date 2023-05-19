@@ -55,6 +55,7 @@ public partial class Lasso : RigidBody3D
 		if (character == LassoHandler.PlayerOwner) return;
 
 		if (!IsMultiplayerAuthority()) return;
+		LassoHandler.HandleCaughtCharacter(character);
 		Rpc(nameof(Disable));
 		character.Rpc(nameof(Character.SetIsTied), true);
 	}
@@ -63,6 +64,6 @@ public partial class Lasso : RigidBody3D
 	private void Disable()
 	{
 		QueueFree();
-		LassoHandler.Visible = true;
+		LassoHandler.ResetLasso();
 	}
 }

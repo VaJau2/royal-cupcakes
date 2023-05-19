@@ -27,3 +27,16 @@ keys,en,ru
 #LOG_DISCONNECTED#,Player {name} disconnected,Игрок {name} отключился
 #YOU_ARE_CAPTURED#,You are captured!,Вас поймали!
 #CAKE_STOLEN#,The cake has been stolen!,Тортик был украден!
+#TIME_LEFT#,Time left: {time},Осталось: {time}
+#YOU_CAUGHT_PLAYER#,You caught {name}!,Вы поймали {name}!
+#YOU_CAUGHT_NPC#,You caught NPC! {count} mistakes left,Вы поймали мирного! Ошибок осталось: {count}
+#YOU_CAUGHT_ALL#,You caught too mamy NPC and your lasso is confiscated!,Вы поймали слишком много мирных и ваше лассо конфисковано!
+#NAME_CAKE#,Cake,Тортик
+#NAME_CHOCO_CAKE#,Choko cake,Шоколадный тортик
+#NAME_CUPCAKE#,Cupcake,Кексик
+#NAME_ECLAIR#,Eclair,Эклер
+#NAME_BANANA_CAKE#,The Great Bnana Cake,Великий Банановый Тортик
+#THIEF_WINNERS#,Cake thieves are winners!,Тортиковые воры победили!
+#GUARDS_WINNERS#,Guards are winners!,Стражники победили!
+#GAME_BROKEN#,Something is wrong...,Что-то сломалось...
+#SPACE_TO_CONTINUE#,Press space to continue,Нажмите пробел чтобы продолжить
