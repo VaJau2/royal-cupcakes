@@ -41,16 +41,28 @@ public class Settings
         set => config.SetValue(dir, "port", value);
     }
     
+    public int CakesCount
+    {
+        get => (int)config.GetValue(dir, "cakes_count", 3);
+        set => config.SetValue(dir, "cakes_count", value);
+    }
+    
+    public int NpcCount
+    {
+        get => (int)config.GetValue(dir, "npc_count", 10);
+        set => config.SetValue(dir, "npc_count", value);
+    }
+    
     public double MainTimer
     {
-        get => (double)config.GetValue(dir, "main_timer", 60f);
+        get => (double)config.GetValue(dir, "main_timer", 120f);
         set => config.SetValue(dir, "main_timer", value);
     }
 
-    public double AppendMainTimer
+    public double AppendMainTime
     {
-        get => (double)config.GetValue(dir, "append_main_timer", 30f);
-        set => config.SetValue(dir, "append_main_timer", value);
+        get => (double)config.GetValue(dir, "append_main_time", 20f);
+        set => config.SetValue(dir, "append_main_time", value);
     }
 
     public int CaughtNpcCount

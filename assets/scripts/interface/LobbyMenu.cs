@@ -22,6 +22,8 @@ public partial class LobbyMenu : Control
 	private VBoxContainer listParent;
 
 	private Button readyButton;
+	private Button settingsButton;
+	private Control settings;
 	private Label messageLabel;
 
 	private double timer;
@@ -31,6 +33,8 @@ public partial class LobbyMenu : Control
 		main = GetNode<Main>("/root/Main");
 		listParent = GetNode<VBoxContainer>("back/players");
 		readyButton = GetNode<Button>("back/ready");
+		settingsButton = GetNode<Button>("back/settings");
+		settings = GetNode<Control>("settings");
 		messageLabel = GetNode<Label>("back/message");
 		SetProcess(false);
 
@@ -43,6 +47,7 @@ public partial class LobbyMenu : Control
 		}
 		else
 		{
+			settingsButton.Visible = false;
 			Multiplayer.ServerDisconnected += () =>
 			{
 				main.ChangeMenu("main_menu", true);
@@ -76,6 +81,11 @@ public partial class LobbyMenu : Control
 	{
 		main.Disconnect();
 		main.ChangeMenu("main_menu");
+	}
+
+	private void OnSettingsPressed()
+	{
+		settings.Visible = !settings.Visible;
 	}
 
 	private void OnChangeTeamPressed()

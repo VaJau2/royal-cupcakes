@@ -16,8 +16,8 @@ public partial class LassoHandler : Node3D
     public Character PlayerOwner { get; private set; }
     public int CaughtNpcLeft { get; set; }
 
+    private GameManager gameManager;
     private Node3D lassoParent;
-
     private Sprite3D bodySprite;
     private Sprite3D mySprite;
     private bool isFlip;
@@ -31,6 +31,8 @@ public partial class LassoHandler : Node3D
 
     public override void _Ready()
     {
+        gameManager = GetNode<GameManager>("/root/Main/Level/Scene");
+        
         bodySprite = GetNode<Sprite3D>("../sprite");
         mySprite = GetNode<Sprite3D>("sprite");
         lassoParent = PlayerOwner.GetParent<Node3D>();
@@ -133,6 +135,6 @@ public partial class LassoHandler : Node3D
         isConfiscated = true;
         Visible = false;
         if (!Multiplayer.IsServer()) return;
-        GameManager.Instance.GuardsLeft--;
+        gameManager.GuardsLeft--;
     }
 }

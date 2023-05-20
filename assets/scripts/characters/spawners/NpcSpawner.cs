@@ -15,9 +15,11 @@ public partial class NpcSpawner : Node3D
     private const int MinPointsCount = 3;
     private static int npcCount;
 
+    [Export] public int MaxCount { get; private set; }
+    public int SpawnCount { get; set; }
+    
     [Export] private Node3D npcParent;
     [Export] private PackedScene npcPrefab;
-    [Export] private int count;
     [Export] private Array<string> spriteCodes;
 
     private Array<RandomPoint> points = new();
@@ -41,7 +43,7 @@ public partial class NpcSpawner : Node3D
 
         Debug.Assert(points.Count >= MinPointsCount, $"points count must be >= {MinPointsCount}");
 
-        for (var i = 0; i < count; i++)
+        for (var i = 0; i < SpawnCount; i++)
         {
             SpawnNpc();
         }

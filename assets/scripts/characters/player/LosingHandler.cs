@@ -11,6 +11,7 @@ public partial class LosingHandler : Node
 {
 	[Export] private PackedScene freeCameraPrefab;
 	
+	private GameManager gameManager;
 	private Character player;
 
 	public override void _EnterTree()
@@ -22,6 +23,7 @@ public partial class LosingHandler : Node
 	public override void _Ready()
 	{
 		if (!IsMultiplayerAuthority()) return;
+		gameManager = GetNode<GameManager>("/root/Main/Level/Scene");
 		CallDeferred(nameof(LoadDelayed));
 	}
 
@@ -39,7 +41,7 @@ public partial class LosingHandler : Node
 			scene.AddChild(freeCamera);
 			freeCamera.SetPosition(player.GlobalPosition, playerOldCamera.Position);
 			freeCamera.MakeCurrent();
-			GameManager.Instance.RpcId(0, nameof(GameManager.RequestRemoveThief));
+			gameManager.RpcId(0, nameof(GameManager.RequestRemoveThief));
 		};
 	}
 }

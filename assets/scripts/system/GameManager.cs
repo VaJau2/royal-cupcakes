@@ -1,21 +1,25 @@
 using Godot;
+using RoyalCupcakes.Characters.Spawners;
 using RoyalCupcakes.Interface;
+using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.System;
 
 /**
  * Управляет игровыми правилами
  */
-public partial class GameManager : Node
+public partial class GameManager : Node3D
 {
     private const double FinishingTimer = 2f;
-    
-    public static GameManager Instance { get; private set; }
-    
+    private const double SyncMainTimerDelay = 1f;
+
+    private Randomizer rand = new();
     private Main main;
-    private bool isLoaded;
-    private bool isFinishing;
+    private bool isLoaded, isFinishing;
     private int guardsLeft, cakesLeft, thievesLeft;
+    private double syncMainTimer;
+
+    private int startNpcCount, startCakesCount;
 
     [Export]
     public double MainTimer { get; private set; }
@@ -62,14 +66,68 @@ public partial class GameManager : Node
         }
     }
     
+    public override void _EnterTree()
+    {
+        if (!Multiplayer.IsServer()) return;
+        
+        MainTimer = Settings.Instance.MainTimer;
+        startCakesCount = Settings.Instance.CakesCount;
+        startNpcCount = Settings.Instance.NpcCount;
+        
+        UpdateCakesSpawnersCount();
+        UpdateNpcSpawnersCount();
+    }
+
+    private void UpdateCakesSpawnersCount()
+    {
+        var cakesParent = GetNode("cakes");
+        var spawnersToDelete = cakesParent.GetChildCount() - startCakesCount;
+        while (spawnersToDelete > 0)
+        {
+            var randI = rand.GetInt(0, cakesParent.GetChildCount());
+            cakesParent.GetChild(randI).Free();
+            spawnersToDelete -= 1;
+        }
+    }
+
+    private void UpdateNpcSpawnersCount()
+    {
+        var npcSpawnersNodes = GetNode("npcSpawners").GetChildren();
+        var npcSpawners = ArrayUtils.ConvertTo<NpcSpawner>(npcSpawnersNodes);
+        var spawnerI = 0;
+        
+        while (startNpcCount > 0)
+        {
+            var spawner = npcSpawners[spawnerI];
+            if (spawner.SpawnCount < spawner.MaxCount)
+            {
+                spawner.SpawnCount += 1;
+                startNpcCount -= 1;
+            }
+            else
+            {
+                npcSpawners.RemoveAt(spawnerI);
+            }
+            
+            if (npcSpawners.Count == 0)
+            {
+                break;
+            }
+
+            spawnerI = rand.GetInt(0, npcSpawners.Count);
+        }
+    }
+    
     public override void _Ready()
     {
-        Instance = this;
-        main = GetNode<Main>("../../../");
+        main = GetNode<Main>("/root/Main");
         CallDeferred(nameof(SetLoadedDeferred));
-
-        if (!Multiplayer.IsServer()) return;
-        MainTimer = Settings.Instance.MainTimer;
+    }
+    
+    private async void SetLoadedDeferred()
+    {
+        await ToSignal(GetTree(), "process_frame");
+        isLoaded = true;
     }
 
     public override void _Process(double delta)
@@ -80,23 +138,26 @@ public partial class GameManager : Node
 
     private void UpdateMainTimer(double delta)
     {
-        if (!Multiplayer.IsServer()) return;
+        if (!Multiplayer.HasMultiplayerPeer() || !Multiplayer.IsServer()) return;
         
         if (MainTimer > 0)
         {
             MainTimer -= delta;
+
+            if (syncMainTimer > 0)
+            {
+                syncMainTimer -= delta;
+                return;
+            }
+
+            syncMainTimer = SyncMainTimerDelay;
+            Rpc(nameof(SyncMainTime), MainTimer);
             return;
         }
         
         FinishGame(Team.Guard);
     }
 
-    private async void SetLoadedDeferred()
-    {
-        await ToSignal(GetTree(), "process_frame");
-        isLoaded = true;
-    }
-    
     private async void FinishGame(Team winners)
     {
         if (!isLoaded) return;
@@ -124,7 +185,7 @@ public partial class GameManager : Node
     public void RequestAppendMainTimer()
     {
         if (!Multiplayer.IsServer()) return;
-        MainTimer += Settings.Instance.AppendMainTimer;
+        MainTimer += Settings.Instance.AppendMainTime;
     }
     
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
@@ -138,5 +199,11 @@ public partial class GameManager : Node
     public void SyncWinnersTeam(int winners)
     {
         main.WinnersTeam = (Team)winners;
+    }
+    
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    private void SyncMainTime(double time)
+    {
+        MainTimer = time;
     }
 }

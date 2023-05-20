@@ -2,7 +2,8 @@ keys,en,ru
 #GAME#,Royal Cupcakes,Royal Cupcakes
 #START#,Start,Начать
 #EXIT#,Exit,Выйти
-#SETTINGS,Settings,Настройки
+#CLOSE#,Close,Закрыть
+#SETTINGS#,Settings,Настройки
 #CONNECTION#,Connection,Подключение
 #CONNECT#,Connect,Подключиться
 #CONNECTING#,Connecting...,Подключаемся...
@@ -41,3 +42,8 @@ keys,en,ru
 #GUARDS_WINNERS#,Guards are winners!,Стражники победили!
 #GAME_BROKEN#,Something is wrong...,Что-то сломалось...
 #SPACE_TO_CONTINUE#,Press space to continue,Нажмите пробел чтобы продолжить
+#COUNT_CAKES#,Cakes count,Кол-во тортиков
+#COUNT_NPC#,NPC count,Кол-во мирных
+#COUNT_START_TIME#,Start time count,Кол-во стартового времени
+#COUNT_APPEND_TIME#,Append time count,Кол-во добавляемого времени
+#COUNT_MISTAKES_COUNT#,Guard mistakes count,Кол-во ошибок стражников

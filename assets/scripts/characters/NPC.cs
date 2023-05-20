@@ -61,8 +61,17 @@ public partial class NPC : Character
     private void SetNextTarget()
     {
         var newPoint = points[tempNodeKey];
-        agent.TargetPosition = rand.GetPositionAround(newPoint.Position, newPoint.RandomRadius);
-        tempNodeKey = tempNodeKey < points.Count - 1 ? tempNodeKey + 1 : 0;
+        agent.TargetPosition = rand.GetPositionAround(newPoint.GlobalPosition, newPoint.RandomRadius);
+        
+        if (tempNodeKey < points.Count - 1)
+        {
+            tempNodeKey += 1;
+        }
+        else
+        {
+            points.Shuffle();
+            tempNodeKey = 0;
+        }
     }
 
     private void CameToPlace()

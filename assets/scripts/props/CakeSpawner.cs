@@ -31,7 +31,8 @@ public partial class CakeSpawner : Node3D
 		var cake = prefab.Instantiate();
 		CallDeferred(nameof(LoadCakeAsyncData), cake);
 
-		GameManager.Instance.CakesLeft++;
+		var gameManager = GetNode<GameManager>("/root/Main/Level/Scene");
+		gameManager.CakesLeft++;
 	}
 	
 	private async void LoadCakeAsyncData(Node cake)

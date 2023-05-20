@@ -16,4 +16,16 @@ public static class ArrayUtils
             nodes.Add(parent.GetNode<T>(pathItem));
         }
     }
+
+    public static Array<T> ConvertTo<[MustBeVariant] T>(Array<Node> nodes) where T : class
+    {
+        var result = new Array<T>();
+
+        foreach (var node in nodes)
+        {
+            result.Add(node as T);
+        }
+
+        return result;
+    }
 }

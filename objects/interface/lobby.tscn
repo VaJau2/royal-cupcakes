@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcisvibfapwfw"]
+[gd_scene load_steps=7 format=3 uid="uid://dcisvibfapwfw"]
 
+[ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="1_gnuu6"]
 [ext_resource type="Script" path="res://assets/scripts/interface/LobbyMenu.cs" id="1_p87cv"]
 [ext_resource type="PackedScene" uid="uid://cj7j05f66dnlf" path="res://objects/interface/lobby/player_item.tscn" id="2_f5d43"]
+[ext_resource type="Script" path="res://assets/scripts/interface/SettingsSubmenu.cs" id="4_frbrm"]
+[ext_resource type="Script" path="res://assets/scripts/interface/SettingsSlider.cs" id="5_lhbjt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_atqo7"]
 font_size = 20
@@ -13,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_gnuu6")
 script = ExtResource("1_p87cv")
 playerItemPrefab = ExtResource("2_f5d43")
 
@@ -28,23 +32,32 @@ color = Color(0, 0, 0, 1)
 [node name="backButton" type="Button" parent="back"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 64.0
-offset_right = 192.0
-offset_bottom = 95.0
+offset_top = 32.0
+offset_right = 248.0
+offset_bottom = 63.0
 text = "#BACK#"
+
+[node name="settings" type="Button" parent="back"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 32.0
+offset_right = 464.0
+offset_bottom = 63.0
+text = "#SETTINGS#"
 
 [node name="header" type="Label" parent="back"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.5
-offset_top = 50.0
-offset_right = 54.5
-offset_bottom = 81.0
+offset_left = -128.0
+offset_top = 80.0
+offset_right = 121.0
+offset_bottom = 111.0
 grow_horizontal = 2
 text = "#PLAYERS#"
 label_settings = SubResource("LabelSettings_atqo7")
+horizontal_alignment = 1
 
 [node name="players" type="VBoxContainer" parent="back"]
 layout_mode = 1
@@ -53,9 +66,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -512.0
+offset_left = -448.0
 offset_top = -196.0
-offset_right = 128.0
+offset_right = 192.0
 offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -67,9 +80,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -512.0
+offset_left = -256.0
 offset_top = -104.0
-offset_right = -296.0
+offset_right = -40.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -83,9 +96,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -512.0
-offset_top = -168.0
+offset_top = -104.0
 offset_right = -296.0
-offset_bottom = -136.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "#CHANGE_TEAM#"
@@ -97,10 +110,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -44.0
+offset_left = -312.0
+offset_top = -76.0
 offset_right = -8.0
-offset_bottom = 52.0
+offset_bottom = 60.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "#NOT_ENOUGH_PLAYERS#"
@@ -111,6 +124,305 @@ autowrap_mode = 2
 _spawnable_scenes = PackedStringArray("res://objects/interface/lobby/player_item.tscn")
 spawn_path = NodePath("../players")
 
+[node name="settings" type="Control" parent="." node_paths=PackedStringArray("cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -196.0
+offset_right = 320.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_frbrm")
+cakesSlider = NodePath("cakes")
+npcSlider = NodePath("npc")
+startTimeSlider = NodePath("startTime")
+appendTimeSlider = NodePath("appendTime")
+mistakesSlider = NodePath("mistakesCount")
+
+[node name="back" type="ColorRect" parent="settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="settings/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="settings/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="settings/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="settings/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="cakes" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 32.0
+offset_right = 544.0
+offset_bottom = 64.0
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+rounded = true
+script = ExtResource("5_lhbjt")
+
+[node name="Label" type="Label" parent="settings/cakes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#COUNT_CAKES#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="count" type="Label" parent="settings/cakes"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="npc" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 72.0
+offset_right = 544.0
+offset_bottom = 104.0
+min_value = 5.0
+max_value = 20.0
+value = 10.0
+rounded = true
+script = ExtResource("5_lhbjt")
+
+[node name="Label" type="Label" parent="settings/npc"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#COUNT_NPC#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="count" type="Label" parent="settings/npc"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="startTime" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 112.0
+offset_right = 544.0
+offset_bottom = 144.0
+min_value = 50.0
+max_value = 300.0
+value = 120.0
+rounded = true
+script = ExtResource("5_lhbjt")
+
+[node name="Label" type="Label" parent="settings/startTime"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#COUNT_START_TIME#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="count" type="Label" parent="settings/startTime"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="appendTime" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 152.0
+offset_right = 544.0
+offset_bottom = 184.0
+min_value = 10.0
+max_value = 60.0
+value = 20.0
+rounded = true
+script = ExtResource("5_lhbjt")
+
+[node name="Label" type="Label" parent="settings/appendTime"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -15.008
+offset_right = -14.0
+offset_bottom = 14.0
+text = "#COUNT_APPEND_TIME#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="count" type="Label" parent="settings/appendTime"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="mistakesCount" type="HSlider" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 192.0
+offset_right = 544.0
+offset_bottom = 224.0
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+rounded = true
+script = ExtResource("5_lhbjt")
+
+[node name="Label" type="Label" parent="settings/mistakesCount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#COUNT_MISTAKES_COUNT#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="count" type="Label" parent="settings/mistakesCount"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="close" type="Button" parent="settings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 64.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CLOSE#"
+
 [connection signal="pressed" from="back/backButton" to="." method="OnBackPressed"]
+[connection signal="pressed" from="back/settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="back/ready" to="." method="OnReadyPressed"]
 [connection signal="pressed" from="back/changeTeam" to="." method="OnChangeTeamPressed"]
+[connection signal="value_changed" from="settings/cakes" to="settings" method="OnCakesValueChanged"]
+[connection signal="value_changed" from="settings/npc" to="settings" method="OnNpcValueChanged"]
+[connection signal="value_changed" from="settings/startTime" to="settings" method="OnStartTimeValueChanged"]
+[connection signal="value_changed" from="settings/appendTime" to="settings" method="OnAppendTimeValueChanged"]
+[connection signal="value_changed" from="settings/mistakesCount" to="settings" method="OnMistakesCountValueChanged"]
+[connection signal="pressed" from="settings/close" to="settings" method="OnClosePressed"]

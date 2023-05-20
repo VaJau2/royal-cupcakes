@@ -22,10 +22,13 @@ public partial class PlayerSpawner : Node3D
 
 	private readonly Randomizer rand = new();
 	private Main main;
+	private GameManager gameManager;
 
 	public override void _Ready()
 	{
 		main = GetNode<Main>("/root/Main");
+		gameManager = GetParent<GameManager>();
+		
 		foreach (var node in GetChildren())
 		{
 			points.Add(node as RandomPoint);
@@ -59,10 +62,10 @@ public partial class PlayerSpawner : Node3D
 		switch (playerTeam)
 		{
 			case Team.Guard:
-				GameManager.Instance.GuardsLeft++;
+				gameManager.GuardsLeft++;
 				break;
 			case Team.Thief:
-				GameManager.Instance.ThievesLeft++;
+				gameManager.ThievesLeft++;
 				break;
 		}
 	}

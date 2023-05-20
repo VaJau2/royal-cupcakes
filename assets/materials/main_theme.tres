@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bbkf52fm8faq0"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bbkf52fm8faq0"]
 
 [ext_resource type="FontFile" uid="uid://dmtmsnwlixr5b" path="res://assets/materials/font.ttf" id="1_uqyr6"]
 
@@ -65,6 +65,44 @@ border_width_right = 3
 border_width_bottom = 3
 corner_detail = 5
 
+[sub_resource type="ImageTexture" id="ImageTexture_jnfky"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_2520u"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_u7nu4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_sj7e1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3gmx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 3
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fjyq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.384314, 0.345098, 1)
+corner_radius_bottom_right = 3
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02ohs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3mkk"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
@@ -96,4 +134,12 @@ Button/styles/focus = SubResource("StyleBoxFlat_378il")
 Button/styles/hover = SubResource("StyleBoxFlat_koebp")
 Button/styles/normal = SubResource("StyleBoxFlat_f4qc8")
 Button/styles/pressed = SubResource("StyleBoxFlat_qqknf")
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = SubResource("ImageTexture_jnfky")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_2520u")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_u7nu4")
+HSlider/icons/tick = SubResource("ImageTexture_sj7e1")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_p3gmx")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_7fjyq")
+HSlider/styles/slider = SubResource("StyleBoxFlat_02ohs")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_m3mkk")

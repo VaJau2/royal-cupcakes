@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbn2361mqmrkk"]
+[gd_scene load_steps=4 format=3 uid="uid://dbn2361mqmrkk"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/GameResults.cs" id="1_gas30"]
+[ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="2_j2y5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dw1vl"]
 font_size = 20
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_j2y5b")
 
 [node name="label" type="Label" parent="back"]
 layout_mode = 1
