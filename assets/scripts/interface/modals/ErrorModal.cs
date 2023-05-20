@@ -2,10 +2,10 @@ using Godot;
 
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ErrorModal : Window
+public partial class ErrorModal : Control
 {
 	private void Cancel()
 	{
-		Hide();
+		Visible = false;
 	}
 }

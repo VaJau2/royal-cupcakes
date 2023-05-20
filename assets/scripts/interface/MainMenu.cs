@@ -7,12 +7,14 @@ namespace RoyalCupcakes.Interface;
 public partial class MainMenu : Control
 {
 	private ConnectionModal connectionModal;
-	private Window errorModal;
+	private Control errorModal;
 
 	public override void _Ready()
 	{
+		Settings.Instance.LoadLanguage();
+		
 		connectionModal = GetNode<ConnectionModal>("connection");
-		errorModal = GetNode<Window>("error");
+		errorModal = GetNode<Control>("error");
 	}
 
 	private void OnLangChangePressed()
@@ -27,11 +29,12 @@ public partial class MainMenu : Control
 
 	public void ShowError()
 	{
-		errorModal.PopupCentered();
+		errorModal.Visible = true;
 	}
 
 	private void OnExitPressed()
 	{
+		Settings.Instance.Save();
 		GetTree().Quit();
 	}
 }

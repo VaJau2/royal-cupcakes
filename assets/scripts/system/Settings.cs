@@ -74,6 +74,11 @@ public class Settings
         CurrentLangNum = langNum < langs.Length - 1 ? langNum + 1 : 0;
     }
 
+    public void LoadLanguage()
+    {
+        TranslationServer.SetLocale(langs[CurrentLangNum]);
+    }
+
     public void Save()
     {
         config.Save("res://config.cfg");

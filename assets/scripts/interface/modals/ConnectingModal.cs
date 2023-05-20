@@ -3,12 +3,12 @@ using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ConnectingModal : Window
+public partial class ConnectingModal : Control
 {
 	private void OnCancelConnecting()
 	{
 		var main = GetNode<Main>("/root/Main");  
 		main.Disconnect();
-		Hide();
+		Visible = false;
 	}
 }

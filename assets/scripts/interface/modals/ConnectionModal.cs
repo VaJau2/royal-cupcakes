@@ -3,7 +3,7 @@ using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ConnectionModal : Window
+public partial class ConnectionModal : Control
 {
 	private const string HostCode = "#HOST#";
 	private const string ClientCode = "#CLIENT#";
@@ -15,7 +15,7 @@ public partial class ConnectionModal : Window
 	[Export]
 	private ConnectingModal connectingModal;
 	[Export]
-	private Window errorModal;
+	private Control errorModal;
 	
 	private Button connectionType;
 	private LineEdit ip;
@@ -35,7 +35,7 @@ public partial class ConnectionModal : Window
 
 	public void OpenModal()
 	{
-		PopupCentered();
+		Visible = true;
 	}
 
 	private void OnConnectionTypePressed()
@@ -47,13 +47,13 @@ public partial class ConnectionModal : Window
 
 	private void CloseConnectionModal()
 	{
-		Hide();
+		Visible = false;
 	}
 
 	private void OnConnectPressed()
 	{
 		CloseConnectionModal();
-		connectingModal.PopupCentered();
+		connectingModal.Visible = true;
 		
 		var settings = Settings.Instance;
 		settings.Host = !string.IsNullOrEmpty(ip.Text) ? ip.Text : DefaultHost;

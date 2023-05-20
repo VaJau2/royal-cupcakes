@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4akjw4v2r6n8"]
+[gd_scene load_steps=10 format=3 uid="uid://cbn6io5xwhg5d"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/MainMenu.cs" id="1_np8xv"]
+[ext_resource type="FontFile" uid="uid://rw0kdhck1exa" path="res://assets/materials/header_font.ttf" id="2_sldfa"]
 [ext_resource type="Script" path="res://assets/scripts/interface/PlayerNameInput.cs" id="2_t6jxh"]
+[ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="3_0hrea"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectionModal.cs" id="3_lt8ja"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectingModal.cs" id="4_dacjo"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ErrorModal.cs" id="5_m36hi"]
 
+[sub_resource type="Theme" id="Theme_2ksb2"]
+default_base_scale = 1.0
+default_font = ExtResource("2_sldfa")
+
 [sub_resource type="LabelSettings" id="LabelSettings_0p75t"]
-font_size = 25
+font_size = 30
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_0hrea")
 script = ExtResource("1_np8xv")
 
 [node name="Back" type="ColorRect" parent="."]
@@ -40,6 +47,7 @@ offset_right = 94.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_2ksb2")
 text = "#GAME#"
 label_settings = SubResource("LabelSettings_0p75t")
 horizontal_alignment = 1
@@ -51,9 +59,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
+offset_left = -128.0
 offset_top = -34.0
-offset_right = 91.0
+offset_right = 128.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -66,9 +74,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
+offset_left = -128.0
 offset_top = 16.0
-offset_right = 91.0
+offset_right = 128.0
 offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -96,6 +104,7 @@ offset_top = 96.0
 offset_right = -64.0
 offset_bottom = 127.0
 grow_horizontal = 0
+theme = ExtResource("3_0hrea")
 text = "Player"
 alignment = 1
 script = ExtResource("2_t6jxh")
@@ -113,17 +122,77 @@ text = "#NAME#"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="connection" type="Window" parent="." node_paths=PackedStringArray("connectingModal", "errorModal")]
-initial_position = 2
-title = "#CONNECTION#"
-size = Vector2i(400, 250)
+[node name="connection" type="Control" parent="." node_paths=PackedStringArray("connectingModal", "errorModal")]
 visible = false
-unresizable = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -156.0
+offset_right = 256.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_lt8ja")
 connectingModal = NodePath("../connecting")
 errorModal = NodePath("../error")
 
+[node name="back" type="ColorRect" parent="connection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="connection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="connection/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="connection/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="connection/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="connection/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="type" type="Button" parent="connection"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -135,6 +204,7 @@ grow_horizontal = 2
 text = "#CLIENT#"
 
 [node name="ip" type="LineEdit" parent="connection"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -163,6 +233,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="port" type="LineEdit" parent="connection"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -192,6 +263,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="cancel" type="Button" parent="connection"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -206,6 +278,7 @@ grow_vertical = 0
 text = "#CANCEL#"
 
 [node name="connect" type="Button" parent="connection"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -219,15 +292,75 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "#CONNECT#"
 
-[node name="connecting" type="Window" parent="."]
-initial_position = 2
-title = "#CONNECTION#"
-size = Vector2i(400, 250)
+[node name="connecting" type="Control" parent="."]
 visible = false
-unresizable = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -156.0
+offset_right = 256.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_dacjo")
 
+[node name="back" type="ColorRect" parent="connecting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="connecting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="connecting/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="connecting/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="connecting/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="connecting/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="Label" type="Label" parent="connecting"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -242,6 +375,7 @@ grow_vertical = 2
 text = "#CONNECTING#"
 
 [node name="cancel" type="Button" parent="connecting"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -255,15 +389,75 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "#CANCEL#"
 
-[node name="error" type="Window" parent="."]
-initial_position = 2
-title = "#CONNECTION#"
-size = Vector2i(400, 250)
+[node name="error" type="Control" parent="."]
 visible = false
-unresizable = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -156.0
+offset_right = 264.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_m36hi")
 
+[node name="back" type="ColorRect" parent="error"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="error"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="error/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="error/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="error/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="error/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="Label" type="Label" parent="error"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -278,6 +472,7 @@ grow_vertical = 2
 text = "#CONNECTION_ERROR#"
 
 [node name="ok" type="Button" parent="error"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -295,11 +490,8 @@ text = "#DAMN#"
 [connection signal="pressed" from="Back/Exit" to="." method="OnExitPressed"]
 [connection signal="pressed" from="Back/Language" to="." method="OnLangChangePressed"]
 [connection signal="text_changed" from="Back/Name" to="Back/Name" method="OnNameChanged"]
-[connection signal="close_requested" from="connection" to="connection" method="CloseConnectionModal"]
 [connection signal="pressed" from="connection/type" to="connection" method="OnConnectionTypePressed"]
 [connection signal="pressed" from="connection/cancel" to="connection" method="CloseConnectionModal"]
 [connection signal="pressed" from="connection/connect" to="connection" method="OnConnectPressed"]
-[connection signal="close_requested" from="connecting" to="connecting" method="OnCancelConnecting"]
 [connection signal="pressed" from="connecting/cancel" to="connecting" method="OnCancelConnecting"]
-[connection signal="close_requested" from="error" to="error" method="Cancel"]
 [connection signal="pressed" from="error/ok" to="error" method="Cancel"]
