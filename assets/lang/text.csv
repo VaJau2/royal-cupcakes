@@ -28,7 +28,7 @@ keys,en,ru
 #DISCONNECT#,Disconnect,Отключиться
 #LOG_DISCONNECTED#,Player {name} disconnected,Игрок {name} отключился
 #YOU_ARE_CAPTURED#,You are captured!,Вас поймали!
-#CAKE_STOLEN#,The cake has been stolen!,Тортик был украден!
+#CAKE_STOLEN#,{cake} has been stolen!,{cake} был украден!
 #TIME_LEFT#,Time left: {time},Осталось: {time}
 #YOU_CAUGHT_PLAYER#,You caught {name}!,Вы поймали {name}!
 #YOU_CAUGHT_NPC#,You caught NPC! {count} mistakes left,Вы поймали мирного! Ошибок осталось: {count}

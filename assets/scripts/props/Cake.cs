@@ -19,7 +19,10 @@ public partial class Cake : StaticBody3D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	public void Pick()
 	{
-		MainLabel.Instance.ShowTempText("#CAKE_STOLEN#", TextTimer);
+		var cakeName = TranslationServer.Translate(CakeCode).ToString();
+		var text = TranslationServer.Translate("#CAKE_STOLEN#").ToString();
+		text = text.Replace("{cake}", cakeName);
+		MainLabel.Instance.ShowTempText(text, TextTimer);
 		gameManager.RpcId(0, nameof(GameManager.RequestAppendMainTimer));
 		if (!Multiplayer.IsServer()) return;
 		gameManager.CakesLeft--;
