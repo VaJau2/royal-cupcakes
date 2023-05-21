@@ -35,7 +35,6 @@ public partial class NPC : Character
 
         if (!IsMultiplayerAuthority())
         {
-            SetProcess(false);
             return;
         }
 
@@ -76,7 +75,7 @@ public partial class NPC : Character
 
     private void CameToPlace()
     {
-        Velocity = Vector3.Zero;
+        Direction = Vector3.Zero;
         if (rand.GetFloat() < SitChance)
         {
             var sitTime = rand.GetFloat() % MaxWaitToSitTime;
@@ -87,11 +86,14 @@ public partial class NPC : Character
         GetTree().CreateTimer(waitingTime).Timeout += SetNextTarget;
     }
 
-    public override void _Process(double _delta)
+    public override void _Process(double delta)
     {
+        base._Process(delta);
+
+        if (!IsMultiplayerAuthority()) return;
+        
         if (IsTied) return;
         if (agent.IsNavigationFinished()) return;
-        var direction = (agent.GetNextPathPosition() - GlobalPosition).Normalized();
-        UpdateMoveDirection(direction);
+        Direction = (agent.GetNextPathPosition() - GlobalPosition).Normalized();
     }
 }

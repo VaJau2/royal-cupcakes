@@ -45,8 +45,7 @@ public partial class InputController : Node
             "ui_left", "ui_right",
             "ui_up", "ui_down"
         );
-        direction = (player.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-        player.UpdateMoveDirection(direction);
+        player.Direction = (player.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
     }
 
     private void UpdateRunning()

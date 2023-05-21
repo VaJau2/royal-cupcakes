@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqbwr418wgrb2"]
+[gd_scene load_steps=19 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
 [ext_resource type="PackedScene" uid="uid://cv24wwftkv36n" path="res://objects/change-effect.tscn" id="2_mtyjj"]
@@ -201,15 +201,17 @@ properties/0/sync = true
 properties/1/path = NodePath(".:IsSitting")
 properties/1/spawn = true
 properties/1/sync = true
-properties/2/path = NodePath(".:position")
+properties/2/path = NodePath(".:Direction")
 properties/2/spawn = true
 properties/2/sync = true
-properties/3/path = NodePath("sprite:flip_h")
+properties/3/path = NodePath("anim:current_animation")
 properties/3/spawn = true
 properties/3/sync = true
-properties/4/path = NodePath("anim:current_animation")
-properties/4/spawn = true
-properties/4/sync = true
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_crwnj"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
 
 [node name="pony" type="CharacterBody3D"]
 script = ExtResource("1_7hsws")
@@ -248,5 +250,10 @@ libraries = {
 }
 script = ExtResource("3_irr3e")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="DirectionSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.05
 replication_config = SubResource("SceneReplicationConfig_n2ejg")
+
+[node name="PositionSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 1.0
+replication_config = SubResource("SceneReplicationConfig_crwnj")

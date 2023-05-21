@@ -12,6 +12,7 @@ public partial class Character : CharacterBody3D
 	[Export] public bool IsRunning { get; set; }
 	[Export] public bool IsSitting { get; set; }
 	[Export] public bool IsTied { get; private set; }
+	[Export] public Vector3 Direction { get; set; }
 
 	[Export] private PackedScene changeEffectPrefab;
 	
@@ -28,21 +29,6 @@ public partial class Character : CharacterBody3D
 	[Signal]
 	public delegate void TiedEventHandler();
 
-	public void UpdateMoveDirection(Vector3 direction)
-	{
-		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
-		if (IsTied) return;
-
-		var speed = IsRunning ? runSpeed : walkSpeed;
-		direction.Y = 0;
-		Velocity = Velocity.MoveToward(direction * speed, acceleration);
-
-		if (direction.X != 0)
-		{
-			spriteLoader.FlipH = direction.X < 0;
-		}
-	}
-
 	public override void _EnterTree()
 	{
 		PlayerId = int.Parse(Name.ToString().Split('_')[1]);
@@ -54,10 +40,28 @@ public partial class Character : CharacterBody3D
 		spriteLoader = GetNode<SpriteLoader>("sprite");
 	}
 
+	public override void _Process(double delta)
+	{
+		if (IsTied) return;
+		UpdateMoveDirection();
+	}
+	
+	private void UpdateMoveDirection()
+	{
+		var speed = IsRunning ? runSpeed : walkSpeed;
+		var direction = Direction;
+		direction.Y = 0;
+		Velocity = Velocity.MoveToward(direction * speed, acceleration);
+
+		if (direction.X != 0)
+		{
+			spriteLoader.FlipH = direction.X < 0;
+		}
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
-		if (!(Velocity.Length() > 0)) return;
+		if (Velocity.Length() == 0) return;
 		
 		if (IsTied)
 		{

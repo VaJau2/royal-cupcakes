@@ -45,7 +45,7 @@ size = Vector3(0.669475, 1, 27.2586)
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ijvqy"]
-size = Vector3(27.3166, 1.80173, 0.428781)
+size = Vector3(27.3166, 0.223867, 0.428781)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wuu61"]
 
@@ -69,7 +69,8 @@ script = ExtResource("1_qcmkw")
 navigation_mesh = SubResource("NavigationMesh_12a3e")
 
 [node name="plane" type="StaticBody3D" parent="props"]
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="mesh" type="MeshInstance3D" parent="props/plane"]
 transform = Transform3D(13.4842, 0, 0, 0, 1, 0, 0, 0, 5.66172, 0, 0, 0)
@@ -81,7 +82,8 @@ shape = SubResource("BoxShape3D_jbr5s")
 
 [node name="Wall" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.145, 0.495025, -0.166953)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 11.5619, 0, 0, 0)
@@ -92,7 +94,8 @@ shape = SubResource("BoxShape3D_ov206")
 
 [node name="Wall2" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4856, 0.495025, -0.166953)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall2"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 11.5619, 0, 0, 0)
@@ -103,7 +106,8 @@ shape = SubResource("BoxShape3D_ov206")
 
 [node name="Wall3" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47802, 0.495025, -2.66397)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall3"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
@@ -114,7 +118,8 @@ shape = SubResource("BoxShape3D_kd28v")
 
 [node name="Wall4" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17159, 0.495025, -2.66397)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall4"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
@@ -125,7 +130,8 @@ shape = SubResource("BoxShape3D_kd28v")
 
 [node name="Wall5" type="StaticBody3D" parent="props"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.3529, 0.495025, 1.01281)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall5"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
@@ -136,7 +142,8 @@ shape = SubResource("BoxShape3D_kd28v")
 
 [node name="Wall6" type="StaticBody3D" parent="props"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.6443, 0.495025, 1.01281)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall6"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 5.05786, 0, 0, 0)
@@ -147,7 +154,8 @@ shape = SubResource("BoxShape3D_kd28v")
 
 [node name="Wall7" type="StaticBody3D" parent="props"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.117801, 0.495025, -5.68246)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="props/Wall7"]
 transform = Transform3D(0.663037, 0, 0, 0, 1, 0, 0, 0, 26.354, 0, 0, 0)
@@ -158,7 +166,8 @@ shape = SubResource("BoxShape3D_adki4")
 
 [node name="box" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55992, 0.0210347, -2.19396)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="mesh" type="MeshInstance3D" parent="props/box"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -169,7 +178,8 @@ shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="box2" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27504, 0.0210347, -2.19396)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="mesh" type="MeshInstance3D" parent="props/box2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -180,7 +190,8 @@ shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="box3" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2401, 0.0210347, -2.19396)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="mesh" type="MeshInstance3D" parent="props/box3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -191,7 +202,8 @@ shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="box4" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4942, 0.0210347, -2.19396)
-collision_layer = 4
+collision_layer = 12
+collision_mask = 0
 
 [node name="mesh" type="MeshInstance3D" parent="props/box4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -202,11 +214,12 @@ shape = SubResource("BoxShape3D_fwhrj")
 
 [node name="invisibleWall" type="StaticBody3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.7258)
-collision_layer = 0
+collision_layer = 4
+collision_mask = 0
 input_ray_pickable = false
 
 [node name="shape" type="CollisionShape3D" parent="props/invisibleWall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.193072, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0706033, 0)
 shape = SubResource("BoxShape3D_ijvqy")
 
 [node name="characters" type="Node3D" parent="."]
