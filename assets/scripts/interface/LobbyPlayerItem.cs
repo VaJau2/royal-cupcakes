@@ -6,6 +6,7 @@ namespace RoyalCupcakes.Interface;
 
 public partial class LobbyPlayerItem : Control
 {
+	[Export] public int PlayerId { get; private set; }
 	[Export] public bool PlayerReady { get; set; }
 	[Export] public Team Team { get; set; }
 	[Export] public string PlayerName { get; set; }
@@ -22,7 +23,8 @@ public partial class LobbyPlayerItem : Control
 
 	public override void _EnterTree()
 	{
-		SetMultiplayerAuthority(int.Parse(Name));
+		PlayerId = int.Parse(Name);
+		SetMultiplayerAuthority(PlayerId);
 	}
 
 	public override void _Ready()
@@ -48,6 +50,12 @@ public partial class LobbyPlayerItem : Control
 	{
 		if (!IsMultiplayerAuthority()) return;
 		PlayerName = Settings.Instance.PlayerName;
+
+		if (main.PlayerTeam == Team.Npc)
+		{
+			main.PlayerTeam = Team.Thief;
+		}
+		
 		Team = main.PlayerTeam;
 		
 		OnSynchronize();

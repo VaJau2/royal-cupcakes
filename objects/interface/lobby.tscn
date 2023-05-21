@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcisvibfapwfw"]
+[gd_scene load_steps=7 format=3 uid="uid://dqoukkowi7h0d"]
 
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="1_gnuu6"]
 [ext_resource type="Script" path="res://assets/scripts/interface/LobbyMenu.cs" id="1_p87cv"]
-[ext_resource type="PackedScene" uid="uid://cj7j05f66dnlf" path="res://objects/interface/lobby/player_item.tscn" id="2_f5d43"]
+[ext_resource type="PackedScene" uid="uid://cj7j05f66dnlf" path="res://objects/interface/lobby_item.tscn" id="2_f5d43"]
 [ext_resource type="Script" path="res://assets/scripts/interface/SettingsSubmenu.cs" id="4_frbrm"]
 [ext_resource type="Script" path="res://assets/scripts/interface/SettingsSlider.cs" id="5_lhbjt"]
 
@@ -121,7 +121,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="back"]
-_spawnable_scenes = PackedStringArray("res://objects/interface/lobby/player_item.tscn")
+_spawnable_scenes = PackedStringArray("res://objects/interface/lobby_item.tscn")
 spawn_path = NodePath("../players")
 
 [node name="settings" type="Control" parent="." node_paths=PackedStringArray("cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider")]

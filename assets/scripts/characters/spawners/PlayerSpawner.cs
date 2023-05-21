@@ -1,6 +1,6 @@
+using System.Linq;
 using Godot;
 using Godot.Collections;
-using RoyalCupcakes.Characters.Lasso;
 using RoyalCupcakes.Props;
 using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
@@ -17,7 +17,7 @@ public partial class PlayerSpawner : Node3D
 	[Export] private Team playerTypeFilter;
 	[Export] private PackedScene playerPrefab;
 	[Export] private Array<string> spriteCodes;
-	
+
 	private Array<RandomPoint> points = new();
 
 	private readonly Randomizer rand = new();
@@ -26,35 +26,47 @@ public partial class PlayerSpawner : Node3D
 
 	public override void _Ready()
 	{
+		if (!Multiplayer.IsServer()) return;
+
 		main = GetNode<Main>("/root/Main");
 		gameManager = GetParent<GameManager>();
-		
+
 		foreach (var node in GetChildren())
 		{
 			points.Add(node as RandomPoint);
 		}
-		
-		if (main.PlayerTeam != playerTypeFilter) return;
-		
-		if (Multiplayer.IsServer())
+
+		foreach (var playerData in
+		         main.PlayersData.Where(playerData => playerData.Value.team == playerTypeFilter))
 		{
-			SpawnPlayer(Multiplayer.GetUniqueId(), main.PlayerTeam);
-		}
-		else
-		{
-			RpcId(0, nameof(RequestSpawnPlayer), Multiplayer.GetUniqueId(), (int)main.PlayerTeam);
+			SpawnPlayer(playerData.Key, playerData.Value.team);
 		}
 	}
-	
+
 	private void SpawnPlayer(int playerId, Team playerTeam)
 	{
 		CountPlayerTeam(playerTeam);
-		
+
 		var player = playerPrefab.Instantiate<Character>();
 		player.Name += $"_{playerId}";
+		
+		if (!Multiplayer.IsServer()) return;
+		var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
+		player.SpriteCode = spriteCode;
+		player.Team = playerTeam;
 
 		playersParent.AddChild(player);
-		CallDeferred(nameof(LoadPlayerAsyncData), player, (int)playerTeam);
+		
+		points.Shuffle();
+		var spawnPoint = points[0];
+		var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
+		CallDeferred(nameof(SetPosDeferred), player, newPos);
+	}
+
+	private async void SetPosDeferred(Character player, Vector3 newPos)
+	{
+		await ToSignal(GetTree(), "process_frame");
+		player.Rpc(nameof(Character.SetGlobalPos), newPos);
 	}
 
 	private void CountPlayerTeam(Team playerTeam)
@@ -67,33 +79,6 @@ public partial class PlayerSpawner : Node3D
 			case Team.Thief:
 				gameManager.ThievesLeft++;
 				break;
-		}
-	}
-
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void RequestSpawnPlayer(int playerId, int playerTeam)
-	{
-		SpawnPlayer(playerId, (Team)playerTeam);
-	}
-
-	private async void LoadPlayerAsyncData(Node player, int playerTeam)
-	{
-		await ToSignal(GetTree(), "physics_frame");
-		
-		points.Shuffle();
-		var spawnPoint = points[0];
-		var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
-		var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
-		
-		player.Rpc(nameof(Character.LoadTeam), playerTeam);
-		player.Rpc(nameof(Character.LoadSprite), spriteCode, false);
-		player.Rpc(nameof(Character.SetGlobalPos), newPos);
-		
-		if ((Team)playerTeam == Team.Guard)
-		{
-			var lassoHandler = player.GetNode<LassoHandler>("lasso");
-			var npcCount = Settings.Instance.CaughtNpcCount;
-			lassoHandler.Rpc(nameof(LassoHandler.SetCaughtNpcLeft), npcCount);
 		}
 	}
 }

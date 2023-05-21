@@ -1,4 +1,5 @@
 using Godot;
+using RoyalCupcakes.Characters.Lasso;
 using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Characters;
@@ -38,6 +39,21 @@ public partial class Character : CharacterBody3D
 	public override void _Ready()
 	{
 		spriteLoader = GetNode<SpriteLoader>("sprite");
+		if (Multiplayer.IsServer())
+		{
+			LoadTeam((int)Team);
+			LoadSprite(SpriteCode, false);
+		}
+		else
+		{
+			CallDeferred(nameof(LoadDeferred));
+		}
+	}
+
+	private async void LoadDeferred()
+	{
+		await ToSignal(GetTree(), "process_frame");
+		RpcId(1, nameof(RequestCharacterData));
 	}
 
 	public override void _Process(double delta)
@@ -70,11 +86,24 @@ public partial class Character : CharacterBody3D
 			
 		MoveAndSlide();
 	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void RequestCharacterData()
+	{
+		var senderId = Multiplayer.GetRemoteSenderId();
+		RpcId(senderId, nameof(LoadTeam), (int)Team);
+		RpcId(senderId, nameof(LoadSprite), SpriteCode, false);
+	}
 	
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void LoadTeam(int newTeam)
 	{
 		Team = (Team)newTeam;
+
+		if ((Team)newTeam != Team.Guard) return;
+		
+		var lassoHandler = GetNode<LassoHandler>("lasso");
+		lassoHandler.SetVisible();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

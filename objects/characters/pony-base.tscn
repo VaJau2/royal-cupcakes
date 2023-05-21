@@ -228,6 +228,7 @@ vframes = 7
 script = ExtResource("3_yr4m1")
 
 [node name="lasso" type="Node3D" parent="."]
+visible = false
 script = ExtResource("5_4051e")
 lassoPrefab = ExtResource("5_6vcqf")
 

@@ -90,7 +90,7 @@ public partial class NPC : Character
     {
         base._Process(delta);
 
-        if (!IsMultiplayerAuthority()) return;
+        if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
         
         if (IsTied) return;
         if (agent.IsNavigationFinished()) return;

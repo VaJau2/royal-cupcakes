@@ -41,7 +41,11 @@ public partial class LosingHandler : Node
 			scene.AddChild(freeCamera);
 			freeCamera.SetPosition(player.GlobalPosition, playerOldCamera.Position);
 			freeCamera.MakeCurrent();
-			gameManager.RpcId(0, nameof(GameManager.RequestRemoveThief));
+
+			gameManager.RpcId(1,
+				player.Team == Team.Thief
+					? nameof(GameManager.RequestRemoveThief)
+					: nameof(GameManager.RequestRemoveGuard));
 		};
 	}
 }

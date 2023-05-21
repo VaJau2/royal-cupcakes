@@ -1,5 +1,6 @@
-using System;
 using Godot;
+using System.Collections.Generic;
+using RoyalCupcakes.Characters;
 using RoyalCupcakes.Interface;
 
 namespace RoyalCupcakes.System;
@@ -10,8 +11,8 @@ namespace RoyalCupcakes.System;
  */
 public partial class Main : Node
 {
-	public ENetMultiplayerPeer peer = new();
-	public Team PlayerTeam { get; set; } = Team.Thief;
+	public readonly Dictionary<int, PlayerData> PlayersData = new();
+	public Team PlayerTeam { get; set; }
 	public Team WinnersTeam { get; set; }
 
 	private CanvasLayer menuParent;
@@ -19,6 +20,8 @@ public partial class Main : Node
 	
 	private Control currentMenu;
 	private Node3D currentScene;
+	
+	private ENetMultiplayerPeer peer = new();
 	
 	[Export] private bool debugHost;
 
@@ -36,25 +39,23 @@ public partial class Main : Node
 		{
 			peer.CreateServer(settings.Port);
 			Multiplayer.MultiplayerPeer = peer;
+
+			if (debugHost)
+			{
+				ChangeMenu("pause_menu");
+				ChangeScene("game");
+			}
+			else
+			{
+				ChangeMenu("lobby");
+			}
 		}
 		else
 		{
 			peer.CreateClient(settings.Host, settings.Port);
 			Multiplayer.MultiplayerPeer = peer;
-		}
-	}
-
-	public void Connect(Settings settings, bool isHost, Action connected)
-	{
-		Connect(settings, isHost);
-		
-		if (isHost)
-		{
-			connected();
-		}
-		else
-		{
-			Multiplayer.ConnectedToServer += connected;
+			currentMenu = null;
+			currentScene = null;
 		}
 	}
 
@@ -66,12 +67,14 @@ public partial class Main : Node
 
 	public void ChangeMenu(string menuPath, bool isError = false)
 	{
+		if (Multiplayer.HasMultiplayerPeer() && !Multiplayer.IsServer()) return;
+
 		var menuPrefab = GD.Load<PackedScene>($"res://objects/interface/{menuPath}.tscn");
 		if (menuPrefab == null) return;
 
 		var newMenu = menuPrefab.Instantiate<Control>();
-		
-		currentMenu.QueueFree();
+
+		currentMenu?.QueueFree();
 		menuParent.AddChild(newMenu);
 		currentMenu = newMenu;
 
@@ -105,24 +108,20 @@ public partial class Main : Node
 		levelParent = GetNode<Node>("Level");
 		currentMenu = menuParent.GetNode<Control>("MainMenu");
 
-		void FailFunc()
-		{
-			Multiplayer.MultiplayerPeer = null;
-			ChangeScene(null);
-			ChangeMenu("main_menu", true);
-		}
-
 		Multiplayer.ServerDisconnected += FailFunc;
 		Multiplayer.ConnectionFailed += FailFunc;
 
 		if (debugHost)
 		{
-			Connect(Settings.Instance, true, () =>
-			{
-				ChangeMenu("pause_menu");
-				ChangeScene("game");
-			});
+			Connect(Settings.Instance, true);
 		}
+	}
+	
+	private void FailFunc()
+	{
+		Multiplayer.MultiplayerPeer = null;
+		ChangeScene(null);
+		ChangeMenu("main_menu", true);
 	}
 }
 
@@ -131,4 +130,11 @@ public enum Team
 	Npc,
 	Thief,
 	Guard,
+}
+
+public struct PlayerData
+{
+	public Character character;
+	public string name;
+	public Team team;
 }

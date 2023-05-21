@@ -22,7 +22,6 @@ public partial class ConnectionModal : Control
 	private LineEdit port;
 
 	private bool isHost;
-	private bool isConnected;
 
 	public override void _Ready()
 	{
@@ -31,6 +30,12 @@ public partial class ConnectionModal : Control
 		connectionType = GetNode<Button>("type");
 		ip = GetNode<LineEdit>("ip");
 		port = GetNode<LineEdit>("port");
+
+		Multiplayer.ConnectedToServer += () =>
+		{
+			var mainMenu = GetNode<Control>("/root/Main/UI/MainMenu");
+			mainMenu.QueueFree();
+		};
 	}
 
 	public void OpenModal()
@@ -59,20 +64,6 @@ public partial class ConnectionModal : Control
 		settings.Host = !string.IsNullOrEmpty(ip.Text) ? ip.Text : DefaultHost;
 		settings.Port = !string.IsNullOrEmpty(port.Text) ? int.Parse(port.Text) : DefaultPort;
 
-		if (isConnected)
-		{
-			main.Connect(settings, isHost);
-			return;
-		}
-
-		main.Connect(settings, isHost,
-			() =>
-			{
-				connectingModal.Hide();
-				main.ChangeMenu("lobby");
-			}
-		);
-		
-		isConnected = true;
+		main.Connect(settings, isHost);
 	}
 }

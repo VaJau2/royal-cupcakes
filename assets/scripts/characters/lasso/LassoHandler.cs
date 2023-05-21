@@ -32,18 +32,10 @@ public partial class LassoHandler : Node3D
     public override void _Ready()
     {
         gameManager = GetNode<GameManager>("/root/Main/Level/Scene");
-        
+
         bodySprite = GetNode<Sprite3D>("../sprite");
         mySprite = GetNode<Sprite3D>("sprite");
         lassoParent = PlayerOwner.GetParent<Node3D>();
-
-        CallDeferred(nameof(LoadPlayerTeam));
-    }
-
-    private async void LoadPlayerTeam()
-    {
-        await ToSignal(GetTree(), "process_frame");
-        Visible = PlayerOwner.Team == Team.Guard;
     }
 
     public override void _Process(double delta)
@@ -57,6 +49,34 @@ public partial class LassoHandler : Node3D
         if (!Input.IsActionJustPressed("ui_click")) return;
         var target = Cursor.GetCursorWorldPosition(this);
         Rpc(nameof(SpawnLasso), target);
+    }
+
+    public void SetVisible()
+    {
+        Visible = true;
+
+        if (Multiplayer.IsServer())
+        {
+            SetCaughtNpcCount(Settings.Instance.CaughtNpcCount);
+        }
+        else
+        {
+            RpcId(1, nameof(RequestCaughtNpcCount));
+        }
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    private void RequestCaughtNpcCount()
+    {
+        var senderId = Multiplayer.GetRemoteSenderId();
+        var npcCount = Settings.Instance.CaughtNpcCount;
+        RpcId(senderId, nameof(SetCaughtNpcCount), npcCount);
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    private void SetCaughtNpcCount(int count)
+    {
+        CaughtNpcLeft = count;
     }
 
     private void UpdateFlip()
@@ -121,12 +141,6 @@ public partial class LassoHandler : Node3D
     {
         var data = player.Manager.GetPLayerData(player.PlayerId);
         return data.name;
-    }
-
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    public void SetCaughtNpcLeft(int newValue)
-    {
-        CaughtNpcLeft = newValue;
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

@@ -10,6 +10,10 @@ script = ExtResource("1_rmdct")
 
 [node name="MainMenu" parent="UI" instance=ExtResource("1_h4mab")]
 
+[node name="uiSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://objects/interface/main_menu.tscn", "res://objects/interface/lobby.tscn", "res://objects/interface/pause_menu.tscn")
+spawn_path = NodePath("../UI")
+
 [node name="Level" type="Node" parent="."]
 
 [node name="levelSpawner" type="MultiplayerSpawner" parent="."]

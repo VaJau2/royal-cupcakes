@@ -7,6 +7,7 @@ namespace RoyalCupcakes.Props;
 
 public partial class CakeSpawner : Node3D
 {
+	private static int cakeGlobalCount;
 	public bool MaySpawn { get; set; } = true;
 	
 	[Export] private Node3D cakesParent;
@@ -14,21 +15,20 @@ public partial class CakeSpawner : Node3D
 
 	private Randomizer rand = new();
 
-	public override void _EnterTree()
-	{
-		if (!Multiplayer.IsServer()) return;
-		SetMultiplayerAuthority(Multiplayer.GetUniqueId());
-	}
-
 	public override void _Ready()
 	{
-		if (!IsMultiplayerAuthority()) return;
-		if (!MaySpawn) return;
-		if (cakePrefabs.Count == 0) return;
+		if (!Multiplayer.IsServer()) return;
+		if (cakePrefabs.Count == 0 || !MaySpawn) return;
+		SpawnCake();
+	}
 
-		var cakeI = rand.GetInt(0, cakePrefabs.Count);
-		var prefab = cakePrefabs[cakeI];
-		var cake = prefab.Instantiate();
+	private void SpawnCake()
+	{
+		var chosenPrefab = rand.GetInt(0, cakePrefabs.Count);
+		var prefab = cakePrefabs[chosenPrefab];
+		var cake = prefab.Instantiate<Cake>();
+		cake.Name += cakeGlobalCount++;
+		cakesParent.AddChild(cake, true);
 		CallDeferred(nameof(LoadCakeAsyncData), cake);
 
 		var gameManager = GetNode<GameManager>("/root/Main/Level/Scene");
@@ -37,7 +37,6 @@ public partial class CakeSpawner : Node3D
 	
 	private async void LoadCakeAsyncData(Node cake)
 	{
-		cakesParent.AddChild(cake, true);
 		await ToSignal(GetTree(), "physics_frame");
 		cake.Rpc(nameof(Cake.SetGlobalPos), GlobalPosition);
 	}

@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using Godot;
 using RoyalCupcakes.Characters.Spawners;
 using RoyalCupcakes.Interface;
+using RoyalCupcakes.Props;
 using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.System;
@@ -96,12 +98,14 @@ public partial class GameManager : Node3D
 
     private void UpdateCakesSpawnersCount()
     {
-        var cakesParent = GetNode("cakes");
+        var cakesParent = GetNode("cakeSpawners");
         var spawnersToDelete = cakesParent.GetChildCount() - startCakesCount;
         while (spawnersToDelete > 0)
         {
             var randI = rand.GetInt(0, cakesParent.GetChildCount());
-            cakesParent.GetChild(randI).Free();
+            var spawner = cakesParent.GetChild(randI) as CakeSpawner;
+            Debug.Assert(spawner != null, nameof(spawner) + " is not CakeSpawner");
+            spawner.MaySpawn = false;
             spawnersToDelete -= 1;
         }
     }
@@ -209,6 +213,13 @@ public partial class GameManager : Node3D
     {
         if (!Multiplayer.IsServer()) return;
         ThievesLeft--;
+    }
+    
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    public void RequestRemoveGuard()
+    {
+        if (!Multiplayer.IsServer()) return;
+        GuardsLeft--;
     }
     
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

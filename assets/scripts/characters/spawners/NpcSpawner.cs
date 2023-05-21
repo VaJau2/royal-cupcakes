@@ -26,15 +26,9 @@ public partial class NpcSpawner : Node3D
 
     private readonly Randomizer rand = new();
 
-    public override void _EnterTree()
-    {
-        if (!Multiplayer.IsServer()) return;
-        SetMultiplayerAuthority(Multiplayer.GetUniqueId());
-    }
-
     public override void _Ready()
     {
-        if (!IsMultiplayerAuthority()) return;
+        if (!Multiplayer.IsServer()) return;
         
         foreach (var node in GetChildren())
         {
@@ -51,8 +45,14 @@ public partial class NpcSpawner : Node3D
 
     private void SpawnNpc()
     {
+        points.Shuffle();
+        var spawnPoint = points[0];
+        var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
+        var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
         var npc = npcPrefab.Instantiate<NPC>();
+        
         npc.Name += $"{++npcCount}_{Multiplayer.GetUniqueId()}";
+        npc.SpriteCode = spriteCode;
 
         var pointsCount = rand.GetInt(MinPointsCount, points.Count);
         for (var i = 0; i < pointsCount; i++)
@@ -61,20 +61,6 @@ public partial class NpcSpawner : Node3D
         }
 
         npcParent.AddChild(npc);
-        
-        CallDeferred(nameof(LoadNpcAsyncData), npc);
-    }
-
-    private async void LoadNpcAsyncData(Node npc)
-    {
-        await ToSignal(GetTree(), "physics_frame");
-        
-        points.Shuffle();
-        var spawnPoint = points[0];
-        var newPos = rand.GetPositionAround(spawnPoint.GlobalPosition, spawnPoint.RandomRadius);
-        var spriteCode = spriteCodes[rand.GetInt(spriteCodes.Count)];
-        
-        npc.Rpc(nameof(Character.LoadSprite), spriteCode, false);
-        npc.Rpc(nameof(Character.SetGlobalPos), newPos);
+        npc.GlobalPosition = newPos;
     }
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj7j05f66dnlf"]
 
-[ext_resource type="Script" path="res://assets/scripts/interface/LobbyPlayerItem.cs" id="1_jqpn0"]
-[ext_resource type="Texture2D" uid="uid://dbhaugkhbfaxb" path="res://assets/sprites/interface/no_icon.png" id="2_cigy8"]
+[ext_resource type="Script" path="res://assets/scripts/interface/LobbyPlayerItem.cs" id="1_50pfk"]
+[ext_resource type="Texture2D" uid="uid://dbhaugkhbfaxb" path="res://assets/sprites/interface/no_icon.png" id="2_baanr"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtl5t"]
 properties/0/path = NodePath(".:PlayerReady")
@@ -23,7 +23,7 @@ offset_right = 0.384003
 offset_bottom = -7.952
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jqpn0")
+script = ExtResource("1_50pfk")
 
 [node name="up" type="ColorRect" parent="."]
 layout_mode = 1
@@ -92,7 +92,7 @@ offset_left = 0.0639954
 offset_top = 6.0
 offset_right = -8.0
 offset_bottom = -4.0
-texture = ExtResource("2_cigy8")
+texture = ExtResource("2_baanr")
 expand_mode = 2
 stretch_mode = 5
 

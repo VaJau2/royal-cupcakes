@@ -19,7 +19,7 @@ public partial class InputController : Node
     public override void _Ready()
     {
         player = GetParent<Character>();
-        player.Manager.SetPlayerCharacter(player.PlayerId, player);
+        CallDeferred(nameof(SetPlayerCharacterDeferred));
 
         if (!player.IsMultiplayerAuthority())
         {
@@ -32,6 +32,12 @@ public partial class InputController : Node
 
         var blackScreen = GetNode<ColorRect>("/root/Main/Level/Scene/canvas/blackScreen");
         blackScreen.Visible = false;
+    }
+
+    private void SetPlayerCharacterDeferred()
+    {
+        if (!Multiplayer.IsServer()) return;
+        player.Manager.SetPlayerCharacter(player.PlayerId, player);
     }
     
     public override void _Process(double delta)

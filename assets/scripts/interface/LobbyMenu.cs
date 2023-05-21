@@ -1,5 +1,6 @@
 using Godot;
 using RoyalCupcakes.System;
+using RoyalCupcakes.Utils;
 
 namespace RoyalCupcakes.Interface;
 
@@ -108,6 +109,22 @@ public partial class LobbyMenu : Control
 	private LobbyPlayerItem GetPlayerItem(int playerId)
 		=> listParent.GetNode<LobbyPlayerItem>(playerId.ToString());
 
+	private void SetPlayersDataList()
+	{
+		main.PlayersData.Clear();
+		
+		var listNodes = listParent.GetChildren();
+		var listPlayerItems = ArrayUtils.ConvertTo<LobbyPlayerItem>(listNodes);
+		foreach (var playerItem in listPlayerItems)
+		{
+			main.PlayersData.Add(playerItem.PlayerId, new PlayerData
+			{
+				name = playerItem.PlayerName,
+				team = playerItem.Team
+			});
+		}
+	}
+
 	public void CheckStartGame()
 	{
 		int readyPlayersCount = 0, 
@@ -149,8 +166,10 @@ public partial class LobbyMenu : Control
 			timer -= delta;
 			return;
 		}
-		
+
+		SetPlayersDataList();
 		main.ChangeMenu("pause_menu");
 		main.ChangeScene("game");
+		SetProcess(false);
 	}
 }

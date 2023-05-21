@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=31 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
 [ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 [ext_resource type="Script" path="res://assets/scripts/interface/MainLabel.cs" id="8_78s07"]
+[ext_resource type="Script" path="res://assets/scripts/characters/spawners/LatePlayersSpawner.cs" id="8_arlla"]
+[ext_resource type="PackedScene" uid="uid://djlddh6w7xsw0" path="res://objects/free-camera.tscn" id="9_4ta68"]
 [ext_resource type="PackedScene" uid="uid://b4lp0fbcxq5un" path="res://objects/cakes/banana-cake.tscn" id="9_12ld3"]
 [ext_resource type="PackedScene" uid="uid://tpj5dxorus5c" path="res://objects/cakes/cupcake.tscn" id="11_6s81k"]
 [ext_resource type="PackedScene" uid="uid://blqcoxavquxbd" path="res://objects/cakes/eclair.tscn" id="12_wouxq"]
@@ -356,34 +358,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3317, 0, 3.51269)
 script = ExtResource("3_1osu1")
 RandomRadius = 3.0
 
+[node name="latePlayersSpawner" type="Node3D" parent="."]
+script = ExtResource("8_arlla")
+freeCameraPrefab = ExtResource("9_4ta68")
+
+[node name="cakes" type="Node3D" parent="."]
+
 [node name="cakesSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://objects/cakes/banana-cake.tscn", "res://objects/cakes/cake2.tscn", "res://objects/cakes/choco-cake.tscn", "res://objects/cakes/cupcake.tscn", "res://objects/cakes/eclair.tscn")
 spawn_path = NodePath("../cakes")
 
-[node name="cakes" type="Node3D" parent="."]
+[node name="cakeSpawners" type="Node3D" parent="."]
 
-[node name="cakeSpawner" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+[node name="cakeSpawner" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2669, 0.270132, -2.19978)
 script = ExtResource("1_d11r4")
-cakesParent = NodePath("..")
+cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("9_12ld3"), ExtResource("1_hplti")])
 
-[node name="cakeSpawner2" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+[node name="cakeSpawner2" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5564, 0.270132, -2.18613)
 script = ExtResource("1_d11r4")
-cakesParent = NodePath("..")
+cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("9_12ld3"), ExtResource("1_hplti")])
 
-[node name="cakeSpawner3" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+[node name="cakeSpawner3" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.48867, 0.270132, -2.19791)
 script = ExtResource("1_d11r4")
-cakesParent = NodePath("..")
+cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
 
-[node name="cakeSpawner4" type="Node3D" parent="cakes" node_paths=PackedStringArray("cakesParent")]
+[node name="cakeSpawner4" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2638, 0.270132, -2.20387)
 script = ExtResource("1_d11r4")
-cakesParent = NodePath("..")
+cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
