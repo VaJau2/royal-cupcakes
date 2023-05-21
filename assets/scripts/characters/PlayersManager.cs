@@ -10,6 +10,8 @@ namespace RoyalCupcakes.Characters;
  */
 public partial class PlayersManager : Node3D
 {
+	private GameManager gameManager;
+	
 	private readonly Dictionary<int, PlayerData> playersData = new();
 	private static LogsLabel logsLabel => LogsLabel.GetInstance();
 
@@ -23,11 +25,15 @@ public partial class PlayersManager : Node3D
 	{
 		if (!IsMultiplayerAuthority()) return;
 
+		gameManager = GetParent<GameManager>();
+
 		Multiplayer.PeerDisconnected += id =>
 		{
 			var playerId = (int)id;
-			playersData[playerId].character.QueueFree();
-			Rpc(nameof(LogPlayerDisconnected), playersData[playerId].name);
+			var playerData = playersData[playerId];
+			gameManager.HandleDisconnectedPlayer(playerData.character.Team);
+			playerData.character.QueueFree();
+			Rpc(nameof(LogPlayerDisconnected), playerData.name);
 			playersData.Remove(playerId);
 		};
 	}

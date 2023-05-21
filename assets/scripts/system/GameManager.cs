@@ -65,6 +65,22 @@ public partial class GameManager : Node3D
             }
         }
     }
+
+    public void HandleDisconnectedPlayer(Team playerTeam)
+    {
+        if (playerTeam == Team.Guard)
+        {
+            guardsLeft--;
+        }
+        else
+        {
+            thievesLeft--;
+        }
+
+        if (guardsLeft > 0 && thievesLeft > 0) return;
+        main.ChangeMenu("lobby");
+        main.ChangeScene(null);
+    }
     
     public override void _EnterTree()
     {
@@ -161,12 +177,12 @@ public partial class GameManager : Node3D
     private async void FinishGame(Team winners)
     {
         if (!isLoaded) return;
-        if (isFinishing) return;
-
-        isFinishing = true;
         Rpc(nameof(SyncWinnersTeam), (int)winners);
+        
+        if (isFinishing) return;
+        isFinishing = true;
+        
         await ToSignal(GetTree().CreateTimer(FinishingTimer), "timeout");
-
         main.ChangeScene("game_results");
     }
 

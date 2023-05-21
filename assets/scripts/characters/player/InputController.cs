@@ -29,6 +29,9 @@ public partial class InputController : Node
         
         var camera = GetNode<Camera3D>("../camera");
         camera.Current = true;
+
+        var blackScreen = GetNode<ColorRect>("/root/Main/Level/Scene/canvas/blackScreen");
+        blackScreen.Visible = false;
     }
     
     public override void _Process(double delta)
