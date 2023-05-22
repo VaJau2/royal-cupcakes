@@ -9,7 +9,7 @@ public partial class LobbyPlayerItem : Control
 	[Export] public int PlayerId { get; private set; }
 	[Export] public bool PlayerReady { get; set; }
 	[Export] public Team Team { get; set; }
-	[Export] public string PlayerName { get; set; }
+	[Export] public string PlayerName { get; private set; }
 
 	private LobbyMenu lobbyMenu;
 	private Main main;
@@ -48,21 +48,45 @@ public partial class LobbyPlayerItem : Control
 
 	public void SyncPlayerData()
 	{
-		if (!IsMultiplayerAuthority()) return;
-		PlayerName = Settings.Instance.PlayerName;
-
-		if (main.PlayerTeam == Team.Npc)
+		if (!IsMultiplayerAuthority())
 		{
-			main.PlayerTeam = Team.Thief;
+			RpcId(PlayerId, nameof(RequestData));
+		}
+		else
+		{
+			PlayerName = Settings.Instance.PlayerName;
+
+			if (main.PlayerTeam == Team.Npc)
+			{
+				main.PlayerTeam = Team.Thief;
+			}
+		
+			Team = main.PlayerTeam;
+		
+			Synchronize();
 		}
 		
-		Team = main.PlayerTeam;
-		
-		OnSynchronize();
 	}
 
-	public void OnSynchronize()
+	public void Synchronize()
 	{
+		Rpc(nameof(SendData), PlayerName, (int)Team, PlayerReady);
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void RequestData()
+	{
+		var senderId = Multiplayer.GetRemoteSenderId();
+		RpcId(senderId, nameof(SendData), PlayerName, (int)Team, PlayerReady);
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	private void SendData(string playerName, int playerTeam, bool playerReady)
+	{
+		PlayerName = playerName;
+		Team = (Team)playerTeam;
+		PlayerReady = playerReady;
+
 		playerNameLabel.Text = PlayerName;
 		readyIcon.Texture = readyTextures[PlayerReady];
 

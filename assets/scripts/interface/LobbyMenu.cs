@@ -94,14 +94,14 @@ public partial class LobbyMenu : Control
 		var playerItem = GetPlayerItem(Multiplayer.GetUniqueId());
 		main.PlayerTeam = main.PlayerTeam == Team.Guard ? Team.Thief : Team.Guard;
 		playerItem.Team = main.PlayerTeam;
-		playerItem.OnSynchronize();
+		playerItem.Synchronize();
 	}
 
 	private void OnReadyPressed()
 	{
 		var playerItem = GetPlayerItem(Multiplayer.GetUniqueId());
 		playerItem.PlayerReady = !playerItem.PlayerReady;
-		playerItem.OnSynchronize();
+		playerItem.Synchronize();
 
 		readyButton.Text = playerItem.PlayerReady ? NotReadyCode : ReadyCode;
 	}

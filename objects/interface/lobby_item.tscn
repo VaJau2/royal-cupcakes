@@ -1,18 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj7j05f66dnlf"]
+[gd_scene load_steps=3 format=3 uid="uid://cj7j05f66dnlf"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/LobbyPlayerItem.cs" id="1_50pfk"]
 [ext_resource type="Texture2D" uid="uid://dbhaugkhbfaxb" path="res://assets/sprites/interface/no_icon.png" id="2_baanr"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtl5t"]
-properties/0/path = NodePath(".:PlayerReady")
-properties/0/spawn = true
-properties/0/sync = true
-properties/1/path = NodePath(".:Team")
-properties/1/spawn = true
-properties/1/sync = true
-properties/2/path = NodePath(".:PlayerName")
-properties/2/spawn = true
-properties/2/sync = true
 
 [node name="playerItem" type="Control"]
 custom_minimum_size = Vector2(0, 40)
@@ -95,9 +84,3 @@ offset_bottom = -4.0
 texture = ExtResource("2_baanr")
 expand_mode = 2
 stretch_mode = 5
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.25
-replication_config = SubResource("SceneReplicationConfig_dtl5t")
-
-[connection signal="synchronized" from="MultiplayerSynchronizer" to="." method="OnSynchronize"]

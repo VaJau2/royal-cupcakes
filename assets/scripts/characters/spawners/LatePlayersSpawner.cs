@@ -26,6 +26,12 @@ public partial class LatePlayersSpawner : Node3D
 		freeCamera.GlobalPosition = GlobalPosition;
 		freeCamera.MakeCurrent();
 		
+		CallDeferred(nameof(DisableBlackScreenDeferred));
+	}
+	
+	private async void DisableBlackScreenDeferred()
+	{
+		await ToSignal(GetTree(), "process_frame");
 		var blackScreen = GetNode<ColorRect>("/root/Main/Level/Scene/canvas/blackScreen");
 		blackScreen.Visible = false;
 	}

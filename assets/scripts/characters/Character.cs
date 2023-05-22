@@ -65,7 +65,7 @@ public partial class Character : CharacterBody3D
 	private void UpdateMoveDirection()
 	{
 		var speed = IsRunning ? runSpeed : walkSpeed;
-		var direction = Direction;
+		var direction = IsTied ? Vector3.Zero : Direction;
 		direction.Y = 0;
 		Velocity = Velocity.MoveToward(direction * speed, acceleration);
 

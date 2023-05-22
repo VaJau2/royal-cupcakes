@@ -29,15 +29,20 @@ public partial class InputController : Node
         
         var camera = GetNode<Camera3D>("../camera");
         camera.Current = true;
-
-        var blackScreen = GetNode<ColorRect>("/root/Main/Level/Scene/canvas/blackScreen");
-        blackScreen.Visible = false;
+        CallDeferred(nameof(DisableBlackScreenDeferred));
     }
 
     private void SetPlayerCharacterDeferred()
     {
         if (!Multiplayer.IsServer()) return;
         player.Manager.SetPlayerCharacter(player.PlayerId, player);
+    }
+
+    private async void DisableBlackScreenDeferred()
+    {
+        await ToSignal(GetTree(), "process_frame");
+        var blackScreen = GetNode<ColorRect>("/root/Main/Level/Scene/canvas/blackScreen");
+        blackScreen.Visible = false;
     }
     
     public override void _Process(double delta)
