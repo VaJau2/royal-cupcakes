@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwpt68wb0sjb6"]
+
+[ext_resource type="Texture2D" uid="uid://ctp6k07res6n1" path="res://assets/sprites/minimap/back.png" id="1_geimw"]
+[ext_resource type="Script" path="res://assets/scripts/interface/MiniMap.cs" id="1_grhxd"]
+[ext_resource type="Texture2D" uid="uid://bsxr3pagay7hi" path="res://assets/sprites/minimap/mask.png" id="2_1eh8b"]
+[ext_resource type="Texture2D" uid="uid://c33glxr485at1" path="res://assets/sprites/minimap/enemy.png" id="3_k1eyg"]
+
+[node name="Minimap" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 256.0
+script = ExtResource("1_grhxd")
+
+[node name="back" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_geimw")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="mask" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1eh8b")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="enemy" type="Sprite2D" parent="mask"]
+visible = false
+texture_filter = 1
+position = Vector2(128, 128)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_k1eyg")

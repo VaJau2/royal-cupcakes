@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=32 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://tpj5dxorus5c" path="res://objects/cakes/cupcake.tscn" id="11_6s81k"]
 [ext_resource type="PackedScene" uid="uid://blqcoxavquxbd" path="res://objects/cakes/eclair.tscn" id="12_wouxq"]
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="13_jcijh"]
+[ext_resource type="PackedScene" uid="uid://bwpt68wb0sjb6" path="res://objects/interface/minimap.tscn" id="17_wc7ft"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3vrk"]
+font_size = 18
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_12a3e"]
 vertices = PackedVector3Array(-10.2171, 0.171035, 0.18602, -10.2171, 0.171035, -1.41398, -11.0171, 0.171035, -1.61398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -2.81398, -12.6171, 0.171035, -4.81398, -12.6171, 0.171035, 0.18602, -11.0171, 0.171035, -1.61398, -11.0171, 0.171035, -2.81398, -9.41708, 0.171035, -2.81398, -9.21708, 0.171035, -4.81398, -12.6171, 0.171035, -4.81398, -7.81708, 0.171035, 0.18602, -7.61708, 0.171035, 0.58602, -6.01708, 0.171035, 0.38602, -9.41708, 0.171035, -1.61398, -10.2171, 0.171035, -1.41398, -10.2171, 0.171035, 0.18602, -7.81708, 0.171035, 0.18602, -9.21708, 0.171035, -4.81398, -9.41708, 0.171035, -2.81398, -9.41708, 0.171035, -1.61398, -7.81708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -6.21708, 0.171035, -4.81398, 2.18292, 0.171035, -3.01398, 2.38292, 0.171035, -2.21398, 3.38292, 0.171035, -2.21398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -2.21398, -3.01708, 0.171035, -2.21398, -2.81708, 0.171035, -3.01398, -4.61708, 0.171035, -4.81398, 0.982916, 0.171035, -3.01398, 2.18292, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, -2.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, -1.61708, 0.171035, -2.21398, 0.782916, 0.171035, -2.21398, 0.982916, 0.171035, -3.01398, -1.81708, 0.171035, -3.01398, 0.982916, 0.171035, -3.01398, 3.38292, 0.171035, -4.81398, -4.61708, 0.171035, -4.81398, 7.58292, 0.171035, 0.18602, 8.58292, 0.171035, 0.18602, 8.58292, 0.171035, -1.41398, 7.78292, 0.171035, -1.61398, 4.98292, 0.171035, 0.18602, 4.58292, 0.171035, 0.38602, 7.38292, 0.171035, 0.78602, 7.78292, 0.171035, -2.81398, 8.58292, 0.171035, -3.01398, 8.58292, 0.171035, -4.81398, 4.98292, 0.171035, -4.81398, 7.38292, 0.171035, 0.78602, 7.58292, 0.171035, 0.18602, 7.78292, 0.171035, -1.61398, 7.78292, 0.171035, -2.81398, 4.98292, 0.171035, -4.81398, 4.98292, 0.171035, 0.18602, 9.18292, 0.171035, -1.61398, 8.58292, 0.171035, -1.41398, 8.58292, 0.171035, 0.18602, 12.3829, 0.171035, 0.18602, 8.58292, 0.171035, -4.81398, 8.58292, 0.171035, -3.01398, 9.18292, 0.171035, -2.81398, 12.3829, 0.171035, -4.81398, 9.18292, 0.171035, -2.81398, 9.18292, 0.171035, -1.61398, 12.3829, 0.171035, 0.18602, 12.3829, 0.171035, -4.81398, 3.38292, 0.171035, -2.21398, 2.38292, 0.171035, -2.21398, 2.18292, 0.171035, -1.41398, 3.38292, 0.171035, 0.18602, -2.81708, 0.171035, -1.41398, -3.01708, 0.171035, -2.21398, -4.61708, 0.171035, -2.21398, -4.61708, 0.171035, 0.18602, 3.78292, 0.171035, 5.18602, 3.78292, 0.171035, 0.38602, 3.38292, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.61708, 0.171035, 0.58602, -7.81708, 0.171035, 1.78602, 3.38292, 0.171035, 0.18602, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.41708, 0.171035, 5.18602, 3.78292, 0.171035, 5.18602, 0.982916, 0.171035, -1.41398, 0.782916, 0.171035, -2.21398, -1.61708, 0.171035, -2.21398, -1.81708, 0.171035, -1.41398, -7.81708, 0.171035, 1.78602, -12.6171, 0.171035, 1.78602, -12.6171, 0.171035, 5.18602, -4.41708, 0.171035, 5.18602, 3.38292, 0.171035, 0.18602, 2.18292, 0.171035, -1.41398, 0.982916, 0.171035, -1.41398, -1.81708, 0.171035, -1.41398, -2.81708, 0.171035, -1.41398, -4.61708, 0.171035, 0.18602, -4.61708, 0.171035, 0.18602, -6.01708, 0.171035, 0.38602, -7.81708, 0.171035, 1.78602, -4.41708, 0.171035, 5.18602, 7.58292, 0.171035, 1.78602, 7.38292, 0.171035, 0.78602, 4.58292, 0.171035, 0.38602, 3.78292, 0.171035, 0.38602, 3.78292, 0.171035, 5.18602, 12.3829, 0.171035, 5.18602, 12.3829, 0.171035, 1.78602, 7.58292, 0.171035, 1.78602, 3.78292, 0.171035, 5.18602)
@@ -61,11 +65,43 @@ sky = SubResource("Sky_ry8j7")
 ambient_light_source = 3
 ambient_light_color = Color(0.32549, 0.345098, 0.372549, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_p3vrk"]
-font_size = 18
-
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_qcmkw")
+
+[node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="mainLabel" type="Label" parent="canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_right = 185.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme = ExtResource("13_jcijh")
+label_settings = SubResource("LabelSettings_p3vrk")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_78s07")
+
+[node name="blackScreen" type="ColorRect" parent="canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="miniMap" parent="canvas" instance=ExtResource("17_wc7ft")]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 26.0
+offset_right = -25.0
+offset_bottom = 186.0
+grow_horizontal = 0
 
 [node name="props" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_12a3e")
@@ -403,27 +439,3 @@ directional_shadow_split_1 = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_82egu")
-
-[node name="canvas" type="CanvasLayer" parent="."]
-
-[node name="mainLabel" type="Label" parent="canvas"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -185.0
-offset_right = 185.0
-offset_bottom = 52.0
-grow_horizontal = 2
-theme = ExtResource("13_jcijh")
-label_settings = SubResource("LabelSettings_p3vrk")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("8_78s07")
-
-[node name="blackScreen" type="ColorRect" parent="canvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
