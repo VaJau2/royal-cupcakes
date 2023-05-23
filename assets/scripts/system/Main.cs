@@ -12,7 +12,7 @@ namespace RoyalCupcakes.System;
 public partial class Main : Node
 {
 	public readonly Dictionary<int, PlayerData> PlayersData = new();
-	public Team PlayerTeam { get; set; };
+	public Team PlayerTeam { get; set; }
 	public Team WinnersTeam { get; set; }
 
 	private CanvasLayer menuParent;
