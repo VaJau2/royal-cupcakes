@@ -70,10 +70,25 @@ public partial class Character : CharacterBody3D
 		direction.Y = 0;
 		Velocity = Velocity.MoveToward(direction * speed, acceleration);
 
-		if (direction.X != 0)
+		if (direction.Length() == 0) return;
+		
+		var rotatedDirection = GetRotatedSideDirection(direction);
+		if (Mathf.Abs(rotatedDirection) < 0.1f) return;
+		
+		spriteLoader.FlipH = rotatedDirection < 0;
+	}
+
+	private float GetRotatedSideDirection(Vector3 direction)
+	{
+		return RotationDegrees.Y switch
 		{
-			spriteLoader.FlipH = direction.X < 0;
-		}
+			>= 0 and < 90 => direction.X,
+			>= 90 and < 180 => -direction.Z,
+			>= 180 and < 270 => -direction.X,
+			>= -90 and < 0 => direction.Z,
+			>= -180 and < -90 => -direction.X,
+			_ => 0
+		};
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -119,6 +134,7 @@ public partial class Character : CharacterBody3D
 		if (!changeEffect) return;
 		
 		var effect = changeEffectPrefab.Instantiate<Node3D>();
+		effect.Rotation = Rotation;
 		GetParent().AddChild(effect);
 		effect.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, GlobalPosition.Z + 0.02f);
 	}

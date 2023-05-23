@@ -93,6 +93,7 @@ public partial class LassoHandler : Node3D
         if (target == Vector3.Zero) return;
 
         var lasso = lassoPrefab.Instantiate<Lasso>();
+        lasso.Rotation = PlayerOwner.Rotation;
         lasso.Name = "lasso_" + PlayerOwner.PlayerId;
         lasso.LassoHandler = this;
         lassoParent.AddChild(lasso);

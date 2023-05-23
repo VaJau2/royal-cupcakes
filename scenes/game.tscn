@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=33 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://blqcoxavquxbd" path="res://objects/cakes/eclair.tscn" id="12_wouxq"]
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="13_jcijh"]
 [ext_resource type="PackedScene" uid="uid://bwpt68wb0sjb6" path="res://objects/interface/minimap.tscn" id="17_wc7ft"]
+[ext_resource type="Script" path="res://assets/scripts/characters/RotationController.cs" id="18_ncney"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3vrk"]
 font_size = 18
@@ -439,3 +440,6 @@ directional_shadow_split_1 = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_82egu")
+
+[node name="rotationController" type="Node" parent="."]
+script = ExtResource("18_ncney")

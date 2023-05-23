@@ -12,7 +12,7 @@ namespace RoyalCupcakes.System;
 public partial class Main : Node
 {
 	public readonly Dictionary<int, PlayerData> PlayersData = new();
-	public Team PlayerTeam { get; set; }
+	public Team PlayerTeam { get; set; } = Team.Thief;
 	public Team WinnersTeam { get; set; }
 
 	private CanvasLayer menuParent;
@@ -111,17 +111,25 @@ public partial class Main : Node
 		Multiplayer.ServerDisconnected += FailFunc;
 		Multiplayer.ConnectionFailed += FailFunc;
 
-		if (debugHost)
-		{
-			Connect(Settings.Instance, true);
-		}
+		if (!debugHost) return;
+		StartDebugHost();
 	}
-	
+
 	private void FailFunc()
 	{
 		Multiplayer.MultiplayerPeer = null;
 		ChangeScene(null);
 		ChangeMenu("main_menu", true);
+	}
+
+	private void StartDebugHost()
+	{
+		PlayersData.Add(1, new PlayerData
+		{
+			name = Settings.Instance.PlayerName,
+			team = PlayerTeam
+		});
+		Connect(Settings.Instance, true);
 	}
 }
 

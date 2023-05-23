@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/lasso/LassoHandler.cs" id="5_4051e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
-size = Vector3(0.24547, 0.375969, 0.116409)
+size = Vector3(0.245, 0.376, 0.245)
 
 [sub_resource type="Animation" id="Animation_bv2jf"]
 length = 0.001
@@ -213,7 +213,7 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
 
-[node name="pony" type="CharacterBody3D"]
+[node name="pony" type="CharacterBody3D" groups=["character"]]
 script = ExtResource("1_7hsws")
 changeEffectPrefab = ExtResource("2_mtyjj")
 
