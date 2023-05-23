@@ -36,10 +36,9 @@ public partial class LosingHandler : Node
 			MainLabel.Instance.ShowText("#YOU_ARE_CAPTURED#");
 			
 			var scene = GetNode<Node3D>("/root/Main/Level/Scene");
-			var playerOldCamera = player.GetNode<Node3D>("camera");
 			var freeCamera = freeCameraPrefab.Instantiate<FreeCamera>();
 			scene.AddChild(freeCamera);
-			freeCamera.SetPosition(player.GlobalPosition, playerOldCamera.Position);
+			freeCamera.GlobalPosition = player.GlobalPosition;
 			freeCamera.MakeCurrent();
 
 			gameManager.RpcId(1,

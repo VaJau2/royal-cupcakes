@@ -12,12 +12,6 @@ public partial class FreeCamera : CharacterBody3D
 	private const float Acceleration = 0.2f;
 
 	private Camera3D camera;
-	
-	public void SetPosition(Vector3 characterPos, Vector3 cameraLocalPos)
-	{
-		GlobalPosition = characterPos;
-		camera.Position = cameraLocalPos;
-	}
 
 	public void MakeCurrent()
 	{

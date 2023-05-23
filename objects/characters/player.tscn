@@ -27,7 +27,7 @@ script = ExtResource("5_mdyfi")
 transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 1.1, 1.3)
 
 [node name="closePosition" type="Node3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340344, 0.0347911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340344, -0.0631743)
 
 [node name="wallsCheck" type="RayCast3D" parent="." index="8" node_paths=PackedStringArray("camera", "closePositionNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14139, 1.1616)
