@@ -31,11 +31,30 @@ public partial class ConnectionModal : Control
 		ip = GetNode<LineEdit>("ip");
 		port = GetNode<LineEdit>("port");
 
+		LoadValuesFromSettings();
+
 		Multiplayer.ConnectedToServer += () =>
 		{
 			var mainMenu = GetNode<Control>("/root/Main/UI/MainMenu");
 			mainMenu.QueueFree();
 		};
+	}
+
+	private void LoadValuesFromSettings()
+	{
+		var settings = Settings.Instance;
+		
+		var ipFromSettings = settings.Host;
+		if (ipFromSettings != ip.PlaceholderText)
+		{
+			ip.Text = ipFromSettings;
+		}
+
+		var portFromSettings = settings.Port.ToString();
+		if (portFromSettings != port.PlaceholderText)
+		{
+			port.Text = portFromSettings;
+		}
 	}
 
 	public void OpenModal()

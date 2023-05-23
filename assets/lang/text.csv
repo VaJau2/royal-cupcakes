@@ -47,3 +47,4 @@ keys,en,ru
 #COUNT_START_TIME#,Start time count,Кол-во стартового времени
 #COUNT_APPEND_TIME#,Append time count,Кол-во добавляемого времени
 #COUNT_MISTAKES_COUNT#,Guard mistakes count,Кол-во ошибок стражников
+#MINIMAP_ON#,Mimimap for thieves,Миникарта для воров

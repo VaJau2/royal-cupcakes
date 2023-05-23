@@ -123,7 +123,7 @@ autowrap_mode = 2
 _spawnable_scenes = PackedStringArray("res://objects/interface/lobby_item.tscn")
 spawn_path = NodePath("../players")
 
-[node name="settings" type="Control" parent="." node_paths=PackedStringArray("cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider")]
+[node name="settings" type="Control" parent="." node_paths=PackedStringArray("cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider", "minimapCheckbox")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -134,7 +134,7 @@ anchor_bottom = 0.5
 offset_left = -320.0
 offset_top = -196.0
 offset_right = 320.0
-offset_bottom = 124.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_frbrm")
@@ -143,6 +143,7 @@ npcSlider = NodePath("npc")
 startTimeSlider = NodePath("startTime")
 appendTimeSlider = NodePath("appendTime")
 mistakesSlider = NodePath("mistakesCount")
+minimapCheckbox = NodePath("minimap")
 
 [node name="back" type="ColorRect" parent="settings"]
 layout_mode = 1
@@ -400,6 +401,26 @@ grow_vertical = 2
 text = "0"
 vertical_alignment = 1
 
+[node name="minimap" type="CheckBox" parent="settings"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 232.0
+offset_right = 336.0
+offset_bottom = 256.0
+
+[node name="Label" type="Label" parent="settings/minimap"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -11.256
+offset_right = -16.0
+offset_bottom = 17.752
+text = "#MINIMAP_ON#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="close" type="Button" parent="settings"]
 layout_mode = 1
 anchors_preset = 7
@@ -424,4 +445,5 @@ text = "#CLOSE#"
 [connection signal="value_changed" from="settings/startTime" to="settings" method="OnStartTimeValueChanged"]
 [connection signal="value_changed" from="settings/appendTime" to="settings" method="OnAppendTimeValueChanged"]
 [connection signal="value_changed" from="settings/mistakesCount" to="settings" method="OnMistakesCountValueChanged"]
+[connection signal="toggled" from="settings/minimap" to="settings" method="OnMinimapToggled"]
 [connection signal="pressed" from="settings/close" to="settings" method="OnClosePressed"]

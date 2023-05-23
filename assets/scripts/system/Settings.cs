@@ -71,6 +71,12 @@ public class Settings
         set => config.SetValue(dir, "caught_npc_count", value);
     }
     
+    public bool MinimapOn
+    {
+        get => (bool)config.GetValue(dir, "minimap_on", false);
+        set => config.SetValue(dir, "minimap_on", value);
+    }
+    
     private static Settings instance;
     
     private Settings()

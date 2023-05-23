@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface;
 
@@ -16,7 +17,16 @@ public partial class MiniMap : Control
 	public void SetVisible(Node3D newPlayer)
 	{
 		player = newPlayer;
-		Visible = true;
+
+		if (Multiplayer.IsServer())
+		{
+			if (!Settings.Instance.MinimapOn) return;
+			SetVisibleFromHost();
+		}
+		else
+		{
+			RpcId(1, nameof(RequestHostMinimapSettings));
+		}
 	}
 
 	public void SpawnMarker(Node3D character)
@@ -67,4 +77,18 @@ public partial class MiniMap : Control
 	}
 
 	private static Vector2 Get2DPos(Vector3 originPos) => new(originPos.X, originPos.Z);
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void RequestHostMinimapSettings()
+	{
+		if (!Settings.Instance.MinimapOn) return;
+		var senderId = Multiplayer.GetRemoteSenderId();
+		RpcId(senderId, nameof(SetVisibleFromHost));
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void SetVisibleFromHost()
+	{
+		Visible = true;
+	}
 }

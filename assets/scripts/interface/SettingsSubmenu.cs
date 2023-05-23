@@ -8,6 +8,7 @@ public partial class SettingsSubmenu : Control
 	[Export] private HSlider startTimeSlider;
 	[Export] private HSlider appendTimeSlider;
 	[Export] private HSlider mistakesSlider;
+	[Export] private CheckBox minimapCheckbox;
 
 	public override void _EnterTree()
 	{
@@ -17,6 +18,7 @@ public partial class SettingsSubmenu : Control
 		startTimeSlider.Value = settings.MainTimer;
 		appendTimeSlider.Value = settings.AppendMainTime;
 		mistakesSlider.Value = settings.CaughtNpcCount;
+		minimapCheckbox.ButtonPressed = settings.MinimapOn;
 	}
 
 	private void OnClosePressed()
@@ -47,5 +49,10 @@ public partial class SettingsSubmenu : Control
 	private void OnMistakesCountValueChanged(double value)
 	{
 		Settings.Instance.CaughtNpcCount = (int)value;
+	}
+
+	private void OnMinimapToggled(bool value)
+	{
+		Settings.Instance.MinimapOn = value;
 	}
 }
