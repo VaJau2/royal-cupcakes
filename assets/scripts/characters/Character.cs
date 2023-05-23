@@ -1,5 +1,6 @@
 using Godot;
 using RoyalCupcakes.Characters.Lasso;
+using RoyalCupcakes.Characters.Player;
 using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Characters;
@@ -99,6 +100,9 @@ public partial class Character : CharacterBody3D
 	public void LoadTeam(int newTeam)
 	{
 		Team = (Team)newTeam;
+
+		var minimapItem = GetNodeOrNull<MinimapItem>("minimapItem");
+		minimapItem?.Initialize();
 
 		if ((Team)newTeam != Team.Guard) return;
 		

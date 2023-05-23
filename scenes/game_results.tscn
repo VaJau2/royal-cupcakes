@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbn2361mqmrkk"]
+[gd_scene load_steps=10 format=3 uid="uid://dbn2361mqmrkk"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/GameResults.cs" id="1_gas30"]
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="2_j2y5b"]
+[ext_resource type="Texture2D" uid="uid://cbqa5wyuo5nue" path="res://assets/sprites/interface/pics/thieves_win1.png" id="2_xxg7a"]
+[ext_resource type="Texture2D" uid="uid://d7lhnph3vabh" path="res://assets/sprites/interface/pics/thieves_win2.png" id="3_a02i1"]
+[ext_resource type="Texture2D" uid="uid://b336y5nayuwmf" path="res://assets/sprites/interface/pics/guards_win3.png" id="3_n2d16"]
+[ext_resource type="Texture2D" uid="uid://ck25d3ia041u5" path="res://assets/sprites/interface/pics/thieves_win3.png" id="4_ayeh0"]
+[ext_resource type="Texture2D" uid="uid://bxoym2pmk8rqv" path="res://assets/sprites/interface/pics/guards_win1.png" id="5_cq41s"]
+[ext_resource type="Texture2D" uid="uid://umnurwabj2ys" path="res://assets/sprites/interface/pics/guards_win2.png" id="6_p6huj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dw1vl"]
 font_size = 20
 
 [node name="GameResults" type="Node3D"]
 script = ExtResource("1_gas30")
+thievesWin = Array[Texture2D]([ExtResource("2_xxg7a"), ExtResource("3_a02i1"), ExtResource("4_ayeh0")])
+guardsWin = Array[Texture2D]([ExtResource("5_cq41s"), ExtResource("6_p6huj"), ExtResource("3_n2d16")])
 
 [node name="back" type="Control" parent="."]
 layout_mode = 3
@@ -26,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -123.0
-offset_top = -16.0
+offset_top = -134.0
 offset_right = 123.0
-offset_bottom = 15.0
+offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "#GAME_BROKEN#"
@@ -37,16 +45,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="continueLabel" type="Label" parent="back"]
-visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 24.0
+offset_right = 94.0
+offset_bottom = 46.0
+grow_horizontal = 2
+text = "#SPACE_TO_CONTINUE#"
+
+[node name="picture" type="TextureRect" parent="back"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -60.0
-offset_right = 94.0
+offset_left = -455.0
+offset_top = -421.0
+offset_right = 458.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "#SPACE_TO_CONTINUE#"
+expand_mode = 2
+stretch_mode = 5

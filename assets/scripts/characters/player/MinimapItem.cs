@@ -13,7 +13,10 @@ public partial class MinimapItem : Node
 	{
 		miniMap = GetNode<MiniMap>("/root/Main/Level/Scene/canvas/miniMap");
 		player = GetParent<Character>();
+	}
 
+	public void Initialize()
+	{
 		if (player.IsMultiplayerAuthority())
 		{
 			if (player.Team == Team.Thief)
