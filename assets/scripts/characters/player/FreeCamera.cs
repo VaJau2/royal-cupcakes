@@ -21,6 +21,8 @@ public partial class FreeCamera : CharacterBody3D
 	public override void _Ready()
 	{
 		camera = GetNode<Camera3D>("camera");
+		var rotationController = GetNode<RotationController>("/root/Main/Level/Scene/rotationController");
+		rotationController.ClearRotation();
 	}
 
 	public override void _Process(double delta)

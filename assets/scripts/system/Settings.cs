@@ -31,13 +31,13 @@ public class Settings
     
     public string Host
     {
-        get => (string)config.GetValue(dir, "host");
+        get => (string)config.GetValue(dir, "host", "localhost");
         set => config.SetValue(dir, "host", value);
     }
     
     public int Port
     {
-        get => (int)config.GetValue(dir, "port");
+        get => (int)config.GetValue(dir, "port", 8080);
         set => config.SetValue(dir, "port", value);
     }
     

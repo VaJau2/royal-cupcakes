@@ -13,6 +13,14 @@ public partial class RotationController : Node
 	private double rotationDelta;
 	private Array<Node3D> characters;
 
+	public void ClearRotation()
+	{
+		if (currentRotation == 0) return;
+		targetRotation = 0;
+		rotationDelta = 0;
+		SetProcess(true);
+	}
+
 	public override void _Ready()
 	{
 		CallDeferred(nameof(LoadDeferred));
@@ -68,7 +76,15 @@ public partial class RotationController : Node
 			character.RotationDegrees = characterRotation;
 		}
 
-		if (rotationDelta < 1.5) return;
+		if (rotationDelta < 1) return;
+		ClumpTargetRotation();
 		SetProcess(false);
+	}
+
+	private void ClumpTargetRotation()
+	{
+		if (targetRotation is > -360 and < 360) return;
+		targetRotation = 0;
+		currentRotation = 0;
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbn2361mqmrkk"]
+[gd_scene load_steps=11 format=3 uid="uid://dbn2361mqmrkk"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/GameResults.cs" id="1_gas30"]
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="2_j2y5b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b336y5nayuwmf" path="res://assets/sprites/interface/pics/guards_win3.png" id="3_n2d16"]
 [ext_resource type="Texture2D" uid="uid://ck25d3ia041u5" path="res://assets/sprites/interface/pics/thieves_win3.png" id="4_ayeh0"]
 [ext_resource type="Texture2D" uid="uid://bxoym2pmk8rqv" path="res://assets/sprites/interface/pics/guards_win1.png" id="5_cq41s"]
+[ext_resource type="Texture2D" uid="uid://c3vaa15l2wsel" path="res://assets/sprites/interface/pics/guards_win4.png" id="5_ix6id"]
 [ext_resource type="Texture2D" uid="uid://umnurwabj2ys" path="res://assets/sprites/interface/pics/guards_win2.png" id="6_p6huj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dw1vl"]
@@ -15,7 +16,7 @@ font_size = 20
 [node name="GameResults" type="Node3D"]
 script = ExtResource("1_gas30")
 thievesWin = Array[Texture2D]([ExtResource("2_xxg7a"), ExtResource("3_a02i1"), ExtResource("4_ayeh0")])
-guardsWin = Array[Texture2D]([ExtResource("5_cq41s"), ExtResource("6_p6huj"), ExtResource("3_n2d16")])
+guardsWin = Array[Texture2D]([ExtResource("5_cq41s"), ExtResource("6_p6huj"), ExtResource("3_n2d16"), ExtResource("5_ix6id")])
 
 [node name="back" type="Control" parent="."]
 layout_mode = 3
