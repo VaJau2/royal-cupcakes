@@ -13,23 +13,26 @@ collision_mask = 4
 [node name="sprite" parent="." index="0"]
 render_priority = 1
 
-[node name="inputController" type="Node" parent="." index="3"]
+[node name="listener" type="AudioListener3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.669461, 0)
+
+[node name="inputController" type="Node" parent="." index="4"]
 script = ExtResource("2_gq2jv")
 
-[node name="losingHandler" type="Node" parent="." index="4"]
+[node name="losingHandler" type="Node" parent="." index="5"]
 script = ExtResource("3_vuxpd")
 freeCameraPrefab = ExtResource("4_ibnfg")
 
-[node name="minimapItem" type="Node" parent="." index="5"]
+[node name="minimapItem" type="Node" parent="." index="6"]
 script = ExtResource("5_mdyfi")
 
-[node name="camera" type="Camera3D" parent="." index="6"]
+[node name="camera" type="Camera3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3.6)
 
-[node name="closePosition" type="Node3D" parent="." index="7"]
+[node name="closePosition" type="Node3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103391, 0.73337, -0.0631743)
 
-[node name="wallsCheck" type="RayCast3D" parent="." index="8" node_paths=PackedStringArray("camera", "closePositionNode")]
+[node name="wallsCheck" type="RayCast3D" parent="." index="9" node_paths=PackedStringArray("camera", "closePositionNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03305, 2.69072)
 exclude_parent = false
 target_position = Vector3(0, -1.184, -2.777)

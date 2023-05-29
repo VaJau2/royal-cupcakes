@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqbwr418wgrb2"]
+[gd_scene load_steps=33 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
 [ext_resource type="PackedScene" uid="uid://cv24wwftkv36n" path="res://objects/change-effect.tscn" id="2_mtyjj"]
@@ -8,6 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://yyj4xr0su7ub" path="res://assets/sprites/lasso/lasso_item.png" id="4_nt8to"]
 [ext_resource type="PackedScene" uid="uid://cgqmcve4glw6i" path="res://objects/items/Lasso.tscn" id="5_6vcqf"]
 [ext_resource type="Script" path="res://assets/scripts/characters/lasso/LassoHandler.cs" id="5_4051e"]
+[ext_resource type="Script" path="res://assets/scripts/characters/SoundSteps.cs" id="8_i6b38"]
+[ext_resource type="Script" path="res://assets/scripts/characters/MaterialMonitor.cs" id="8_k20db"]
+[ext_resource type="AudioStream" uid="uid://bi8rdj4yn7plw" path="res://assets/sounds/steps/stone/StoneStep1.wav" id="9_515fp"]
+[ext_resource type="AudioStream" uid="uid://crx8303c40dwi" path="res://assets/sounds/steps/stone/StoneStep2.wav" id="10_jycd3"]
+[ext_resource type="AudioStream" uid="uid://4x33ah7mc7x8" path="res://assets/sounds/steps/stone/StoneStep3.wav" id="11_0p5nr"]
+[ext_resource type="AudioStream" uid="uid://bht77tqtp7kct" path="res://assets/sounds/steps/stone/StoneStepRun1.wav" id="12_ucrte"]
+[ext_resource type="AudioStream" uid="uid://cq2jmt526mdro" path="res://assets/sounds/steps/grass/stepGrassFast1.wav" id="13_3gvtc"]
+[ext_resource type="AudioStream" uid="uid://0rp0ewropuo2" path="res://assets/sounds/steps/stone/StoneStepRun2.wav" id="13_6f3ss"]
+[ext_resource type="AudioStream" uid="uid://cnrnm1r2wen86" path="res://assets/sounds/steps/grass/stepGrassFast2.wav" id="14_q5ycr"]
+[ext_resource type="AudioStream" uid="uid://c71khffylglc6" path="res://assets/sounds/steps/stone/StoneStepRun3.wav" id="14_vmlbf"]
+[ext_resource type="AudioStream" uid="uid://dbla0yhscia3o" path="res://assets/sounds/steps/grass/stepGrassFast3.wav" id="15_yq7bb"]
+[ext_resource type="AudioStream" uid="uid://dki4kt048clrv" path="res://assets/sounds/steps/grass/stepGrassRun1.wav" id="19_kwml2"]
+[ext_resource type="AudioStream" uid="uid://b6f8gks7mhxet" path="res://assets/sounds/steps/grass/stepGrassRun2.wav" id="20_l47bv"]
+[ext_resource type="AudioStream" uid="uid://bulj6xrx618ed" path="res://assets/sounds/steps/grass/stepGrassRun3.wav" id="21_ef8db"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
 size = Vector3(0.595, 0.912, 0.595)
@@ -247,6 +261,28 @@ texture = ExtResource("4_nt8to")
 [node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00754073, 0.462899, 0)
 shape = SubResource("BoxShape3D_4pnlb")
+
+[node name="materialMonitor" type="RayCast3D" parent="." node_paths=PackedStringArray("soundSteps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382063, 0)
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 8
+script = ExtResource("8_k20db")
+soundSteps = NodePath("../steps")
+
+[node name="steps" type="AudioStreamPlayer3D" parent="."]
+unit_size = 2.0
+max_db = 0.0
+max_distance = 150.0
+script = ExtResource("8_i6b38")
+currentMaterial = "stone"
+walkSteps = {
+"carpet": [ExtResource("13_3gvtc"), ExtResource("14_q5ycr"), ExtResource("15_yq7bb")],
+"stone": [ExtResource("9_515fp"), ExtResource("10_jycd3"), ExtResource("11_0p5nr")]
+}
+runSteps = {
+"carpet": [ExtResource("19_kwml2"), ExtResource("20_l47bv"), ExtResource("21_ef8db")],
+"stone": [ExtResource("12_ucrte"), ExtResource("13_6f3ss"), ExtResource("14_vmlbf")]
+}
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

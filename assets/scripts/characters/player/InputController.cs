@@ -29,6 +29,8 @@ public partial class InputController : Node
         
         var camera = GetNode<Camera3D>("../camera");
         camera.Current = true;
+        var listener = GetNode<AudioListener3D>("../listener");
+        listener.MakeCurrent();
         CallDeferred(nameof(DisableBlackScreenDeferred));
     }
 

@@ -33,6 +33,8 @@ public partial class Character : CharacterBody3D
 	[Signal]
 	public delegate void TiedEventHandler();
 
+	public bool IsMoving => Velocity.Length() > 0.1f;
+
 	public override void _EnterTree()
 	{
 		PlayerId = int.Parse(Name.ToString().Split('_')[1]);
