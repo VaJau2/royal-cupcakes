@@ -11,14 +11,11 @@ public partial class RotationController : Node
 	private double currentRotation;
 	private double targetRotation;
 	private double rotationDelta;
-	private Array<Node3D> characters;
+	private Array<Node3D> rotatedObjects;
 
-	public void ClearRotation()
+	public void AddRotatedObject(Node3D newObject)
 	{
-		if (currentRotation == 0) return;
-		targetRotation = 0;
-		rotationDelta = 0;
-		SetProcess(true);
+		rotatedObjects.Add(newObject);
 	}
 
 	public override void _Ready()
@@ -31,7 +28,7 @@ public partial class RotationController : Node
 	{
 		await ToSignal(GetTree(), "process_frame");
 		var characterNodes = GetTree().GetNodesInGroup("character");
-		characters = ArrayUtils.ConvertTo<Node3D>(characterNodes);
+		rotatedObjects = ArrayUtils.ConvertTo<Node3D>(characterNodes);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -69,7 +66,7 @@ public partial class RotationController : Node
 			currentRotation = targetRotation;
 		}
 
-		foreach (var character in characters)
+		foreach (var character in rotatedObjects)
 		{
 			var characterRotation = character.RotationDegrees;
 			characterRotation.Y = (float)currentRotation;

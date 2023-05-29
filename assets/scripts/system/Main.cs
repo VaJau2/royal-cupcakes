@@ -124,6 +124,8 @@ public partial class Main : Node
 
 	private void StartDebugHost()
 	{
+		PlayerTeam = Team.Thief;
+		
 		PlayersData.Add(1, new PlayerData
 		{
 			name = Settings.Instance.PlayerName,

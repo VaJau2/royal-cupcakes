@@ -138,6 +138,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437029, 0)
 shape = SubResource("BoxShape3D_3ncjh")
 
 [node name="Great Cake" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1.2, 0, 0, 0, 1.02, 0, 0, 0, 1.2, 0, 0.209126, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209126, 0)
 mesh = SubResource("ArrayMesh_5wi1s")
 skeleton = NodePath("")

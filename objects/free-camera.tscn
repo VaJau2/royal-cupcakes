@@ -5,14 +5,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_lxwny"]
 size = Vector3(0.14081, 0.137884, 0.155366)
 
-[node name="FreeCamera" type="CharacterBody3D"]
+[node name="FreeCamera" type="CharacterBody3D" groups=["character"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_4lf3o")
 
 [node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0.9, 1.4)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3.6)
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.883874, 1.37483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98438, 3.56126)
 shape = SubResource("BoxShape3D_lxwny")

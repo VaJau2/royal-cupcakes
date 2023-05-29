@@ -39,7 +39,11 @@ public partial class LosingHandler : Node
 			var freeCamera = freeCameraPrefab.Instantiate<FreeCamera>();
 			scene.AddChild(freeCamera);
 			freeCamera.GlobalPosition = player.GlobalPosition;
+			freeCamera.Rotation = player.Rotation;
 			freeCamera.MakeCurrent();
+			
+			var rotationController = GetNode<RotationController>("/root/Main/Level/Scene/rotationController");
+			rotationController.AddRotatedObject(freeCamera);
 
 			gameManager.RpcId(1,
 				player.Team == Team.Thief

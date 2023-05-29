@@ -24,15 +24,15 @@ freeCameraPrefab = ExtResource("4_ibnfg")
 script = ExtResource("5_mdyfi")
 
 [node name="camera" type="Camera3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 1.1, 1.3)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3.6)
 
 [node name="closePosition" type="Node3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340344, -0.0631743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103391, 0.73337, -0.0631743)
 
 [node name="wallsCheck" type="RayCast3D" parent="." index="8" node_paths=PackedStringArray("camera", "closePositionNode")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14139, 1.1616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03305, 2.69072)
 exclude_parent = false
-target_position = Vector3(0, -0.8, -1.3)
+target_position = Vector3(0, -1.184, -2.777)
 collision_mask = 5
 script = ExtResource("6_b05q1")
 camera = NodePath("../camera")

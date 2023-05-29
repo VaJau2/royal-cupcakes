@@ -23,10 +23,10 @@ public partial class Lasso : RigidBody3D
 		var dir = GlobalPosition.DirectionTo(targetPosition);
 		var force = GlobalPosition.DistanceTo(targetPosition);
 		
-		dir.Y += 0.1f;
+		dir.Y += 0.2f;
 		force = Mathf.Clamp(force, 1, 3);
 		
-		LinearVelocity = dir * force * 3f;
+		LinearVelocity = dir * force * 4f;
 	}
 
 	public override void _Ready()

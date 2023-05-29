@@ -22,9 +22,11 @@ public partial class Character : CharacterBody3D
 	public int PlayerId { get; set; }
 	public PlayersManager Manager => GetParent<PlayersManager>();
 	
-	private const float walkSpeed = 2f;
-	private const float runSpeed = 4f;
-	private const float acceleration = 0.2f;
+	private const float walkSpeed = 8f;
+	private const float runSpeed = 14f;
+	private const float acceleration = 0.6f;
+	private const float tiedAcceleration = 0.2f;
+	private const float gravity = 2f;
 
 	private SpriteLoader spriteLoader;
 	
@@ -61,15 +63,24 @@ public partial class Character : CharacterBody3D
 	{
 		if (IsTied) return;
 		UpdateMoveDirection();
+		UpdateFlipByDirection();
 	}
 	
 	private void UpdateMoveDirection()
 	{
 		var speed = IsRunning ? runSpeed : walkSpeed;
 		var direction = IsTied ? Vector3.Zero : Direction;
-		direction.Y = 0;
-		Velocity = Velocity.MoveToward(direction * speed, acceleration);
+		if (direction.Length() > 0)
+		{
+			direction.Y = -gravity;
+		}
 
+		Velocity = Velocity.MoveToward(direction * speed, acceleration);
+	}
+
+	private void UpdateFlipByDirection()
+	{
+		var direction = IsTied ? Vector3.Zero : Direction;
 		if (direction.Length() == 0) return;
 		
 		var rotatedDirection = GetRotatedSideDirection(direction);
@@ -97,7 +108,7 @@ public partial class Character : CharacterBody3D
 		
 		if (IsTied)
 		{
-			Velocity = Velocity.MoveToward(Vector3.Zero, 0.05f);
+			Velocity = Velocity.MoveToward(Vector3.Zero, tiedAcceleration);
 		}
 			
 		MoveAndSlide();

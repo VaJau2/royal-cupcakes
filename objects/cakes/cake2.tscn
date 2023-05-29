@@ -132,7 +132,7 @@ size = Vector3(0.315804, 0.129018, 0.314382)
 CakeCode = "#NAME_CAKE#"
 
 [node name="Cake2" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.85, 0, 0, 0, 1, 0, 0.043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043, 0)
 mesh = SubResource("ArrayMesh_6piqs")
 skeleton = NodePath("")
 

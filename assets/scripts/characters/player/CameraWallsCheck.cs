@@ -51,5 +51,5 @@ public partial class CameraWallsCheck : RayCast3D
 		cameraInPlace = camera.Position.DistanceTo(targetPos) < CloseDistance;
 	}
 
-	private bool GetSeePlayer() => GetCollider() == GetParent();
+	private bool GetSeePlayer() => GetCollider() is Character;
 }

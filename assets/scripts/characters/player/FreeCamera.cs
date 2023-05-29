@@ -8,8 +8,8 @@ namespace RoyalCupcakes.Characters.Player;
  */
 public partial class FreeCamera : CharacterBody3D
 {
-	private const float Speed = 4f;
-	private const float Acceleration = 0.2f;
+	private const float Speed = 8f;
+	private const float Acceleration = 0.4f;
 
 	private Camera3D camera;
 
@@ -21,8 +21,6 @@ public partial class FreeCamera : CharacterBody3D
 	public override void _Ready()
 	{
 		camera = GetNode<Camera3D>("camera");
-		var rotationController = GetNode<RotationController>("/root/Main/Level/Scene/rotationController");
-		rotationController.ClearRotation();
 	}
 
 	public override void _Process(double delta)

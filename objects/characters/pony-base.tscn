@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/lasso/LassoHandler.cs" id="5_4051e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
-size = Vector3(0.245, 0.376, 0.245)
+size = Vector3(0.595, 0.912, 0.595)
 
 [sub_resource type="Animation" id="Animation_bv2jf"]
 length = 0.001
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.0854512, 0.231758, 0.01), Vector3(0.0854512, 0.231758, 0.01)]
+"values": [Vector3(0.154425, 0.554682, 0.01), Vector3(0.154425, 0.554682, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_36le3"]
@@ -94,7 +94,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.145004, 0.18147, 0.01), Vector3(0.145004, 0.201698, 0.01), Vector3(0.145004, 0.211506, 0.01), Vector3(0.145004, 0.221314, 0.01), Vector3(0.145004, 0.212119, 0.01), Vector3(0.145004, 0.231121, 0.01), Vector3(0.145004, 0.211506, 0.01), Vector3(0.145004, 0.191277, 0.01)]
+"values": [Vector3(0.298628, 0.436988, 0.01), Vector3(0.298628, 0.484405, 0.01), Vector3(0.298628, 0.507125, 0.01), Vector3(0.298628, 0.530833, 0.01), Vector3(0.298628, 0.507125, 0.01), Vector3(0.298628, 0.554542, 0.01), Vector3(0.298628, 0.506137, 0.01), Vector3(0.298628, 0.460696, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_ttqvp"]
@@ -122,7 +122,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector3(0.0849312, 0.181469, 0.01), Vector3(0.0849312, 0.181469, 0.01)]
+"values": [Vector3(0.154081, 0.435346, 0.01), Vector3(0.154081, 0.435346, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_dhyb1"]
@@ -149,10 +149,10 @@ tracks/1/path = NodePath("lasso/sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.61, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.175833, 0.0338582, 0.01), Vector3(0.175833, 0.0338582, 0.01), Vector3(0.166025, 0.041827, 0.01), Vector3(0.175833, 0.0338582, 0.01), Vector3(0.166025, 0.041827, 0.01), Vector3(0.175833, 0.0338582, 0.01)]
+"values": [Vector3(0.370439, 0.0773236, 0.01), Vector3(0.370439, 0.0773236, 0.01), Vector3(0.347719, 0.103008, 0.01), Vector3(0.371427, 0.0773236, 0.01), Vector3(0.346731, 0.10202, 0.01), Vector3(0.370439, 0.0763357, 0.01), Vector3(0.370439, 0.0773236, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_vlx0t"]
@@ -178,10 +178,10 @@ tracks/1/path = NodePath("lasso/sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.0850653, 0.251609, 0.01), Vector3(0.0948731, 0.251609, 0.01), Vector3(0.0948731, 0.241802, 0.01), Vector3(0.0850653, 0.251609, 0.01), Vector3(0.0948731, 0.251609, 0.01), Vector3(0.0948731, 0.261417, 0.01), Vector3(0.0948731, 0.251609, 0.01), Vector3(0.0850653, 0.251609, 0.01)]
+"values": [Vector3(0.154688, 0.603541, 0.01), Vector3(0.178344, 0.603541, 0.01), Vector3(0.178344, 0.57864, 0.01), Vector3(0.154688, 0.602296, 0.01), Vector3(0.178344, 0.602296, 0.01), Vector3(0.178344, 0.626574, 0.01), Vector3(0.178344, 0.602918, 0.01), Vector3(0.178344, 0.602918, 0.01)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkgsj"]
@@ -214,11 +214,14 @@ properties/0/spawn = true
 properties/0/sync = true
 
 [node name="pony" type="CharacterBody3D" groups=["character"]]
+wall_min_slide_angle = 0.349066
+floor_max_angle = 0.872665
+floor_snap_length = 0.2
 script = ExtResource("1_7hsws")
 changeEffectPrefab = ExtResource("2_mtyjj")
 
 [node name="sprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(2.4, 0, 0, 0, 2.387, 0, 0, 0, 0.658, -0.0495766, 0.688032, 0)
 shaded = true
 alpha_cut = 2
 texture_filter = 0
@@ -233,7 +236,7 @@ script = ExtResource("5_4051e")
 lassoPrefab = ExtResource("5_6vcqf")
 
 [node name="sprite" type="Sprite3D" parent="lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0854512, 0.231758, 0.01)
+transform = Transform3D(2.4, 0, 0, 0, 2.491, 0, 0, 0, 1.005, 0.0854512, 0.231758, 0.01)
 shaded = true
 double_sided = false
 alpha_cut = 2
@@ -242,7 +245,7 @@ render_priority = 1
 texture = ExtResource("4_nt8to")
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00869766, 0.199196, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00754073, 0.462899, 0)
 shape = SubResource("BoxShape3D_4pnlb")
 
 [node name="anim" type="AnimationPlayer" parent="."]

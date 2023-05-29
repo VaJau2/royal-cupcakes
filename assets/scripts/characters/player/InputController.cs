@@ -11,7 +11,7 @@ namespace RoyalCupcakes.Characters.Player;
  */
 public partial class InputController : Node
 {
-    private const float MinInteractDistance = 0.8f;
+    private const float MinInteractDistance = 1.2f;
     
     private Character player;
     private Vector3 direction;

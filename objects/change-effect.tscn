@@ -56,7 +56,7 @@ _data = {
 script = SubResource("GDScript_nr87e")
 
 [node name="sprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.284226, 0)
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0.702388, 0)
 texture_filter = 0
 texture = ExtResource("1_l6bgw")
 hframes = 8
