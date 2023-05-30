@@ -26,6 +26,7 @@ public partial class LobbyMenu : Control
 	private Button settingsButton;
 	private Control settings;
 	private Label messageLabel;
+	private AudioStreamPlayer audi;
 
 	private double timer;
 
@@ -37,6 +38,7 @@ public partial class LobbyMenu : Control
 		settingsButton = GetNode<Button>("back/settings");
 		settings = GetNode<Control>("settings");
 		messageLabel = GetNode<Label>("back/message");
+		audi = GetNode<AudioStreamPlayer>("audi");
 		SetProcess(false);
 
 		if (Multiplayer.IsServer())
@@ -80,17 +82,20 @@ public partial class LobbyMenu : Control
 
 	private void OnBackPressed()
 	{
+		audi.Play();
 		main.Disconnect();
 		main.ChangeMenu("main_menu");
 	}
 
 	private void OnSettingsPressed()
 	{
+		audi.Play();
 		settings.Visible = !settings.Visible;
 	}
 
 	private void OnChangeTeamPressed()
 	{
+		audi.Play();
 		var playerItem = GetPlayerItem(Multiplayer.GetUniqueId());
 		main.PlayerTeam = main.PlayerTeam == Team.Guard ? Team.Thief : Team.Guard;
 		playerItem.Team = main.PlayerTeam;
@@ -99,6 +104,7 @@ public partial class LobbyMenu : Control
 
 	private void OnReadyPressed()
 	{
+		audi.Play();
 		var playerItem = GetPlayerItem(Multiplayer.GetUniqueId());
 		playerItem.PlayerReady = !playerItem.PlayerReady;
 		playerItem.Synchronize();

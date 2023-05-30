@@ -3,6 +3,7 @@ using RoyalCupcakes.System;
 
 public partial class SettingsSubmenu : Control
 {
+	[Export] private AudioStreamPlayer audi;
 	[Export] private HSlider cakesSlider;
 	[Export] private HSlider npcSlider;
 	[Export] private HSlider startTimeSlider;
@@ -23,6 +24,7 @@ public partial class SettingsSubmenu : Control
 
 	private void OnClosePressed()
 	{
+		audi?.Play();
 		Visible = false;
 	}
 

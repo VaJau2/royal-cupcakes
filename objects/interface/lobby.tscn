@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqoukkowi7h0d"]
+[gd_scene load_steps=8 format=3 uid="uid://dqoukkowi7h0d"]
 
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="1_gnuu6"]
 [ext_resource type="Script" path="res://assets/scripts/interface/LobbyMenu.cs" id="1_p87cv"]
 [ext_resource type="PackedScene" uid="uid://cj7j05f66dnlf" path="res://objects/interface/lobby_item.tscn" id="2_f5d43"]
 [ext_resource type="Script" path="res://assets/scripts/interface/SettingsSubmenu.cs" id="4_frbrm"]
 [ext_resource type="Script" path="res://assets/scripts/interface/SettingsSlider.cs" id="5_lhbjt"]
+[ext_resource type="AudioStream" uid="uid://s24ccx6e3hex" path="res://assets/sounds/button_sound.wav" id="6_pqgvt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_atqo7"]
 font_size = 20
@@ -123,7 +124,7 @@ autowrap_mode = 2
 _spawnable_scenes = PackedStringArray("res://objects/interface/lobby_item.tscn")
 spawn_path = NodePath("../players")
 
-[node name="settings" type="Control" parent="." node_paths=PackedStringArray("cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider", "minimapCheckbox")]
+[node name="settings" type="Control" parent="." node_paths=PackedStringArray("audi", "cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider", "minimapCheckbox")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -138,6 +139,7 @@ offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_frbrm")
+audi = NodePath("../audi")
 cakesSlider = NodePath("cakes")
 npcSlider = NodePath("npc")
 startTimeSlider = NodePath("startTime")
@@ -435,6 +437,10 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "#CLOSE#"
+
+[node name="audi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pqgvt")
+volume_db = -2.0
 
 [connection signal="pressed" from="back/backButton" to="." method="OnBackPressed"]
 [connection signal="pressed" from="back/settings" to="." method="OnSettingsPressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=27 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/PlayersManager.cs" id="1_y7rk8"]
 [ext_resource type="PackedScene" uid="uid://bjqal8lmw22dr" path="res://objects/characters/npc.tscn" id="2_ch63m"]
 [ext_resource type="Script" path="res://assets/scripts/props/RandomPoint.cs" id="3_1osu1"]
+[ext_resource type="AudioStream" uid="uid://vj1yx2t6pj2e" path="res://assets/sounds/alarm.wav" id="4_52xsj"]
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/PlayerSpawner.cs" id="4_ttbyx"]
 [ext_resource type="PackedScene" uid="uid://cmysrdiv5leol" path="res://objects/characters/player.tscn" id="5_fh4su"]
 [ext_resource type="PackedScene" uid="uid://celruls0ht4vv" path="res://objects/location.tscn" id="5_q20yi"]
@@ -77,6 +78,9 @@ label_settings = SubResource("LabelSettings_p3vrk")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_78s07")
+alarmSound = ExtResource("4_52xsj")
+
+[node name="audi" type="AudioStreamPlayer" parent="canvas/mainLabel"]
 
 [node name="blackScreen" type="ColorRect" parent="canvas"]
 anchors_preset = 15

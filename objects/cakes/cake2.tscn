@@ -126,16 +126,16 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i0oby")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_74ir2"]
-size = Vector3(0.315804, 0.129018, 0.314382)
+size = Vector3(0.473213, 0.210553, 0.476832)
 
 [node name="cake2" instance=ExtResource("1_ckpjo")]
 CakeCode = "#NAME_CAKE#"
 
 [node name="Cake2" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0685048, 0)
 mesh = SubResource("ArrayMesh_6piqs")
 skeleton = NodePath("")
 
 [node name="shape" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0526606, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.088475, 0)
 shape = SubResource("BoxShape3D_74ir2")

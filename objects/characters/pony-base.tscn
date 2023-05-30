@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqbwr418wgrb2"]
+[gd_scene load_steps=34 format=3 uid="uid://dqbwr418wgrb2"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/Character.cs" id="1_7hsws"]
 [ext_resource type="PackedScene" uid="uid://cv24wwftkv36n" path="res://objects/change-effect.tscn" id="2_mtyjj"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dki4kt048clrv" path="res://assets/sounds/steps/grass/stepGrassRun1.wav" id="19_kwml2"]
 [ext_resource type="AudioStream" uid="uid://b6f8gks7mhxet" path="res://assets/sounds/steps/grass/stepGrassRun2.wav" id="20_l47bv"]
 [ext_resource type="AudioStream" uid="uid://bulj6xrx618ed" path="res://assets/sounds/steps/grass/stepGrassRun3.wav" id="21_ef8db"]
+[ext_resource type="AudioStream" uid="uid://cc2mxxvp7n5lj" path="res://assets/sounds/lasso_tie.wav" id="22_4g061"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
 size = Vector3(0.595, 0.912, 0.595)
@@ -283,6 +284,7 @@ runSteps = {
 "carpet": [ExtResource("19_kwml2"), ExtResource("20_l47bv"), ExtResource("21_ef8db")],
 "stone": [ExtResource("12_ucrte"), ExtResource("13_6f3ss"), ExtResource("14_vmlbf")]
 }
+tied = ExtResource("22_4g061")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

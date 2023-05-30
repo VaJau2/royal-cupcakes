@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgqmcve4glw6i"]
+[gd_scene load_steps=7 format=3 uid="uid://cgqmcve4glw6i"]
 
 [ext_resource type="Texture2D" uid="uid://dmlctrvtgn610" path="res://assets/sprites/lasso/lasso.png" id="1_88e7e"]
 [ext_resource type="Script" path="res://assets/scripts/characters/lasso/Lasso.cs" id="1_q6541"]
 [ext_resource type="PackedScene" uid="uid://buj3tgvheei3x" path="res://objects/items/Rope.tscn" id="3_q8ftg"]
+[ext_resource type="AudioStream" uid="uid://c421pnn232whv" path="res://assets/sounds/lasso_throw.wav" id="4_k1u70"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl44b"]
 size = Vector3(0.548597, 0.371008, 0.093846)
@@ -35,5 +36,10 @@ monitorable = false
 [node name="shape" type="CollisionShape3D" parent="catchArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.093925, 0)
 shape = SubResource("BoxShape3D_h2boo")
+
+[node name="audi" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_k1u70")
+volume_db = 2.0
+max_distance = 200.0
 
 [connection signal="body_entered" from="catchArea" to="." method="OnCatchBody"]

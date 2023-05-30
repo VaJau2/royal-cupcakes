@@ -24,6 +24,7 @@ public partial class Main : Node
 	private ENetMultiplayerPeer peer = new();
 	
 	[Export] private bool debugHost;
+	[Export] private Team debugTeam = Team.Thief;
 
 	public override void _Notification(int what)
 	{
@@ -124,7 +125,7 @@ public partial class Main : Node
 
 	private void StartDebugHost()
 	{
-		PlayerTeam = Team.Thief;
+		PlayerTeam = debugTeam;
 		
 		PlayersData.Add(1, new PlayerData
 		{

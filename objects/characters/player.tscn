@@ -33,9 +33,9 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103391, 0.73337, -0.0631743)
 
 [node name="wallsCheck" type="RayCast3D" parent="." index="9" node_paths=PackedStringArray("camera", "closePositionNode")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03305, 2.69072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99023, 3.5364)
 exclude_parent = false
-target_position = Vector3(0, -1.184, -2.777)
+target_position = Vector3(0, -1.109, -3.436)
 collision_mask = 5
 script = ExtResource("6_b05q1")
 camera = NodePath("../camera")

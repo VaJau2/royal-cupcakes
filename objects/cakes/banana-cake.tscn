@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dd03e337uyrxd" path="res://assets/models/cakes/Great Banana Cake_Donut.png" id="2_yfd4y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ncjh"]
-size = Vector3(0.48718, 0.927792, 0.494344)
+size = Vector3(0.568086, 1.3668, 0.568784)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li0vn"]
 resource_name = "Donut"
@@ -134,10 +134,10 @@ shadow_mesh = SubResource("ArrayMesh_2f1gu")
 CakeCode = "#NAME_BANANA_CAKE#"
 
 [node name="shape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437029, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679328, 0)
 shape = SubResource("BoxShape3D_3ncjh")
 
 [node name="Great Cake" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209126, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.312908, 0)
 mesh = SubResource("ArrayMesh_5wi1s")
 skeleton = NodePath("")

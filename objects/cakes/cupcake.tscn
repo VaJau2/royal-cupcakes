@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqknh7v4auxo8" path="res://assets/models/cakes/Cupcake_Apple.png" id="2_gb70e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2y50o"]
-size = Vector3(0.415383, 0.135142, 0.388355)
+size = Vector3(0.452424, 0.205967, 0.421546)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0s1tc"]
 resource_name = "Dough"
@@ -132,30 +132,30 @@ shadow_mesh = SubResource("ArrayMesh_nmbtm")
 CakeCode = "#NAME_CUPCAKE#"
 
 [node name="shape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128028, 0.0611694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128028, 0.0611694, -0.0132591)
 shape = SubResource("BoxShape3D_2y50o")
 
 [node name="Cupcake6" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110958, 0.05, -0.0725497)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.151205, 0.05, -0.115236)
 mesh = SubResource("ArrayMesh_se4ri")
 skeleton = NodePath("")
 
 [node name="Cupcake7" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0475903, 0.05, -0.110357)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.120766, 0.05, -0.170117)
 mesh = SubResource("ArrayMesh_se4ri")
 skeleton = NodePath("")
 
 [node name="Cupcake8" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132962, 0.05, 0.0311165)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.161013, 0.05, 0.0347753)
 mesh = SubResource("ArrayMesh_se4ri")
 skeleton = NodePath("")
 
 [node name="Cupcake9" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146095, 0.05, 0.0457517)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.00363307, 0.05, -0.016448)
 mesh = SubResource("ArrayMesh_se4ri")
 skeleton = NodePath("")
 
 [node name="Cupcake10" type="MeshInstance3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124374, 0.05, 0.126245)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.132911, 0.05, 0.125025)
 mesh = SubResource("ArrayMesh_se4ri")
 skeleton = NodePath("")

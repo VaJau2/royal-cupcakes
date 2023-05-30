@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbn6io5xwhg5d"]
+[gd_scene load_steps=12 format=3 uid="uid://cbn6io5xwhg5d"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/MainMenu.cs" id="1_np8xv"]
 [ext_resource type="FontFile" uid="uid://rw0kdhck1exa" path="res://assets/materials/header_font.ttf" id="2_sldfa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectionModal.cs" id="3_lt8ja"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectingModal.cs" id="4_dacjo"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ErrorModal.cs" id="5_m36hi"]
+[ext_resource type="AudioStream" uid="uid://s24ccx6e3hex" path="res://assets/sounds/button_sound.wav" id="9_hwhqg"]
 
 [sub_resource type="Theme" id="Theme_2ksb2"]
 default_base_scale = 1.0
@@ -132,7 +133,7 @@ text = "#NAME#"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="connection" type="Control" parent="." node_paths=PackedStringArray("connectingModal", "errorModal")]
+[node name="connection" type="Control" parent="." node_paths=PackedStringArray("connectingModal", "errorModal", "audi")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -149,6 +150,7 @@ grow_vertical = 2
 script = ExtResource("3_lt8ja")
 connectingModal = NodePath("../connecting")
 errorModal = NodePath("../error")
+audi = NodePath("../audi")
 
 [node name="back" type="ColorRect" parent="connection"]
 layout_mode = 1
@@ -302,7 +304,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "#CONNECT#"
 
-[node name="connecting" type="Control" parent="."]
+[node name="connecting" type="Control" parent="." node_paths=PackedStringArray("audi")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -317,6 +319,7 @@ offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_dacjo")
+audi = NodePath("../audi")
 
 [node name="back" type="ColorRect" parent="connecting"]
 layout_mode = 1
@@ -399,7 +402,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "#CANCEL#"
 
-[node name="error" type="Control" parent="."]
+[node name="error" type="Control" parent="." node_paths=PackedStringArray("audi")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -414,6 +417,7 @@ offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_m36hi")
+audi = NodePath("../audi")
 
 [node name="back" type="ColorRect" parent="error"]
 layout_mode = 1
@@ -495,6 +499,10 @@ offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "#DAMN#"
+
+[node name="audi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hwhqg")
+volume_db = -2.0
 
 [connection signal="pressed" from="Back/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="Back/Exit" to="." method="OnExitPressed"]

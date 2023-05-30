@@ -21,6 +21,8 @@ public partial class SoundSteps : AudioStreamPlayer3D
 		["carpet"] = new Array<AudioStream>(),
 	};
 
+	[Export] private AudioStream tied;
+
 	private Character parent;
 	private double timer;
 	private int walkI, runI;
@@ -36,9 +38,14 @@ public partial class SoundSteps : AudioStreamPlayer3D
 
 	public override void _Ready()
 	{
-		parent = GetParent<Character>();
 		currentWalk.Shuffle();
 		currentRun.Shuffle();
+		parent = GetParent<Character>();
+		parent.Tied += () =>
+		{
+			Stream = tied;
+			Play();
+		};
 	}
 
 	public override void _Process(double delta)

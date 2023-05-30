@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwil512e5o4lj"]
+[gd_scene load_steps=8 format=3 uid="uid://cwil512e5o4lj"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/PauseMenu.cs" id="1_35afv"]
 [ext_resource type="Script" path="res://assets/scripts/interface/LogsLabel.cs" id="2_71i0w"]
+[ext_resource type="AudioStream" uid="uid://s24ccx6e3hex" path="res://assets/sounds/button_sound.wav" id="3_h35u2"]
 
 [sub_resource type="Animation" id="Animation_srdvn"]
 length = 0.001
@@ -119,6 +120,10 @@ offset_top = 8.0
 offset_right = 256.0
 offset_bottom = 160.0
 script = ExtResource("2_71i0w")
+
+[node name="audi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h35u2")
+volume_db = -2.0
 
 [connection signal="pressed" from="back/continue" to="." method="OnContinuePressed"]
 [connection signal="pressed" from="back/exit" to="." method="OnExitPressed"]

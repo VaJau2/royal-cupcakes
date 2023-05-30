@@ -32,6 +32,8 @@ public partial class Lasso : RigidBody3D
 	public override void _Ready()
 	{
 		myRope = GetNode<RopeHandler>("rope");
+		var audi = GetNode<AudioStreamPlayer3D>("audi");
+		audi.Play();
 	}
 
 	public override void _Process(double delta)

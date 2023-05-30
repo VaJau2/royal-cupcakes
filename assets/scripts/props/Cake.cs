@@ -6,7 +6,7 @@ namespace RoyalCupcakes.Props;
 
 public partial class Cake : StaticBody3D
 {
-	[Export] public string CakeCode { get; set; }
+	[Export] private string CakeCode { get; set; }
 
 	private const float TextTimer = 2f;
 	private GameManager gameManager;
@@ -22,7 +22,7 @@ public partial class Cake : StaticBody3D
 		var cakeName = TranslationServer.Translate(CakeCode).ToString();
 		var text = TranslationServer.Translate("#CAKE_STOLEN#").ToString();
 		text = text.Replace("{cake}", cakeName);
-		MainLabel.Instance.ShowTempText(text, TextTimer);
+		MainLabel.Instance.ShowAlarmText(text, TextTimer);
 		gameManager.RpcId(1, nameof(GameManager.RequestAppendMainTimer));
 		if (!Multiplayer.IsServer()) return;
 		gameManager.CakesLeft--;

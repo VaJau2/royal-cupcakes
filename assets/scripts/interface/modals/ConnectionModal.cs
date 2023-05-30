@@ -16,6 +16,8 @@ public partial class ConnectionModal : Control
 	private ConnectingModal connectingModal;
 	[Export]
 	private Control errorModal;
+	[Export] 
+	private AudioStreamPlayer audi;
 	
 	private Button connectionType;
 	private LineEdit ip;
@@ -64,6 +66,7 @@ public partial class ConnectionModal : Control
 
 	private void OnConnectionTypePressed()
 	{
+		audi?.Play();
 		isHost = !isHost;
 		ip.Visible = !isHost;
 		connectionType.Text = isHost ? HostCode : ClientCode;
@@ -71,11 +74,13 @@ public partial class ConnectionModal : Control
 
 	private void CloseConnectionModal()
 	{
+		audi?.Play();
 		Visible = false;
 	}
 
 	private void OnConnectPressed()
 	{
+		audi?.Play();
 		CloseConnectionModal();
 		connectingModal.Visible = true;
 		
