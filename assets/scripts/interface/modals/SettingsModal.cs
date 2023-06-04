@@ -28,7 +28,16 @@ public partial class SettingsModal : Control
 		soundSlider.Value = settings.SoundVolume;
 		musicSlider.Value = settings.MusicVolume;
 	}
-	
+
+	public override void _Process(double delta)
+	{
+		if (!Visible) return;
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			Visible = false;
+		}
+	}
+
 	private void OnSoundValueChanged(double value)
 	{
 		Settings.Instance.SoundVolume = (float)value;

@@ -279,13 +279,31 @@ cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("9_12ld3"), ExtResource("1_hplti")])
 
 [node name="cakeSpawner3" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.54096, 0.639971, 2.64741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56861, 0.480205, 19.266)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
 
 [node name="cakeSpawner4" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999, 0.40947, 14.736)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("../../cakes")
+cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
+
+[node name="cakeSpawner5" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17123, 0.40947, 16.1319)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("../../cakes")
+cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
+
+[node name="cakeSpawner6" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76331, 0.409469, 8.46068)
+script = ExtResource("1_d11r4")
+cakesParent = NodePath("../../cakes")
+cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])
+
+[node name="cakeSpawner7" type="Node3D" parent="cakeSpawners" node_paths=PackedStringArray("cakesParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85769, 0.409469, -14.2078)
 script = ExtResource("1_d11r4")
 cakesParent = NodePath("../../cakes")
 cakePrefabs = Array[PackedScene]([ExtResource("11_6s81k"), ExtResource("12_wouxq")])

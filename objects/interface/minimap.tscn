@@ -8,16 +8,22 @@
 [node name="Minimap" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_right = 160.0
+offset_bottom = 160.0
 script = ExtResource("1_grhxd")
 
 [node name="back" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_geimw")
@@ -27,11 +33,18 @@ stretch_mode = 4
 [node name="mask" type="TextureRect" parent="."]
 clip_children = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(80, 80)
 texture = ExtResource("2_1eh8b")
 expand_mode = 2
 stretch_mode = 4

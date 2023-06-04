@@ -49,6 +49,7 @@ public partial class MiniMap : Control
 	public override void _Process(double delta)
 	{
 		if (!Visible) return;
+		markersParent.Rotation = player.Rotation.Y;
 		foreach (var markerData in markers)
 		{
 			if (IsInstanceValid(markerData.Key))
