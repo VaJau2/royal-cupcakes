@@ -441,6 +441,7 @@ text = "#CLOSE#"
 [node name="audi" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_pqgvt")
 volume_db = -2.0
+bus = &"Audio"
 
 [connection signal="pressed" from="back/backButton" to="." method="OnBackPressed"]
 [connection signal="pressed" from="back/settings" to="." method="OnSettingsPressed"]

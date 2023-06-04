@@ -1,4 +1,5 @@
 using Godot;
+using RoyalCupcakes.Interface;
 using RoyalCupcakes.Props;
 using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
@@ -11,10 +12,11 @@ namespace RoyalCupcakes.Characters.Player;
  */
 public partial class InputController : Node
 {
-    private const float MinInteractDistance = 1.2f;
+    private const float MinInteractDistance = 2f;
     
     private Character player;
     private Vector3 direction;
+    private bool mayMove = true;
 
     public override void _Ready()
     {
@@ -26,12 +28,20 @@ public partial class InputController : Node
             SetProcess(false);
             return;
         }
+
+        var pauseMenu = GetNode<PauseMenu>("/root/Main/UI/PauseMenu");
+        pauseMenu.Opened += OnPaused;
         
         var camera = GetNode<Camera3D>("../camera");
         camera.Current = true;
         var listener = GetNode<AudioListener3D>("../listener");
         listener.MakeCurrent();
         CallDeferred(nameof(DisableBlackScreenDeferred));
+    }
+
+    private void OnPaused(bool paused)
+    {
+        mayMove = !paused;
     }
 
     private void SetPlayerCharacterDeferred()
@@ -61,6 +71,12 @@ public partial class InputController : Node
             "ui_left", "ui_right",
             "ui_up", "ui_down"
         );
+
+        if (!mayMove)
+        {
+            inputDir = Vector2.Zero;
+        }
+        
         player.Direction = (player.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
     }
 

@@ -78,8 +78,8 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.154425, 0.554682, 0.01), Vector3(0.154425, 0.554682, 0.01)]
+"update": 1,
+"values": [Vector3(0.203841, 0.554682, 0.01), Vector3(0.154425, 0.554682, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_36le3"]
@@ -109,7 +109,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.298628, 0.436988, 0.01), Vector3(0.298628, 0.484405, 0.01), Vector3(0.298628, 0.507125, 0.01), Vector3(0.298628, 0.530833, 0.01), Vector3(0.298628, 0.507125, 0.01), Vector3(0.298628, 0.554542, 0.01), Vector3(0.298628, 0.506137, 0.01), Vector3(0.298628, 0.460696, 0.01)]
+"values": [Vector3(0.346261, 0.436988, 0.01), Vector3(0.343234, 0.484405, 0.01), Vector3(0.344702, 0.507125, 0.01), Vector3(0.346279, 0.530833, 0.01), Vector3(0.343516, 0.507125, 0.01), Vector3(0.343604, 0.554542, 0.01), Vector3(0.344911, 0.507671, 0.01), Vector3(0.343329, 0.460696, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_ttqvp"]
@@ -137,7 +137,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector3(0.154081, 0.435346, 0.01), Vector3(0.154081, 0.435346, 0.01)]
+"values": [Vector3(0.203314, 0.438466, 0.01), Vector3(0.154081, 0.435346, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_dhyb1"]
@@ -167,7 +167,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.61, 0.7, 0.8, 0.9, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.370439, 0.0773236, 0.01), Vector3(0.370439, 0.0773236, 0.01), Vector3(0.347719, 0.103008, 0.01), Vector3(0.371427, 0.0773236, 0.01), Vector3(0.346731, 0.10202, 0.01), Vector3(0.370439, 0.0763357, 0.01), Vector3(0.370439, 0.0773236, 0.01)]
+"values": [Vector3(0.426804, 0.0788442, 0.01), Vector3(0.426804, 0.0788442, 0.01), Vector3(0.39707, 0.103008, 0.01), Vector3(0.421284, 0.0802152, 0.01), Vector3(0.397613, 0.10202, 0.01), Vector3(0.426804, 0.0788442, 0.01), Vector3(0.426804, 0.0788442, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_vlx0t"]
@@ -196,7 +196,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.154688, 0.603541, 0.01), Vector3(0.178344, 0.603541, 0.01), Vector3(0.178344, 0.57864, 0.01), Vector3(0.154688, 0.602296, 0.01), Vector3(0.178344, 0.602296, 0.01), Vector3(0.178344, 0.626574, 0.01), Vector3(0.178344, 0.602918, 0.01), Vector3(0.178344, 0.602918, 0.01)]
+"values": [Vector3(0.202693, 0.603541, 0.01), Vector3(0.22904, 0.603541, 0.01), Vector3(0.226967, 0.57864, 0.01), Vector3(0.206728, 0.602296, 0.01), Vector3(0.229052, 0.602296, 0.01), Vector3(0.227154, 0.626574, 0.01), Vector3(0.227704, 0.602918, 0.01), Vector3(0.227704, 0.602918, 0.01)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkgsj"]
@@ -236,7 +236,7 @@ script = ExtResource("1_7hsws")
 changeEffectPrefab = ExtResource("2_mtyjj")
 
 [node name="sprite" type="Sprite3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 2.387, 0, 0, 0, 0.658, -0.0495766, 0.688032, 0)
+transform = Transform3D(2.4, 0, 0, 0, 2.387, 0, 0, 0, 0.658, 0, 0.688, 0)
 shaded = true
 alpha_cut = 2
 texture_filter = 0
@@ -274,6 +274,7 @@ soundSteps = NodePath("../steps")
 unit_size = 2.0
 max_db = 0.0
 max_distance = 150.0
+bus = &"Audio"
 script = ExtResource("8_i6b38")
 currentMaterial = "stone"
 walkSteps = {

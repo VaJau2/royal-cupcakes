@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8ppw7e2tpk13"]
+[gd_scene load_steps=31 format=3 uid="uid://b8ppw7e2tpk13"]
 
 [ext_resource type="Script" path="res://assets/scripts/characters/spawners/NpcSpawner.cs" id="1_5n4gl"]
 [ext_resource type="Script" path="res://assets/scripts/props/CakeSpawner.cs" id="1_d11r4"]
@@ -21,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bwpt68wb0sjb6" path="res://objects/interface/minimap.tscn" id="17_wc7ft"]
 [ext_resource type="Script" path="res://assets/scripts/characters/RotationController.cs" id="18_ncney"]
 [ext_resource type="Texture2D" uid="uid://bpkhxnuittcrn" path="res://assets/sprites/stars.png" id="19_k14lp"]
+[ext_resource type="AudioStream" uid="uid://cvbvq1uhp48hd" path="res://assets/sounds/music/Blue Dot Sessions - This Passage.mp3" id="22_g4r1f"]
+[ext_resource type="Script" path="res://assets/scripts/system/MusicPlayer.cs" id="23_kkoqk"]
+[ext_resource type="AudioStream" uid="uid://i350peiwo4te" path="res://assets/sounds/music/Blue Dot Sessions - Leadin.mp3" id="24_gqroq"]
+[ext_resource type="AudioStream" uid="uid://bp3xreda6x4ng" path="res://assets/sounds/music/Blue Dot Sessions - The Crossing.mp3" id="25_pxiyo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3vrk"]
 font_size = 18
@@ -81,6 +85,7 @@ script = ExtResource("8_78s07")
 alarmSound = ExtResource("4_52xsj")
 
 [node name="audi" type="AudioStreamPlayer" parent="canvas/mainLabel"]
+bus = &"Audio"
 
 [node name="blackScreen" type="ColorRect" parent="canvas"]
 anchors_preset = 15
@@ -298,3 +303,8 @@ environment = SubResource("Environment_82egu")
 
 [node name="rotationController" type="Node" parent="."]
 script = ExtResource("18_ncney")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+script = ExtResource("23_kkoqk")
+music = [ExtResource("22_g4r1f"), ExtResource("24_gqroq"), ExtResource("25_pxiyo")]

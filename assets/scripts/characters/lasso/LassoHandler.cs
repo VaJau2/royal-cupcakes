@@ -20,6 +20,7 @@ public partial class LassoHandler : Node3D
     private Node3D lassoParent;
     private Sprite3D bodySprite;
     private Sprite3D mySprite;
+    private bool isPaused;
     private bool isFlip;
     private bool isConfiscated;
 
@@ -36,6 +37,9 @@ public partial class LassoHandler : Node3D
         bodySprite = GetNode<Sprite3D>("../sprite");
         mySprite = GetNode<Sprite3D>("sprite");
         lassoParent = PlayerOwner.GetParent<Node3D>();
+        
+        var pauseMenu = GetNode<PauseMenu>("/root/Main/UI/PauseMenu");
+        pauseMenu.Opened += OnPaused;
     }
 
     public override void _Process(double delta)
@@ -45,8 +49,9 @@ public partial class LassoHandler : Node3D
         UpdateFlip();
 
         if (!Multiplayer.HasMultiplayerPeer() || !IsMultiplayerAuthority()) return;
-
+        if (isPaused) return;
         if (!Input.IsActionJustPressed("ui_click")) return;
+        
         var target = Cursor.GetCursorWorldPosition(this);
         Rpc(nameof(SpawnLasso), target);
     }
@@ -63,6 +68,11 @@ public partial class LassoHandler : Node3D
         {
             RpcId(1, nameof(RequestCaughtNpcCount));
         }
+    }
+    
+    private void OnPaused(bool paused)
+    {
+        isPaused = paused;
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]

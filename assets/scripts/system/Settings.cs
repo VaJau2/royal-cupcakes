@@ -7,6 +7,12 @@ namespace RoyalCupcakes.System;
  */
 public class Settings
 {
+    private enum Bus
+    {
+        Audio = 1,
+        Music = 2
+    };
+    
     private const string dir = "Settings";
     
     private readonly string[] langs = { "ru", "en" };
@@ -20,6 +26,26 @@ public class Settings
         {
             config.SetValue(dir, "lang", value);
             TranslationServer.SetLocale(langs[value]);
+        }
+    }
+
+    public float SoundVolume
+    {
+        get => (float)config.GetValue(dir, "sound", AudioServer.GetBusVolumeDb((int)Bus.Audio));
+        set
+        {
+            config.SetValue(dir, "sound", value);
+            AudioServer.SetBusVolumeDb((int)Bus.Audio, value);
+        }
+    }
+    
+    public float MusicVolume
+    {
+        get => (float)config.GetValue(dir, "music", AudioServer.GetBusVolumeDb((int)Bus.Music));
+        set
+        {
+            config.SetValue(dir, "music", value);
+            AudioServer.SetBusVolumeDb((int)Bus.Music, value);
         }
     }
 

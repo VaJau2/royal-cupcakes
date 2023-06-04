@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp3xreda6x4ng"
+path="res://.godot/imported/Blue Dot Sessions - The Crossing.mp3-7c5d1c953a8203c9ea15c0879cad47ed.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Blue Dot Sessions - The Crossing.mp3"
+dest_files=["res://.godot/imported/Blue Dot Sessions - The Crossing.mp3-7c5d1c953a8203c9ea15c0879cad47ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

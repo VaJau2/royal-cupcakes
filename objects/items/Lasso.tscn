@@ -41,5 +41,6 @@ shape = SubResource("BoxShape3D_h2boo")
 stream = ExtResource("4_k1u70")
 volume_db = 2.0
 max_distance = 200.0
+bus = &"Audio"
 
 [connection signal="body_entered" from="catchArea" to="." method="OnCatchBody"]

@@ -10,6 +10,7 @@ public partial class MainMenu : Control
 	
 	private ConnectionModal connectionModal;
 	private Control errorModal;
+	private Control settingsModal;
 
 	public override void _Ready()
 	{
@@ -17,7 +18,13 @@ public partial class MainMenu : Control
 		
 		connectionModal = GetNode<ConnectionModal>("connection");
 		errorModal = GetNode<Control>("error");
+		settingsModal = GetNode<Control>("settings");
 		audi = GetNode<AudioStreamPlayer>("audi");
+	}
+	
+	public void ShowError()
+	{
+		errorModal.Visible = true;
 	}
 
 	private void OnLangChangePressed()
@@ -32,9 +39,10 @@ public partial class MainMenu : Control
 		connectionModal.OpenModal();
 	}
 
-	public void ShowError()
+	private void OnSettingsPressed()
 	{
-		errorModal.Visible = true;
+		audi.Play();
+		settingsModal.Visible = true;
 	}
 
 	private void OnExitPressed()

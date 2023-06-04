@@ -5,13 +5,18 @@ namespace RoyalCupcakes.Interface;
 
 public partial class PauseMenu : Control
 {
+	private Control settingsModal;
 	private Control back;
 	private AnimationPlayer anim;
 	private AudioStreamPlayer audi;
 	private bool isOpened;
+	
+	[Signal]
+	public delegate void OpenedEventHandler(bool open);
 
 	public override void _Ready()
 	{
+		settingsModal = GetNode<Control>("settings");
 		back = GetNode<Control>("back");
 		anim = GetNode<AnimationPlayer>("anim");
 		audi = GetNode<AudioStreamPlayer>("audi");
@@ -36,6 +41,12 @@ public partial class PauseMenu : Control
 		SetOpen(false);
 	}
 
+	private void OnSettingsPressed()
+	{
+		audi.Play();
+		settingsModal.Visible = true;
+	}
+
 	private void OnExitPressed()
 	{
 		audi.Play();
@@ -54,5 +65,7 @@ public partial class PauseMenu : Control
 		{
 			back.Visible = true;
 		}
+
+		EmitSignal(nameof(Opened), isOpened);
 	}
 }

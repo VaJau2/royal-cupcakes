@@ -1,0 +1,151 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba4m0ucakxs1n"]
+
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/SettingsModal.cs" id="1_h8j6t"]
+[ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="1_ml8s6"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -156.0
+offset_right = 264.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ml8s6")
+script = ExtResource("1_h8j6t")
+metadata/_edit_group_ = true
+
+[node name="back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 26.0
+offset_right = 93.0
+offset_bottom = 51.0
+grow_horizontal = 2
+text = "#SETTINGS#"
+horizontal_alignment = 1
+
+[node name="ok" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CLOSE#"
+
+[node name="sound" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 88.0
+offset_right = 448.0
+offset_bottom = 120.0
+min_value = -80.0
+max_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="Label" type="Label" parent="sound"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#SOUND#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="music" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 136.0
+offset_right = 448.0
+offset_bottom = 168.0
+min_value = -80.0
+max_value = 0.0
+rounded = true
+
+[node name="Label" type="Label" parent="music"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.469
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.008
+offset_right = -16.0
+offset_bottom = 14.0
+text = "#MUSIC#"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="ok" to="." method="Cancel"]
+[connection signal="value_changed" from="sound" to="." method="OnSoundValueChanged"]
+[connection signal="value_changed" from="music" to="." method="OnMusicValueChanged"]

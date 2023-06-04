@@ -1,6 +1,9 @@
 using Godot;
 using RoyalCupcakes.System;
 
+/**
+ * Настройки правил игры в лобби
+ */
 public partial class SettingsSubmenu : Control
 {
 	[Export] private AudioStreamPlayer audi;
