@@ -14,6 +14,8 @@ public partial class Main : Node
 	public readonly Dictionary<int, PlayerData> PlayersData = new();
 	public Team PlayerTeam { get; set; }
 	public Team WinnersTeam { get; set; }
+	
+	public bool isDebug { get; set; }
 
 	private CanvasLayer menuParent;
 	private Node levelParent;
@@ -22,9 +24,6 @@ public partial class Main : Node
 	private Node3D currentScene;
 	
 	private ENetMultiplayerPeer peer = new();
-	
-	[Export] private bool debugHost;
-	[Export] private Team debugTeam = Team.Thief;
 
 	public override void _Notification(int what)
 	{
@@ -33,9 +32,23 @@ public partial class Main : Node
 			Settings.Instance.Save();
 		}
 	}
-
-	public void Connect(Settings settings, bool isHost)
+	
+	public void StartDebugHost()
 	{
+		PlayersData.Clear();
+		PlayersData.Add(1, new PlayerData
+		{
+			name = Settings.Instance.PlayerName,
+			team = PlayerTeam
+		});
+		
+		Connect(Settings.Instance, true, true);
+	}
+
+	public void Connect(Settings settings, bool isHost, bool debugHost = false)
+	{
+		isDebug = debugHost;
+		
 		if (isHost)
 		{
 			peer.CreateServer(settings.Port);
@@ -111,9 +124,6 @@ public partial class Main : Node
 
 		Multiplayer.ServerDisconnected += FailFunc;
 		Multiplayer.ConnectionFailed += FailFunc;
-
-		if (!debugHost) return;
-		StartDebugHost();
 	}
 
 	private void FailFunc()
@@ -121,18 +131,6 @@ public partial class Main : Node
 		Multiplayer.MultiplayerPeer = null;
 		ChangeScene(null);
 		ChangeMenu("main_menu", true);
-	}
-
-	private void StartDebugHost()
-	{
-		PlayerTeam = debugTeam;
-		
-		PlayersData.Add(1, new PlayerData
-		{
-			name = Settings.Instance.PlayerName,
-			team = PlayerTeam
-		});
-		Connect(Settings.Instance, true);
 	}
 }
 

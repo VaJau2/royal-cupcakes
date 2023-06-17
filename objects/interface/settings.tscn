@@ -146,6 +146,6 @@ text = "#MUSIC#"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[connection signal="pressed" from="ok" to="." method="Cancel"]
+[connection signal="pressed" from="ok" to="." method="CloseModal"]
 [connection signal="value_changed" from="sound" to="." method="OnSoundValueChanged"]
 [connection signal="value_changed" from="music" to="." method="OnMusicValueChanged"]

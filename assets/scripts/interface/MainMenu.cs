@@ -9,6 +9,7 @@ public partial class MainMenu : Control
 	private AudioStreamPlayer audi;
 	
 	private ConnectionModal connectionModal;
+	private DebugModal debugModal;
 	private Control errorModal;
 	private Control settingsModal;
 
@@ -17,6 +18,7 @@ public partial class MainMenu : Control
 		Settings.Instance.LoadLanguage();
 		
 		connectionModal = GetNode<ConnectionModal>("connection");
+		debugModal = GetNode<DebugModal>("debug");
 		errorModal = GetNode<Control>("error");
 		settingsModal = GetNode<Control>("settings");
 		audi = GetNode<AudioStreamPlayer>("audi");
@@ -37,6 +39,12 @@ public partial class MainMenu : Control
 	{
 		audi.Play();
 		connectionModal.OpenModal();
+	}
+
+	private void OnDebugPressed()
+	{
+		audi.Play();
+		debugModal.OpenModal();
 	}
 
 	private void OnSettingsPressed()

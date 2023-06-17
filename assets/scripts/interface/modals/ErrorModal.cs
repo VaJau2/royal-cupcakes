@@ -1,14 +1,6 @@
-using Godot;
-
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ErrorModal : Control
+public partial class ErrorModal : AbstractModal
 {
-	[Export] private AudioStreamPlayer audi;
-	
-	private void Cancel()
-	{
-		audi?.Play();
-		Visible = false;
-	}
+    
 }

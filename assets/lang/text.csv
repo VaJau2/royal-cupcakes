@@ -1,6 +1,7 @@
 keys,en,ru
 #GAME#,Royal Cupcakes,Royal Cupcakes
 #START#,Start,Начать
+#DEBUG#,Debug,Дебаг
 #EXIT#,Exit,Выйти
 #CLOSE#,Close,Закрыть
 #SETTINGS#,Settings,Настройки
@@ -52,3 +53,7 @@ keys,en,ru
 #COUNT_APPEND_TIME#,Append time count,Кол-во добавляемого времени
 #COUNT_MISTAKES_COUNT#,Guard mistakes count,Кол-во ошибок стражников
 #MINIMAP_ON#,Mimimap for thieves,Миникарта для воров
+#THIEVES#,Thieves,Воры
+#GUARDS#,Guards,Стражники
+#DEBUG_DESC#,Choose team to debug,Выберите команду для дебага
+

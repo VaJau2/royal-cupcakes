@@ -1,13 +1,9 @@
-using Godot;
 using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ConnectingModal : Control
+public partial class ConnectingModal : AbstractModal
 {
-	[Export] 
-	private AudioStreamPlayer audi;
-	
 	private void OnCancelConnecting()
 	{
 		audi?.Play();

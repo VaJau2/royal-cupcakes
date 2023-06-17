@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbn6io5xwhg5d"]
+[gd_scene load_steps=16 format=3 uid="uid://cbn6io5xwhg5d"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/MainMenu.cs" id="1_np8xv"]
 [ext_resource type="FontFile" uid="uid://rw0kdhck1exa" path="res://assets/materials/header_font.ttf" id="2_sldfa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectionModal.cs" id="3_lt8ja"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ConnectingModal.cs" id="4_dacjo"]
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/ErrorModal.cs" id="5_m36hi"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/DebugModal.cs" id="7_7iosl"]
 [ext_resource type="PackedScene" uid="uid://ba4m0ucakxs1n" path="res://objects/interface/settings.tscn" id="9_4pv33"]
 [ext_resource type="AudioStream" uid="uid://s24ccx6e3hex" path="res://assets/sounds/button_sound.wav" id="9_hwhqg"]
 [ext_resource type="AudioStream" uid="uid://cdgs3vy3k0a4k" path="res://assets/sounds/music/Blue Dot Sessions - Sweetly.mp3" id="11_8vsdo"]
@@ -54,7 +55,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="picture" type="TextureRect" parent="Back"]
 layout_mode = 1
@@ -100,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "#START#"
 
-[node name="Settings" type="Button" parent="Back"]
+[node name="Debug" type="Button" parent="Back"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -111,9 +111,9 @@ offset_right = 320.0
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "#SETTINGS#"
+text = "#DEBUG#"
 
-[node name="Exit" type="Button" parent="Back"]
+[node name="Settings" type="Button" parent="Back"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -124,8 +124,20 @@ offset_right = 320.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "#SETTINGS#"
+
+[node name="Exit" type="Button" parent="Back"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 92.0
+offset_right = 320.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "#EXIT#"
-metadata/_edit_lock_ = true
 
 [node name="Language" type="Button" parent="Back"]
 layout_mode = 1
@@ -337,6 +349,129 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "#CONNECT#"
+
+[node name="debug" type="Control" parent="." node_paths=PackedStringArray("audi")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -132.0
+offset_right = 256.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_7iosl")
+audi = NodePath("../audi")
+
+[node name="back" type="ColorRect" parent="debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="debug/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="debug/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="debug/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="debug/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="debug"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "#DEBUG_DESC#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cancel" type="Button" parent="debug"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -56.0
+offset_right = 60.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CANCEL#"
+
+[node name="thief" type="Button" parent="debug"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -120.0
+offset_right = -58.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#THIEVES#"
+
+[node name="guard" type="Button" parent="debug"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -120.0
+offset_right = 190.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#GUARDS#"
 
 [node name="connecting" type="Control" parent="." node_paths=PackedStringArray("audi")]
 visible = false
@@ -563,12 +698,16 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="Back/Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Back/Debug" to="." method="OnDebugPressed"]
 [connection signal="pressed" from="Back/Settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="Back/Exit" to="." method="OnExitPressed"]
 [connection signal="pressed" from="Back/Language" to="." method="OnLangChangePressed"]
 [connection signal="text_changed" from="Back/Name" to="Back/Name" method="OnNameChanged"]
 [connection signal="pressed" from="connection/type" to="connection" method="OnConnectionTypePressed"]
-[connection signal="pressed" from="connection/cancel" to="connection" method="CloseConnectionModal"]
+[connection signal="pressed" from="connection/cancel" to="connection" method="CloseModal"]
 [connection signal="pressed" from="connection/connect" to="connection" method="OnConnectPressed"]
-[connection signal="pressed" from="connecting/cancel" to="connecting" method="OnCancelConnecting"]
-[connection signal="pressed" from="error/ok" to="error" method="Cancel"]
+[connection signal="pressed" from="debug/cancel" to="debug" method="CloseModal"]
+[connection signal="pressed" from="debug/thief" to="debug" method="StartDebug" binds= [true]]
+[connection signal="pressed" from="debug/guard" to="debug" method="StartDebug" binds= [false]]
+[connection signal="pressed" from="connecting/cancel" to="connecting" method="CloseModal"]
+[connection signal="pressed" from="error/ok" to="error" method="CloseModal"]

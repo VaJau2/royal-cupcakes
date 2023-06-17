@@ -66,6 +66,15 @@ public partial class GameResults : Node3D
     private void RestartLobby()
     {
         main.ChangeScene(null);
+        
+        if (main.isDebug)
+        {
+            main.isDebug = false;
+            main.Disconnect();
+            main.ChangeMenu("main_menu");
+            return;
+        }
+        
         main.ChangeMenu("lobby");
     }
 }

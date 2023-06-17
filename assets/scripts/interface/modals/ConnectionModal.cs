@@ -3,7 +3,7 @@ using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface.Modals;
 
-public partial class ConnectionModal : Control
+public partial class ConnectionModal : AbstractModal
 {
 	private const string HostCode = "#HOST#";
 	private const string ClientCode = "#CLIENT#";
@@ -16,9 +16,7 @@ public partial class ConnectionModal : Control
 	private ConnectingModal connectingModal;
 	[Export]
 	private Control errorModal;
-	[Export] 
-	private AudioStreamPlayer audi;
-	
+
 	private Button connectionType;
 	private LineEdit ip;
 	private LineEdit port;
@@ -58,12 +56,6 @@ public partial class ConnectionModal : Control
 			port.Text = portFromSettings;
 		}
 	}
-
-	public void OpenModal()
-	{
-		Visible = true;
-	}
-
 	private void OnConnectionTypePressed()
 	{
 		audi?.Play();
@@ -72,16 +64,10 @@ public partial class ConnectionModal : Control
 		connectionType.Text = isHost ? HostCode : ClientCode;
 	}
 
-	private void CloseConnectionModal()
-	{
-		audi?.Play();
-		Visible = false;
-	}
-
 	private void OnConnectPressed()
 	{
 		audi?.Play();
-		CloseConnectionModal();
+		CloseModal();
 		connectingModal.Visible = true;
 		
 		var settings = Settings.Instance;

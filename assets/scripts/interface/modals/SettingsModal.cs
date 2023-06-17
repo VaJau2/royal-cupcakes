@@ -6,19 +6,11 @@ namespace RoyalCupcakes.Interface.Modals;
 /**
  * Модалка настроек громкости
  */
-public partial class SettingsModal : Control
+public partial class SettingsModal : AbstractModal
 {
-	[Export] private AudioStreamPlayer audi;
-	
 	private HSlider soundSlider;
 	private HSlider musicSlider;
-	
-	private void Cancel()
-	{
-		audi?.Play();
-		Visible = false;
-	}
-	
+
 	public override void _Ready()
 	{
 		soundSlider = GetNode<HSlider>("sound");
