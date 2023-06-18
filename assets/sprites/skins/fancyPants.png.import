@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://f7nbr7sk3i36"
-path="res://.godot/imported/pony7.png-4708edc8f37fcd2d3bf61cf0e7a2ec8e.ctex"
+path="res://.godot/imported/fancyPants.png-c8334bf8fa5e42f0ef9f7a6b07500f85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/skins/pony7.png"
-dest_files=["res://.godot/imported/pony7.png-4708edc8f37fcd2d3bf61cf0e7a2ec8e.ctex"]
+source_file="res://assets/sprites/skins/fancyPants.png"
+dest_files=["res://.godot/imported/fancyPants.png-c8334bf8fa5e42f0ef9f7a6b07500f85.ctex"]
 
 [params]
 

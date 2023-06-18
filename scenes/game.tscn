@@ -156,7 +156,7 @@ script = ExtResource("1_5n4gl")
 MaxCount = 10
 npcParent = NodePath("../../characters")
 npcPrefab = ExtResource("2_ch63m")
-spriteCodes = Array[String](["pony1", "pony2", "pony3", "pony4", "pony5", "pony6", "pony7", "pony8", "pony42", "strikely"])
+spriteCodes = Array[String](["pony1", "pony2", "pony3", "pony4", "pony5", "pony6", "fancyPants", "pony8", "pony42", "strikely"])
 
 [node name="1" type="Node3D" parent="npcSpawners/poniesSpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83771, 1.43051e-06, 7.74626)
