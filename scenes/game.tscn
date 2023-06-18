@@ -110,10 +110,11 @@ grow_horizontal = 0
 navigation_mesh = SubResource("NavigationMesh_12a3e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54448, 6.1892, 2.94727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41649, 6.1892, 2.70589)
 light_color = Color(0.87451, 0.803922, 0.737255, 1)
-light_energy = 3.5
+light_energy = 5.0
 light_volumetric_fog_energy = 2.0
+light_size = 0.5
 shadow_enabled = true
 omni_range = 32.2102
 
