@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmysrdiv5leol"]
+[gd_scene load_steps=7 format=3 uid="uid://cmysrdiv5leol"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwr418wgrb2" path="res://objects/characters/pony-base.tscn" id="1_pkmxe"]
 [ext_resource type="Script" path="res://assets/scripts/characters/player/InputController.cs" id="2_gq2jv"]
@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://djlddh6w7xsw0" path="res://objects/free-camera.tscn" id="4_ibnfg"]
 [ext_resource type="Script" path="res://assets/scripts/characters/player/MinimapItem.cs" id="5_mdyfi"]
 [ext_resource type="Script" path="res://assets/scripts/characters/player/CameraWallsCheck.cs" id="6_b05q1"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22nqy"]
-radius = 0.340343
-height = 1.0
 
 [node name="player" instance=ExtResource("1_pkmxe")]
 collision_mask = 4
@@ -19,10 +15,6 @@ render_priority = 1
 
 [node name="listener" type="AudioListener3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.669461, 0)
-
-[node name="shape" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00754073, 0.499908, 0)
-shape = SubResource("CapsuleShape3D_22nqy")
 
 [node name="inputController" type="Node" parent="." index="4"]
 script = ExtResource("2_gq2jv")
