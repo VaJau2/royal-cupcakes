@@ -24,8 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://bulj6xrx618ed" path="res://assets/sounds/steps/grass/stepGrassRun3.wav" id="21_ef8db"]
 [ext_resource type="AudioStream" uid="uid://cc2mxxvp7n5lj" path="res://assets/sounds/lasso_tie.wav" id="22_4g061"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4pnlb"]
-size = Vector3(0.595, 0.912, 0.595)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vlsy"]
+radius = 0.340343
+height = 1.0
 
 [sub_resource type="Animation" id="Animation_bv2jf"]
 length = 0.001
@@ -260,8 +261,8 @@ render_priority = 1
 texture = ExtResource("4_nt8to")
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00754073, 0.462899, 0)
-shape = SubResource("BoxShape3D_4pnlb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008, 0.5, 0)
+shape = SubResource("CapsuleShape3D_2vlsy")
 
 [node name="materialMonitor" type="RayCast3D" parent="." node_paths=PackedStringArray("soundSteps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382063, 0)
