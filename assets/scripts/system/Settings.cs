@@ -102,7 +102,15 @@ public class Settings
         get => (bool)config.GetValue(dir, "minimap_on", false);
         set => config.SetValue(dir, "minimap_on", value);
     }
-    
+
+    public string GetActionKey(string action)
+        => (string)config.GetValue(dir, $"action_{action}", "");
+
+    public void SetActionKey(string action, string key)
+    {
+        config.SetValue(dir, $"action_{action}", key);
+    }
+
     private static Settings instance;
     
     private Settings()

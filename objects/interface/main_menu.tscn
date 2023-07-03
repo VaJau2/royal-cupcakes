@@ -98,6 +98,7 @@ offset_right = 320.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 text = "#START#"
 
 [node name="Debug" type="Button" parent="Back"]
@@ -111,6 +112,7 @@ offset_right = 320.0
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 text = "#DEBUG#"
 
 [node name="Settings" type="Button" parent="Back"]
@@ -124,6 +126,7 @@ offset_right = 320.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 text = "#SETTINGS#"
 
 [node name="Exit" type="Button" parent="Back"]
@@ -137,6 +140,7 @@ offset_right = 320.0
 offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 text = "#EXIT#"
 
 [node name="Language" type="Button" parent="Back"]
@@ -149,6 +153,7 @@ offset_top = 64.0
 offset_right = -31.0
 offset_bottom = 95.0
 grow_horizontal = 0
+focus_mode = 1
 text = "#LANG#"
 
 [node name="Name" type="LineEdit" parent="Back"]
@@ -161,6 +166,7 @@ offset_top = 64.0
 offset_right = -152.0
 offset_bottom = 95.0
 grow_horizontal = 0
+focus_mode = 1
 theme = ExtResource("3_0hrea")
 text = "Player"
 alignment = 1

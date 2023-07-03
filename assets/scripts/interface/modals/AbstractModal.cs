@@ -11,7 +11,7 @@ public abstract partial class AbstractModal: Control
         Visible = true;
     }
     
-    protected void CloseModal()
+    protected virtual void CloseModal()
     {
         audi?.Play();
         Visible = false;

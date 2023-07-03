@@ -5,6 +5,15 @@ keys,en,ru
 #EXIT#,Exit,Выйти
 #CLOSE#,Close,Закрыть
 #SETTINGS#,Settings,Настройки
+#CONTROLS#,Controls,Управление
+#UI_UP#,Forward,Вперед
+#UI_LEFT#,Left,Налево
+#UI_DOWN#,Backward,Назад
+#UI_RIGHT#,Right,Направо
+#UI_RUN#,Run,Бег
+#UI_SIT#,Sit,Присесть
+#UI_ROTATE_LEFT#,Rotate left,Поворот налево
+#UI_ROTATE_RIGHT#,Rotate right,Поворот направо
 #CONNECTION#,Connection,Подключение
 #CONNECT#,Connect,Подключиться
 #CONNECTING#,Connecting...,Подключаемся...
