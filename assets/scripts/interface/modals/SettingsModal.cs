@@ -10,11 +10,13 @@ public partial class SettingsModal : AbstractModal
 {
 	private HSlider soundSlider;
 	private HSlider musicSlider;
+	private ControlsModal controlsModal;
 
 	public override void _Ready()
 	{
 		soundSlider = GetNode<HSlider>("sound");
 		musicSlider = GetNode<HSlider>("music");
+		controlsModal = GetNode<ControlsModal>("controls");
 		
 		var settings = Settings.Instance;
 		soundSlider.Value = settings.SoundVolume;
@@ -24,6 +26,7 @@ public partial class SettingsModal : AbstractModal
 	public override void _Process(double delta)
 	{
 		if (!Visible) return;
+		if (controlsModal.Visible) return;
 		if (Input.IsActionJustPressed("ui_cancel"))
 		{
 			Visible = false;
@@ -38,5 +41,10 @@ public partial class SettingsModal : AbstractModal
 	private void OnMusicValueChanged(double value)
 	{
 		Settings.Instance.MusicVolume = (float)value;
+	}
+
+	private void OnControlsPressed()
+	{
+		controlsModal.OpenModal();
 	}
 }

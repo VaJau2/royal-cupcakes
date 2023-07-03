@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba4m0ucakxs1n"]
+[gd_scene load_steps=4 format=3 uid="uid://ba4m0ucakxs1n"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/SettingsModal.cs" id="1_h8j6t"]
 [ext_resource type="Theme" uid="uid://bbkf52fm8faq0" path="res://assets/materials/main_theme.tres" id="1_ml8s6"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/ControlsModal.cs" id="3_xqs8a"]
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -19,6 +20,7 @@ grow_vertical = 2
 theme = ExtResource("1_ml8s6")
 script = ExtResource("1_h8j6t")
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="back" type="ColorRect" parent="."]
 layout_mode = 1
@@ -84,19 +86,36 @@ grow_horizontal = 2
 text = "#SETTINGS#"
 horizontal_alignment = 1
 
-[node name="ok" type="Button" parent="."]
+[node name="controlsButoon" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
+offset_left = -64.0
+offset_top = -122.0
+offset_right = 64.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+text = "#CONTROLS#"
+
+[node name="close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
 offset_top = -70.0
-offset_right = 50.0
+offset_right = 64.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 1
 text = "#CLOSE#"
 
 [node name="sound" type="HSlider" parent="."]
@@ -105,6 +124,7 @@ offset_left = 216.0
 offset_top = 88.0
 offset_right = 448.0
 offset_bottom = 120.0
+focus_mode = 1
 min_value = -80.0
 max_value = 1.0
 value = 1.0
@@ -129,6 +149,7 @@ offset_left = 216.0
 offset_top = 136.0
 offset_right = 448.0
 offset_bottom = 168.0
+focus_mode = 1
 min_value = -80.0
 max_value = 0.0
 rounded = true
@@ -146,6 +167,355 @@ text = "#MUSIC#"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[connection signal="pressed" from="ok" to="." method="CloseModal"]
+[node name="controls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -256.0
+offset_right = 264.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_xqs8a")
+metadata/_edit_lock_ = true
+
+[node name="back" type="ColorRect" parent="controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="controls/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="controls/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="controls/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="controls/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="buttons" type="Control" parent="controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ui_up" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -132.0
+offset_right = -32.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "W"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_up"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_UP#"
+horizontal_alignment = 2
+
+[node name="ui_left" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -84.0
+offset_right = -32.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "A"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_LEFT#"
+horizontal_alignment = 2
+
+[node name="ui_down" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -132.0
+offset_right = 208.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "S"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_down"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_DOWN#"
+horizontal_alignment = 2
+
+[node name="ui_right" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -84.0
+offset_right = 208.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "D"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_RIGHT#"
+horizontal_alignment = 2
+
+[node name="ui_run" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -36.0
+offset_right = -32.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "Shift"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_run"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_RUN#"
+horizontal_alignment = 2
+
+[node name="ui_sit" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -36.0
+offset_right = 208.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "Ctrl"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_sit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -11.5
+offset_right = -8.0
+offset_bottom = 12.5
+text = "#UI_SIT#"
+horizontal_alignment = 2
+
+[node name="ui_rotate_left" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = 12.0
+offset_right = 208.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "Q"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_rotate_left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -11.5
+offset_right = -5.0
+offset_bottom = 12.5
+text = "#UI_ROTATE_LEFT#"
+horizontal_alignment = 2
+
+[node name="ui_rotate_right" type="Button" parent="controls/buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = 60.0
+offset_right = 208.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+toggle_mode = true
+text = "E"
+
+[node name="Label" type="Label" parent="controls/buttons/ui_rotate_right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -11.5
+offset_right = -3.0
+offset_bottom = 12.5
+text = "#UI_ROTATE_RIGHT#"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="controls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 20.0
+offset_right = 93.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "#CONTROLS#"
+horizontal_alignment = 1
+
+[node name="close" type="Button" parent="controls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -88.0
+offset_right = 64.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+text = "#CLOSE#"
+
+[connection signal="pressed" from="controlsButoon" to="." method="OnControlsPressed"]
+[connection signal="pressed" from="close" to="." method="CloseModal"]
 [connection signal="value_changed" from="sound" to="." method="OnSoundValueChanged"]
 [connection signal="value_changed" from="music" to="." method="OnMusicValueChanged"]
+[connection signal="pressed" from="controls/buttons/ui_up" to="controls" method="OnControlKeyPressed" binds= ["ui_up"]]
+[connection signal="pressed" from="controls/buttons/ui_left" to="controls" method="OnControlKeyPressed" binds= ["ui_left"]]
+[connection signal="pressed" from="controls/buttons/ui_down" to="controls" method="OnControlKeyPressed" binds= ["ui_down"]]
+[connection signal="pressed" from="controls/buttons/ui_right" to="controls" method="OnControlKeyPressed" binds= ["ui_right"]]
+[connection signal="pressed" from="controls/buttons/ui_run" to="controls" method="OnControlKeyPressed" binds= ["ui_run"]]
+[connection signal="pressed" from="controls/buttons/ui_sit" to="controls" method="OnControlKeyPressed" binds= ["ui_sit"]]
+[connection signal="pressed" from="controls/buttons/ui_rotate_left" to="controls" method="OnControlKeyPressed" binds= ["ui_rotate_left"]]
+[connection signal="pressed" from="controls/buttons/ui_rotate_right" to="controls" method="OnControlKeyPressed" binds= ["ui_rotate_right"]]
+[connection signal="pressed" from="controls/close" to="controls" method="CloseModal"]
