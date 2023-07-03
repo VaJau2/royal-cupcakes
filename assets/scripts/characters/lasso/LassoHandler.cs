@@ -106,7 +106,7 @@ public partial class LassoHandler : Node3D
         lasso.Rotation = PlayerOwner.Rotation;
         lasso.Name = "lasso_" + PlayerOwner.PlayerId;
         lasso.LassoHandler = this;
-        lassoParent.AddChild(lasso);
+        lassoParent.AddChild(lasso, true);
         lasso.GlobalPosition = LassoPosition;
         lasso.MoveToTarget(target);
         Visible = false;

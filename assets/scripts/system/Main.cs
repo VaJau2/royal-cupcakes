@@ -47,6 +47,11 @@ public partial class Main : Node
 
 	public void Connect(Settings settings, bool isHost, bool debugHost = false)
 	{
+		if (Multiplayer.HasMultiplayerPeer())
+		{
+			Disconnect();
+		}
+		
 		isDebug = debugHost;
 		
 		if (isHost)
@@ -68,8 +73,6 @@ public partial class Main : Node
 		{
 			peer.CreateClient(settings.Host, settings.Port);
 			Multiplayer.MultiplayerPeer = peer;
-			currentMenu = null;
-			currentScene = null;
 		}
 	}
 
@@ -124,6 +127,12 @@ public partial class Main : Node
 
 		Multiplayer.ServerDisconnected += FailFunc;
 		Multiplayer.ConnectionFailed += FailFunc;
+		
+		Multiplayer.ConnectedToServer += () =>
+		{
+			currentMenu = null;
+			currentScene = null;
+		};
 	}
 
 	private void FailFunc()
