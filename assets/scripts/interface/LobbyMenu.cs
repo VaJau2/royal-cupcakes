@@ -1,4 +1,6 @@
+using System.Linq;
 using Godot;
+using Godot.Collections;
 using RoyalCupcakes.System;
 using RoyalCupcakes.Utils;
 
@@ -29,6 +31,7 @@ public partial class LobbyMenu : Control
 	private AudioStreamPlayer audi;
 
 	private double timer;
+	private Array<long> spawnedPlayers = new(); 
 
 	public override void _Ready()
 	{
@@ -43,13 +46,19 @@ public partial class LobbyMenu : Control
 
 		if (Multiplayer.IsServer())
 		{
-			AddPlayer(Multiplayer.GetUniqueId());
-			AddAlreadyConnectedPlayers();
-			Multiplayer.PeerConnected += AddPlayer;
-			Multiplayer.PeerDisconnected += RemovePlayer;
+			AddAlreadyConnectedPlayers(Multiplayer.GetUniqueId());
+			Multiplayer.PeerConnected += playerId =>
+			{
+				Rpc(nameof(AddPlayer), playerId);
+			};
+			Multiplayer.PeerDisconnected += playerId =>
+			{
+				Rpc(nameof(RemovePlayer), playerId);
+			};
 		}
 		else
 		{
+			RpcId(1, nameof(RequestToSpawnPlayerItems));
 			settingsButton.Visible = false;
 			Multiplayer.ServerDisconnected += () =>
 			{
@@ -58,26 +67,50 @@ public partial class LobbyMenu : Control
 		}
 	}
 
-	private void AddAlreadyConnectedPlayers()
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void RequestToSpawnPlayerItems()
 	{
-		foreach (var playerId in Multiplayer.GetPeers())
+		var senderId = Multiplayer.GetRemoteSenderId();
+		AddAlreadyConnectedPlayers(senderId);
+	}
+
+	private void AddAlreadyConnectedPlayers(long clientId)
+	{
+		var connectedPlayers = Multiplayer.GetPeers();
+		connectedPlayers = connectedPlayers.Concat(new[] { Multiplayer.GetUniqueId() }).ToArray();
+
+		foreach (var playerId in connectedPlayers)
 		{
-			AddPlayer(playerId);
+			if (clientId == Multiplayer.GetUniqueId())
+			{
+				AddPlayer(playerId);
+			}
+			else
+			{
+				RpcId(clientId, nameof(AddPlayer), playerId);
+			}
 		}
 	}
 
+	[Rpc(CallLocal = true)]
 	private void AddPlayer(long playerId)
 	{
+		if (spawnedPlayers.Contains(playerId)) return;
+		
 		var playerItem = playerItemPrefab.Instantiate<LobbyPlayerItem>();
 		playerItem.Name = playerId.ToString();
 		listParent.AddChild(playerItem);
+		spawnedPlayers.Add(playerId);
 	}
 
+	[Rpc(CallLocal = true)]
 	private void RemovePlayer(long playerId)
 	{
-		if (!Multiplayer.IsServer()) return;
+		if (!spawnedPlayers.Contains(playerId)) return;
+		
 		var playerItem = GetPlayerItem((int)playerId);
 		playerItem.QueueFree();
+		spawnedPlayers.Remove(playerId);
 	}
 
 	private void OnBackPressed()

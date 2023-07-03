@@ -120,10 +120,6 @@ text = "#NOT_ENOUGH_PLAYERS#"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="back"]
-_spawnable_scenes = PackedStringArray("res://objects/interface/lobby_item.tscn")
-spawn_path = NodePath("../players")
-
 [node name="settings" type="Control" parent="." node_paths=PackedStringArray("audi", "cakesSlider", "npcSlider", "startTimeSlider", "appendTimeSlider", "mistakesSlider", "minimapCheckbox")]
 visible = false
 layout_mode = 1
