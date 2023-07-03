@@ -93,7 +93,7 @@ public partial class Character : CharacterBody3D
 
 	private float GetRotatedSideDirection(Vector3 direction)
 	{
-		return RotationDegrees.Y switch
+		return (int)RotationDegrees.Y switch
 		{
 			>= 0 and < 90 => direction.X,
 			>= 90 and < 180 => -direction.Z,
