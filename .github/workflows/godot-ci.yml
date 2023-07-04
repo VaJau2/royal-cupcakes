@@ -3,7 +3,7 @@ on: push
 
 env:
   GODOT_VERSION: 4.0.3
-  EXPORT_NAME: Royal Cupcakes
+  EXPORT_NAME: Royal_Cupcakes
 
 jobs:
   export-windows:
