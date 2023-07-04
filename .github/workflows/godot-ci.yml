@@ -2,7 +2,7 @@
 on: push
 
 env:
-  GODOT_VERSION: 4.0.3
+  GODOT_VERSION: mono-4.0.3
   EXPORT_NAME: Royal_Cupcakes
 
 jobs:
