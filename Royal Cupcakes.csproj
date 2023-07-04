@@ -5,6 +5,7 @@
     <RootNamespace>RoyalCupcakes</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".github\workflows\godot-ci.yml" />
     <Content Include="assets\lang\text.csv" />
   </ItemGroup>
 </Project>

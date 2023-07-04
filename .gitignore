@@ -14,3 +14,4 @@ mono_crash.*.json
 
 #Game specific ignores
 config.cfg
+/build/
