@@ -44,8 +44,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: $EXPORT_NAME
-          release_name: Release $EXPORT_NAME
+          tag_name: Royal Cupcakes Build
+          release_name: Royal Cupcakes Latest Build
           draft: false
           prerelease: false
       
@@ -55,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ../build/windows
+          asset_path: build/windows
           asset_name: royal-cupcakes.zip
           asset_content_type: application/zip
