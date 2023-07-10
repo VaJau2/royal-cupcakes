@@ -32,4 +32,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: windows
-          path: build/windows
+          path: ../build/windows
+      - name: upload windows artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ../build/windows
+          asset_name: royal-cupcakes.zip
+          asset_content_type: application/zip
