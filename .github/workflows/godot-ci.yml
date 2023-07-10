@@ -37,17 +37,17 @@ jobs:
         with:
           name: windows
           path: build/windows
-      
-      - name: Create release
-        uses: actions/create-release@v1
+
+      - name: Create Release
         id: create_release
-        with:
-          draft: false
-          prerelease: false
-          tag_name: ${{ github.ref }}
-          body_path: build/windows
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
       
       - name: Upload Release
         uses: actions/upload-release-asset@v1
