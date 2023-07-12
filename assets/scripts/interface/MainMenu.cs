@@ -10,7 +10,7 @@ public partial class MainMenu : Control
 	
 	private ConnectionModal connectionModal;
 	private DebugModal debugModal;
-	private Control errorModal;
+	private ErrorModal errorModal;
 	private Control settingsModal;
 
 	public override void _Ready()
@@ -19,7 +19,7 @@ public partial class MainMenu : Control
 		
 		connectionModal = GetNode<ConnectionModal>("connection");
 		debugModal = GetNode<DebugModal>("debug");
-		errorModal = GetNode<Control>("error");
+		errorModal = GetNode<ErrorModal>("error");
 		settingsModal = GetNode<Control>("settings");
 		audi = GetNode<AudioStreamPlayer>("audi");
 	}
@@ -38,7 +38,15 @@ public partial class MainMenu : Control
 	private void OnStartPressed()
 	{
 		audi.Play();
-		connectionModal.OpenModal();
+		if (string.IsNullOrEmpty(Settings.Instance.PlayerName))
+		{
+			errorModal.ErrorText = "#NAME_ERROR#";
+			errorModal.OpenModal();
+		}
+		else
+		{
+			connectionModal.OpenModal();
+		}
 	}
 
 	private void OnDebugPressed()

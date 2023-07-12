@@ -18,6 +18,7 @@ keys,en,ru
 #CONNECT#,Connect,Подключиться
 #CONNECTING#,Connecting...,Подключаемся...
 #CONNECTION_ERROR#,Connection error,Ошибка подключения
+#NAME_ERROR#,Name must not be empty,Имя должно быть заполнено
 #DAMN#,Damn it,Ну блин
 #CANCEL#,Cancel,Отмена
 #CLOSE#,Close,Закрыть

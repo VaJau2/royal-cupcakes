@@ -15,7 +15,7 @@ public partial class ConnectionModal : AbstractModal
 	[Export]
 	private ConnectingModal connectingModal;
 	[Export]
-	private Control errorModal;
+	private ErrorModal errorModal;
 
 	private Button connectionType;
 	private LineEdit ip;
@@ -68,6 +68,14 @@ public partial class ConnectionModal : AbstractModal
 	{
 		audi?.Play();
 		CloseModal();
+		
+		if (string.IsNullOrEmpty(Settings.Instance.PlayerName))
+		{
+			errorModal.ErrorText = "#NAME_ERROR#";
+			errorModal.OpenModal();
+			return;
+		}
+		
 		connectingModal.Visible = true;
 		
 		var settings = Settings.Instance;
