@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://assets/scripts/characters/player/CameraWallsCheck.cs" id="6_b05q1"]
 
 [node name="player" instance=ExtResource("1_pkmxe")]
+collision_layer = 25
 collision_mask = 4
 
 [node name="sprite" parent="." index="0"]
@@ -36,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103391, 0.73337, -0.0631743
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99023, 3.5364)
 exclude_parent = false
 target_position = Vector3(0, -1.109, -3.436)
-collision_mask = 5
+collision_mask = 16
 script = ExtResource("6_b05q1")
 camera = NodePath("../camera")
 closePositionNode = NodePath("../closePosition")

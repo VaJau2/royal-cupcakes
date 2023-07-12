@@ -124,6 +124,7 @@ omni_range = 32.2102
 
 [node name="location" parent="props" instance=ExtResource("5_q20yi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.917, -5.99, 9.749)
+collision_layer = 28
 
 [node name="characters" type="Node3D" parent="."]
 script = ExtResource("1_y7rk8")

@@ -124,6 +124,7 @@ locale/translations=PackedStringArray("res://assets/lang/text.en.translation", "
 3d_physics/layer_2="lasso"
 3d_physics/layer_3="props"
 3d_physics/layer_4="sound"
+3d_physics/layer_5="walls"
 
 [rendering]
 
