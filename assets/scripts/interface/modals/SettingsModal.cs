@@ -12,6 +12,8 @@ public partial class SettingsModal : AbstractModal
 	private HSlider musicSlider;
 	private ControlsModal controlsModal;
 
+	public bool ControlsIsOpen => controlsModal.Visible;
+
 	public override void _Ready()
 	{
 		soundSlider = GetNode<HSlider>("sound");

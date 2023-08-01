@@ -83,7 +83,16 @@ public partial class ControlsModal: AbstractModal
 
     public override void _Input(InputEvent @event)
     {
-        if (string.IsNullOrEmpty(monitoringAction)) return;
+        if (string.IsNullOrEmpty(monitoringAction))
+        {
+            if (Visible && Input.IsActionJustPressed("ui_cancel"))
+            {
+                CloseModal();
+            }
+
+            return;
+        }
+        
         if (@event is not InputEventKey { Pressed: true } eventKey) return;
 
         if (Input.IsActionJustPressed("ui_cancel") || SameActionKey(monitoringAction, eventKey.PhysicalKeycode))

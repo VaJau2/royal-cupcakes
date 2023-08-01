@@ -1,11 +1,12 @@
 using Godot;
+using RoyalCupcakes.Interface.Modals;
 using RoyalCupcakes.System;
 
 namespace RoyalCupcakes.Interface;
 
 public partial class PauseMenu : Control
 {
-	private Control settingsModal;
+	private SettingsModal settingsModal;
 	private Control back;
 	private AnimationPlayer anim;
 	private AudioStreamPlayer audi;
@@ -16,7 +17,7 @@ public partial class PauseMenu : Control
 
 	public override void _Ready()
 	{
-		settingsModal = GetNode<Control>("settings");
+		settingsModal = GetNode<SettingsModal>("settings");
 		back = GetNode<Control>("back");
 		anim = GetNode<AnimationPlayer>("anim");
 		audi = GetNode<AudioStreamPlayer>("audi");
@@ -32,6 +33,7 @@ public partial class PauseMenu : Control
 	public override void _Process(double delta)
 	{
 		if (!Input.IsActionJustPressed("ui_cancel")) return;
+		if (settingsModal.ControlsIsOpen) return;
 		SetOpen(!isOpened);
 	}
 
