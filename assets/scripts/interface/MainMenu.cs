@@ -12,6 +12,7 @@ public partial class MainMenu : Control
 	private DebugModal debugModal;
 	private ErrorModal errorModal;
 	private Control settingsModal;
+	private Control aboutModal;
 
 	public override void _Ready()
 	{
@@ -21,6 +22,7 @@ public partial class MainMenu : Control
 		debugModal = GetNode<DebugModal>("debug");
 		errorModal = GetNode<ErrorModal>("error");
 		settingsModal = GetNode<Control>("settings");
+		aboutModal = GetNode<Control>("about");
 		audi = GetNode<AudioStreamPlayer>("audi");
 	}
 	
@@ -59,6 +61,12 @@ public partial class MainMenu : Control
 	{
 		audi.Play();
 		settingsModal.Visible = true;
+	}
+
+	private void OnAboutPressed()
+	{
+		audi.Play();
+		aboutModal.Visible = true;
 	}
 
 	private void OnExitPressed()

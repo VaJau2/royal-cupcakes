@@ -1,6 +1,7 @@
 keys,en,ru
 #GAME#,Royal Cupcakes,Royal Cupcakes
 #START#,Start,Начать
+#ABOUT#,About,Об игре
 #DEBUG#,Debug,Дебаг
 #EXIT#,Exit,Выйти
 #CLOSE#,Close,Закрыть
@@ -21,7 +22,6 @@ keys,en,ru
 #NAME_ERROR#,Name must not be empty,Имя должно быть заполнено
 #DAMN#,Damn it,Ну блин
 #CANCEL#,Cancel,Отмена
-#CLOSE#,Close,Закрыть
 #SOUND#,Sound,Звуки
 #MUSIC#,Music,Музыка
 #HOST#,Host,Хост
@@ -66,4 +66,12 @@ keys,en,ru
 #THIEVES#,Thieves,Воры
 #GUARDS#,Guards,Стражники
 #DEBUG_DESC#,Choose team to debug,Выберите команду для дебага
-
+#ABOUT_1#,On the eve of the next Gala cakes suddenly began to disappear all over Equestria and Princess Celestia is very upset about this fact!,Накануне очередного Гала по всей Эквестрии внезапно стали пропадать тортики и Принцесса Селестия очень расстроена этим фактом! 
+#ABOUT_2#,To prevent the last Equestria cakes from being stolen at the Gala the best guards were sent.,Чтобы последние тортики Эквестрии не украли и на Гала тоже были отправлены лучшие стражники. 
+#ABOUT_3#,Figure out the thieves/hide in the crowd and steal/don't let them steal the last Celestia's cakes!,Вычисли воров/скройся в толпе и укради/не позволь украсть последние тортики Селестии!
+#ABOUT_RULES_HEADER#,Game Rules,Правила
+#ABOUT_5#,You can play the role of a guard or a thief.,Вы можете сыграть роль стражника или вора.
+#ABOUT_6#,The guards must figure out the players among the computer-controlled ponies and catch them.,Стражники должны вычислить игроков среди управляемых компьютером пони и поймать их.
+#ABOUT_7#,Thieves must merge with the crowd in a limited time to steal all the cakes from the tables.,Воры должны слиться с толпой и за ограниченное время украсть все тортики со столов.
+#ABOUT_8#,The guards win if they catch all the thieves or the time for thieves ends.,Стражники побеждают если ловят всех воров или время для воров заканчивается.
+#ABOUT_9#,Thieves win if they steal all the cakes.,Воры побеждают если крадут все тортики.

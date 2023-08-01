@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbn6io5xwhg5d"]
+[gd_scene load_steps=17 format=3 uid="uid://cbn6io5xwhg5d"]
 
 [ext_resource type="Script" path="res://assets/scripts/interface/MainMenu.cs" id="1_np8xv"]
 [ext_resource type="FontFile" uid="uid://rw0kdhck1exa" path="res://assets/materials/header_font.ttf" id="2_sldfa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://assets/scripts/interface/modals/DebugModal.cs" id="7_7iosl"]
 [ext_resource type="PackedScene" uid="uid://ba4m0ucakxs1n" path="res://objects/interface/settings.tscn" id="9_4pv33"]
 [ext_resource type="AudioStream" uid="uid://s24ccx6e3hex" path="res://assets/sounds/button_sound.wav" id="9_hwhqg"]
+[ext_resource type="Script" path="res://assets/scripts/interface/modals/AboutModal.cs" id="10_gsd1s"]
 [ext_resource type="AudioStream" uid="uid://cdgs3vy3k0a4k" path="res://assets/sounds/music/Blue Dot Sessions - Sweetly.mp3" id="11_8vsdo"]
 
 [sub_resource type="Theme" id="Theme_2ksb2"]
@@ -93,13 +94,27 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 64.0
+offset_top = -100.0
+offset_right = 320.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+text = "#START#"
+
+[node name="About" type="Button" parent="Back"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
 offset_top = -52.0
 offset_right = 320.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 1
-text = "#START#"
+text = "#ABOUT#"
 
 [node name="Debug" type="Button" parent="Back"]
 layout_mode = 1
@@ -675,6 +690,228 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "#DAMN#"
 
+[node name="about" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -220.0
+offset_right = 336.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_gsd1s")
+
+[node name="back" type="ColorRect" parent="about"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="borders" type="Control" parent="about"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="ColorRect" parent="about/borders"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+
+[node name="down" type="ColorRect" parent="about/borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="left" type="ColorRect" parent="about/borders"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+
+[node name="right" type="ColorRect" parent="about/borders"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_right = 93.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "#ABOUT#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 48.0
+offset_right = 332.0
+offset_bottom = 92.0
+grow_horizontal = 2
+text = "#ABOUT_1#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 96.0
+offset_right = 332.0
+offset_bottom = 136.0
+grow_horizontal = 2
+text = "#ABOUT_2#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 144.0
+offset_right = 332.0
+offset_bottom = 184.0
+grow_horizontal = 2
+text = "#ABOUT_3#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 184.0
+offset_right = 332.0
+offset_bottom = 216.0
+grow_horizontal = 2
+text = "#ABOUT_RULES_HEADER#"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 224.0
+offset_right = 332.0
+offset_bottom = 256.0
+grow_horizontal = 2
+text = "#ABOUT_5#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label7" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 256.0
+offset_right = 332.0
+offset_bottom = 300.0
+grow_horizontal = 2
+text = "#ABOUT_6#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label8" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 304.0
+offset_right = 332.0
+offset_bottom = 348.0
+grow_horizontal = 2
+text = "#ABOUT_7#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label9" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 344.0
+offset_right = 332.0
+offset_bottom = 388.0
+grow_horizontal = 2
+text = "#ABOUT_8#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label10" type="Label" parent="about"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 376.0
+offset_right = 332.0
+offset_bottom = 420.0
+grow_horizontal = 2
+text = "#ABOUT_9#"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="close" type="Button" parent="about"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "#CLOSE#"
+
 [node name="settings" parent="." node_paths=PackedStringArray("audi") instance=ExtResource("9_4pv33")]
 visible = false
 layout_mode = 1
@@ -704,6 +941,7 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="Back/Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Back/About" to="." method="OnAboutPressed"]
 [connection signal="pressed" from="Back/Debug" to="." method="OnDebugPressed"]
 [connection signal="pressed" from="Back/Settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="Back/Exit" to="." method="OnExitPressed"]
@@ -717,3 +955,4 @@ bus = &"Music"
 [connection signal="pressed" from="debug/guard" to="debug" method="StartDebug" binds= [false]]
 [connection signal="pressed" from="connecting/cancel" to="connecting" method="CloseModal"]
 [connection signal="pressed" from="error/ok" to="error" method="CloseModal"]
+[connection signal="pressed" from="about/close" to="about" method="CloseModal"]
