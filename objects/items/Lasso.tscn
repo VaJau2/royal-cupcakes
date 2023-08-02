@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c421pnn232whv" path="res://assets/sounds/lasso_throw.wav" id="4_k1u70"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl44b"]
-size = Vector3(0.548597, 0.371008, 0.093846)
+size = Vector3(0.548597, 0.371008, 0.219896)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2boo"]
 size = Vector3(0.608976, 0.485505, 0.365833)
