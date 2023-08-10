@@ -130,6 +130,7 @@ public partial class Main : Node
 		
 		Multiplayer.ConnectedToServer += () =>
 		{
+			currentMenu?.QueueFree();
 			currentMenu = null;
 			currentScene = null;
 		};
